@@ -45,9 +45,11 @@ const options = {
 			enabled: false,
 		},
 		datalabels: {
-			formatter: function (value, context) {
+			formatter: function (_, context) {
 				if (context.datasetIndex === 1) return "";
-				return context.chart.data.labels[context.dataIndex];
+				const name = context.chart.data.labels[context.dataIndex];
+				if (name.length > 14) return name.substring(0, 14) + "...";
+				return name;
 			},
 			anchor: "center",
 			align: "center",
@@ -259,7 +261,7 @@ const Wheel = (props) => {
 					onClick={handleWheelClick}
 					ref={wheelRef}
 					className={cn(
-						"aspect-square w-full rounded-full overflow-hidden",
+						"aspect-square shadow-2xl w-full rounded-full overflow-hidden",
 						!props.ongoing && "animate-infinite-rotate",
 						canSpin && props?.players.length > 0 && "hover:cursor-pointer"
 					)}
@@ -274,20 +276,34 @@ const Wheel = (props) => {
 			{/* Selector pin */}
 			<div className="absolute -right-4 w-0 h-0 border-t-transparent border-t-[32px] border-b-transparent border-b-[32px] border-r-neutral-50 border-r-[42px] drop-shadow-lg" />
 			{/* Help button */}
-			{!props.ongoing && props?.players.length > 0 && (
-				<motion.div className="absolute py-4 px-6 2k:py-6 2k:px-8 rounded-2xl bg-green-600 border-2 border-green-400 bg-opacity-90 backdrop-blur-sm shadow-2xl shadow-green-500 text-white duration-300 pointer-events-none">
-					<motion.p
-						initial={{ y: 20, opacity: 0.5, rotate: 0.001 }}
-						animate={{ y: 0, opacity: 1 }}
-						transition={{
-							y: { type: "spring", stiffness: 100, damping: 9 },
-							opacity: { duration: 1 },
-						}}
-						className="font-outfit text-3xl 2k:text-5xl group-hover:text-4xl">
-						Click the wheel to spin!
-					</motion.p>
-				</motion.div>
-			)}
+			<motion.div
+				className={cn(
+					"absolute py-4 px-6 2k:py-6 2k:px-8 rounded-2xl bg-green-600 border-2 border-green-400 bg-opacity-90 backdrop-blur-sm shadow-3xl shadow-green-500 text-white pointer-events-none",
+					!props.ongoing &&
+						props?.players.length <= 0 &&
+						"bg-red-600 border-2 border-red-400 shadow-red-600",
+					props.ongoing && "hidden"
+				)}>
+				<motion.p
+					initial={{ y: 20, opacity: 0, rotate: 0.001 }}
+					animate={{ y: 0, opacity: 1 }}
+					transition={{
+						y: { type: "spring", stiffness: 20, damping: 4, delay: 0.35 },
+						opacity: { duration: 1.2, delay: 0.35 },
+					}}
+					className={cn(
+						"font-outfit text-3xl 2k:text-5xl group-hover:text-4xl",
+						props?.players.length <= 0 && "pr-11 2k:pr-[4.2rem]"
+					)}>
+					{props?.players.length > 0 ? (
+						"Click the wheel to spin!"
+					) : (
+						<>
+							Add players <span className="ml-2 absolute animate-point-right">{"👉"}</span>
+						</>
+					)}
+				</motion.p>
+			</motion.div>
 			{/* End warning */}
 			{endWarning && (
 				<div className="absolute w-1/2 h-1/5 bg-normalBlack rounded-3xl shadow-2xl flex flex-col items-center justify-center text-white gap-2 p-5">

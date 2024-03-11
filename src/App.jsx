@@ -86,7 +86,7 @@ function App() {
 					setSelectedPlayer={setSelectedPlayer}
 					playersPerTeam={playersPerTeam}
 				/>
-				<section className="max-w-[440px] 2k:max-w-[540px] w-full h-full flex flex-col justify-between drop-shadow-xl">
+				<section className="max-w-[440px] 2k:max-w-[540px] w-full h-full flex flex-col justify-between">
 					{ongoing ? (
 						<TeamsPanel teams={teams} selectedPlayer={selectedPlayer} />
 					) : (
@@ -97,16 +97,7 @@ function App() {
 							setPlayers={setPlayers}
 						/>
 					)}
-					<SettingsPanel
-						ongoing={ongoing}
-						returnToStart={returnToStart}
-						spinTime={spinTime}
-						setSpinTime={setSpinTime}
-						playersPerTeam={playersPerTeam}
-						setPlayersPerTeam={setPlayersPerTeam}
-						setPlayers={setPlayers}
-						players={players}
-					/>
+					<SettingsPanel ongoing={ongoing} />
 				</section>
 			</WheelContextProvider>
 		</main>

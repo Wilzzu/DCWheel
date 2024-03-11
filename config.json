@@ -1,0 +1,84 @@
+{
+	"wheelColors": [
+		{
+			"bgColor": "#eeb211",
+			"fontColor": "#000000"
+		},
+		{
+			"bgColor": "#009925",
+			"fontColor": "#ffffff"
+		},
+		{
+			"bgColor": "#3369e8",
+			"fontColor": "#ffffff"
+		},
+		{
+			"bgColor": "#d50f25",
+			"fontColor": "#ffffff"
+		},
+		{
+			"bgColor": "#7e49c4",
+			"fontColor": "#ffffff"
+		},
+		{
+			"bgColor": "#db8630",
+			"fontColor": "#ffffff"
+		},
+		{
+			"bgColor": "#ED86BE",
+			"fontColor": "#000000"
+		},
+		{
+			"bgColor": "#9ac610",
+			"fontColor": "#000000"
+		},
+		{
+			"bgColor": "#0A9EC1",
+			"fontColor": "#ffffff"
+		},
+		{
+			"bgColor": "#db523d",
+			"fontColor": "#ffffff"
+		},
+		{
+			"bgColor": "#06c6af",
+			"fontColor": "#ffffff"
+		},
+		{
+			"bgColor": "#2F2F2F",
+			"fontColor": "#ffffff"
+		},
+		{
+			"bgColor": "#76C41A",
+			"fontColor": "#000000"
+		},
+		{
+			"bgColor": "#E6E133",
+			"fontColor": "#000000"
+		},
+		{
+			"bgColor": "#0BB53F",
+			"fontColor": "#ffffff"
+		},
+		{
+			"bgColor": "#141414",
+			"fontColor": "#ffffff"
+		},
+		{
+			"bgColor": "#EFEFEF",
+			"fontColor": "#000000"
+		},
+		{
+			"bgColor": "#CD873F",
+			"fontColor": "#ffffff"
+		},
+		{
+			"bgColor": "#E27878",
+			"fontColor": "#ffffff"
+		},
+		{
+			"bgColor": "#444444",
+			"fontColor": "#ffffff"
+		}
+	]
+}

@@ -4,7 +4,7 @@ const MultiSelectionButton = ({ layout, name, type, icons, val, setVal }) => {
 	return (
 		<button
 			onClick={() => setVal(type)}
-			className="group relative w-10 py-1 flex items-center justify-center">
+			className="group relative w-10 h-8 py-1 flex items-center justify-center">
 			{icons[type]}
 			{/* Selected background */}
 			{type === val && (

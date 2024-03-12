@@ -41,7 +41,7 @@ const TeamSize = () => {
 					onClick={(e) => e.target.select()}
 					onChange={handleChange}
 					onBlur={handleUnfocus}
-					className="text-center outline-none bg-neutral-700 rounded-md h-7 2xl:h-8 w-8 2xl:w-9"
+					className="text-center outline-none font-bold bg-neutral-700 rounded-md h-7 2xl:h-8 w-8 2xl:w-9"
 				/>
 				{/* Buttons */}
 				<div className="h-full flex flex-col justify-center">

@@ -1,12 +1,18 @@
 import { useContext } from "react";
 import DeleteIcon from "../assets/DeleteIcon.jsx";
 import WheelContext from "../contexts/WheelContext.js";
+import { motion } from "framer-motion";
 
 const PlayerCard = ({ player }) => {
 	const { removePlayer } = useContext(WheelContext);
 
 	return (
-		<li>
+		<motion.li
+			layout
+			initial={{ y: -10, opacity: 0 }}
+			animate={{ y: 0, opacity: 1 }}
+			exit={{ y: 10, opacity: 0, transition: { duration: 0.1 } }}
+			transition={{ duration: 0.2, layout: { duration: 0.1 } }}>
 			<button
 				onClick={() => removePlayer(player.id)}
 				className="w-full h-10 2xl:h-12 bg-darkBlack border-2 border-darkBlack rounded-xl flex gap-2 py-1 px-2 items-center hover:cursor-pointer hover:bg-red-900 hover:border-red-600 focus:bg-red-900 focus:outline-red-600 group">
@@ -26,7 +32,7 @@ const PlayerCard = ({ player }) => {
 					<DeleteIcon />
 				</div>
 			</button>
-		</li>
+		</motion.li>
 	);
 };
 

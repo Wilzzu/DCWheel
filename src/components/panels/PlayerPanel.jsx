@@ -3,6 +3,10 @@ import PlayerCard from "../PlayerCard";
 import PlayerSelect from "../PlayerSelect";
 import RemoveAllButton from "../RemoveAllButton";
 import WheelContext from "../../contexts/WheelContext";
+import { FaRegUser } from "react-icons/fa";
+import { HiOutlineUserGroup } from "react-icons/hi2";
+import { cn } from "../../../lib/utils";
+import { AnimatePresence } from "framer-motion";
 
 const PlayerPanel = () => {
 	const ref = useRef(null);
@@ -18,29 +22,40 @@ const PlayerPanel = () => {
 	}, [players]);
 
 	return (
-		<div className="relative w-full h-full flex flex-col gap-2 p-5 rounded-2xl bg-gradient-to-br from-darkBlack to-highlightBlack border-4 border-highlightBlack overflow-hidden shadow-3xl shadow-normalBlack">
+		<div className="relative w-full h-full flex flex-col gap-2 p-5 rounded-2xl overflow-hidden card-dark bg-gradient-to-br border-4">
 			<PlayerSelect />
 			{/* Amount */}
-			<div className="flex justify-center gap-5 text-center 2xl:text-lg text-white mt-6 font-semibold pb-1 border-b border-neutral-600 tracking-wide select-none">
-				<p>PLAYERS: {players?.length || 0}</p>
-				<span className="relative group flex justify-center">
-					<p>
-						TEAMS: {teamAmount} {teamsNotEven ? "❌" : "✔"}
-					</p>
+			<div className="flex justify-center gap-5 text-center text-white mt-4 font-semibold pb-2 border-b border-neutral-600 tracking-wide select-none">
+				<div className="flex gap-1 items-center">
+					<p>Players</p>
+					<span className="bg-darkBlack rounded-lg p-2 min-w-[4.2rem] flex gap-2 items-center justify-center">
+						<FaRegUser />
+						<p>{players?.length || 0}</p>
+					</span>
+				</div>
+				<div className="relative group flex gap-2 items-center justify-center">
+					<p>Teams</p>
+					<span className="bg-darkBlack rounded-lg p-2 min-w-[4.2rem] flex gap-2 items-center justify-center">
+						<HiOutlineUserGroup className={cn("h-auto w-6", teamsNotEven && "stroke-[#FF5858]")} />
+						<p className={teamsNotEven ? "text-[#FF5858]" : ""}>{teamAmount}</p>
+					</span>
+					{/* {teamsNotEven ? "❌" : "✔"} */}
 					{teamsNotEven && (
 						<span className="absolute text-nowrap -top-1 opacity-0 p-2 bg-highlightBlack rounded-lg group-hover:-top-9 group-hover:opacity-100 duration-300 text-xs drop-shadow-md border border-red-500">
 							{"Teams won't be even!"}
 						</span>
 					)}
-				</span>
+				</div>
 			</div>
 			{/* List players */}
 			<ul
 				ref={ref}
 				className="flex flex-col gap-1 h-full overflow-auto scrollbar scrollbar-thumb-green-500 scrollbar-thumb-rounded-full scrollbar-w-2 pr-2">
-				{players?.map((e) => (
-					<PlayerCard key={e.id} player={e} />
-				))}
+				<AnimatePresence>
+					{players?.map((e) => (
+						<PlayerCard key={e.id} player={e} />
+					))}
+				</AnimatePresence>
 			</ul>
 			<RemoveAllButton players={players} setPlayers={setPlayers} />
 		</div>

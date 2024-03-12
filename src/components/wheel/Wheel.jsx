@@ -361,22 +361,31 @@ const Wheel = () => {
 			</motion.div>
 			{/* End warning */}
 			{endWarning && (
-				<div className="absolute w-1/2 h-1/5 bg-normalBlack rounded-2xl shadow-xl flex flex-col items-center justify-center bg-opacity-90 backdrop-blur-lg text-white gap-2 p-5">
-					<p className="text-lg">Return to start?</p>
+				<motion.div
+					initial={{ y: 20, opacity: 0 }}
+					animate={{ y: 0, opacity: 1 }}
+					transition={{
+						y: { type: "spring", stiffness: 140, damping: 14 },
+						opacity: { duration: 0.2 },
+					}}
+					className="absolute w-1/2 h-1/5 bg-normalBlack rounded-2xl shadow-xl flex flex-col items-center justify-center bg-opacity-90 backdrop-blur-lg text-white gap-2 p-5">
+					<p className="text-lg 2k:text-xl">Return to start?</p>
 					{/* Selection buttons */}
-					<div className="w-full flex gap-2 text-lg drop-shadow-md">
+					<div className="w-full flex gap-2 text-lg 2k:text-xl drop-shadow-md">
 						<button
 							onClick={() => handleEndWarning(true)}
-							className="bg-green-600 w-full rounded-xl py-4 border-2 shadow-3xl border-green-400 bg-opacity-90 hover:bg-[#15AF4E] hover:shadow-green-800 duration-150">
+							className="relative group w-full py-4 shadow-3xl hover:shadow-green-800 duration-150">
+							<div className="absolute group rounded-xl w-full h-full top-0 bg-gradient-to-br from-green-700 to-green-500 border-2 border-green-500 duration-150 opacity-90 group-hover:opacity-100"></div>
 							<p className="drop-shadow-md">Yes</p>
 						</button>
 						<button
 							onClick={() => handleEndWarning(false)}
-							className="bg-red-600 w-full rounded-xl py-4 border-2 shadow-3xl border-red-400 bg-opacity-90 hover:bg-[#D83131] hover:shadow-red-800 duration-150">
+							className="relative group w-full rounded-xl py-4 shadow-3xl bg-opacity-90 hover:shadow-red-800 duration-150">
+							<div className="absolute group rounded-xl w-full h-full top-0 bg-gradient-to-br from-red-700 to-red-500 border-2 border-red-500 duration-150 opacity-90 group-hover:opacity-100"></div>
 							<p className="drop-shadow-md">Cancel</p>
 						</button>
 					</div>
-				</div>
+				</motion.div>
 			)}
 		</section>
 	);

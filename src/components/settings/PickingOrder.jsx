@@ -5,8 +5,8 @@ import MultiSelectionButton from "./MultiSelectionButton";
 import TeamFillIcon from "../../assets/TeamFillIcon";
 
 const icons = {
-	0: <LuArrowRightLeft className="w-auto h-6 z-[2] stroke-white drop-shadow-icon" />,
-	1: <TeamFillIcon className="w-auto h-6 p-[0.12rem] z-[2] stroke-white drop-shadow-icon" />,
+	0: <LuArrowRightLeft className="w-auto h-6 p-[0.1rem] z-[2] stroke-white drop-shadow-icon" />,
+	1: <TeamFillIcon className="w-auto h-6 p-[0.2rem] z-[2] stroke-white drop-shadow-icon" />,
 };
 
 const PickingOrder = () => {

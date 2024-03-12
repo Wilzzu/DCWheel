@@ -15,3 +15,7 @@
 		-moz-appearance: textfield !important;
 	}
 }
+
+.card-dark {
+	@apply from-darkBlack to-highlightBlack border-highlightBlack shadow-3xl shadow-normalBlack;
+}

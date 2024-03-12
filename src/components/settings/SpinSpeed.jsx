@@ -6,7 +6,7 @@ import { useContext } from "react";
 import WheelContext from "../../contexts/WheelContext";
 
 const icons = {
-	0: <IoPlayOutline className="w-auto h-6 z-[2] stroke-white drop-shadow-icon" />,
+	0: <IoPlayOutline className="w-auto h-6 p-[0.08rem] z-[2] stroke-white drop-shadow-icon" />,
 	1: <IoPlayForwardOutline className="w-auto h-6 z-[2] stroke-white drop-shadow-icon" />,
 	2: <BsSpeedometer2 className="w-auto h-6 z-[2] fill-white drop-shadow-icon" />,
 };

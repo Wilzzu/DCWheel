@@ -122,6 +122,7 @@ const Wheel = () => {
 		setSelectedPlayer,
 		ongoing,
 		setOngoing,
+		setSpinning,
 		returnToStart,
 	} = useContext(WheelContext);
 
@@ -196,6 +197,8 @@ const Wheel = () => {
 	};
 
 	const spin = () => {
+		setSpinning(true);
+
 		// Calculate where wheel should stop at
 		const newRotation = 360 * 7 + Math.random() * 360;
 		setRotation(newRotation);
@@ -216,6 +219,7 @@ const Wheel = () => {
 		setSelectedPlayer({ ...rev[index], index });
 
 		setCanSpin(true);
+		setSpinning(false);
 	};
 
 	const handleEndWarning = (accepted) => {
@@ -333,18 +337,18 @@ const Wheel = () => {
 			</motion.div>
 			{/* End warning */}
 			{endWarning && (
-				<div className="absolute w-1/2 h-1/5 bg-normalBlack rounded-3xl shadow-2xl flex flex-col items-center justify-center text-white gap-2 p-5">
+				<div className="absolute w-1/2 h-1/5 bg-normalBlack rounded-2xl shadow-2xl flex flex-col items-center justify-center text-white gap-2 p-5">
 					<p className="text-lg">Return to start?</p>
 					{/* Selection buttons */}
 					<div className="w-full flex gap-2 text-lg drop-shadow-md">
 						<button
 							onClick={() => handleEndWarning(true)}
-							className="bg-green-500 w-full rounded-lg py-4 hover:bg-green-400 duration-150">
+							className="bg-green-500 w-full rounded-lg py-4 hover:bg-green-600 duration-150">
 							<p className="drop-shadow-md">Yes</p>
 						</button>
 						<button
 							onClick={() => handleEndWarning(false)}
-							className="bg-red-500 w-full rounded-lg py-4 hover:bg-red-400 duration-150">
+							className="bg-red-500 w-full rounded-lg py-4 hover:bg-red-600 duration-150">
 							<p className="drop-shadow-md">Cancel</p>
 						</button>
 					</div>

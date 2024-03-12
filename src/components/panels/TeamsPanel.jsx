@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import SelectedPlayerCard from "./SelectedPlayerCard";
-import TeamCard from "./TeamCard";
-import WheelContext from "../contexts/WheelContext";
+import SelectedPlayerCard from "../SelectedPlayerCard";
+import TeamCard from "../TeamCard";
+import WheelContext from "../../contexts/WheelContext";
 
 const TeamsPanel = () => {
 	const { teams, selectedPlayer } = useContext(WheelContext);

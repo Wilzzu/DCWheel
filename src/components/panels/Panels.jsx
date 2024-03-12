@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import WheelContext from "../contexts/WheelContext";
+import WheelContext from "../../contexts/WheelContext";
 import PlayerPanel from "./PlayerPanel";
 import TeamsPanel from "./TeamsPanel";
-import SettingsPanel from "./settings/SettingsPanel";
+import SettingsPanel from "../settings/SettingsPanel";
 
 const Panels = () => {
 	const { ongoing } = useContext(WheelContext);

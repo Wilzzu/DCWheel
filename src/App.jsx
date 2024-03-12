@@ -1,6 +1,6 @@
 import Wheel from "./components/wheel/Wheel";
 import WheelContextProvider from "./contexts/WheelContextProvider";
-import Panels from "./components/Panels";
+import Panels from "./components/panels/Panels";
 
 function App() {
 	return (

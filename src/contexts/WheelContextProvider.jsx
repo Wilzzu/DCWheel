@@ -11,6 +11,7 @@ const WheelContextProvider = ({ children }) => {
 	const [teamsNotEven, setTeamsNotEven] = useState(false);
 	const [selectedPlayer, setSelectedPlayer] = useState(null);
 	const [ongoing, setOngoing] = useState(false); // When the game in its entirety is in progress, not just one round
+	const [spinning, setSpinning] = useState(false);
 
 	// Settings
 	const [playersPerTeam, setPlayersPerTeam] = useState(2);
@@ -96,6 +97,8 @@ const WheelContextProvider = ({ children }) => {
 				currentPlayers,
 				ongoing,
 				setOngoing,
+				spinning,
+				setSpinning,
 				returnToStart,
 				removePlayerFromWheel,
 				removePlayer,

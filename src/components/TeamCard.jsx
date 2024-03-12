@@ -5,16 +5,20 @@ const TeamCard = ({ data, index }) => {
 		<motion.div
 			layout
 			className="w-full h-fit bg-darkBlack rounded-xl flex flex-col gap-2 p-3 overflow-hidden">
-			<motion.p layout="position" className="text-lg 2k:text-xl font-semibold text-center">
+			<motion.p
+				layout="position"
+				initial={{ y: 2, opacity: 0 }}
+				animate={{ y: 0, opacity: 1 }}
+				transition={{ duration: 0.25, ease: "easeInOut" }}
+				className="text-lg 2k:text-xl font-semibold text-center">
 				Team {index + 1}
 			</motion.p>
 			<ul className="w-full flex flex-col gap-2">
 				{data.map((e, i) => (
 					// Player card
-					// TODO: Add initial animation to this
 					<motion.li
 						layout="position"
-						initial={{ y: i === 0 ? -3 : -8, opacity: 0 }}
+						initial={{ y: i === 0 ? -2 : -8, opacity: 0 }}
 						animate={{ y: 0, opacity: 1 }}
 						transition={{ duration: i === 0 ? 0.25 : 0.35, ease: "easeInOut" }}
 						key={"TeamPlayer" + e.id}

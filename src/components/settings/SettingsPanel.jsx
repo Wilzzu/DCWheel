@@ -3,6 +3,7 @@ import TeamSize from "./TeamSize";
 import SpinSpeed from "./SpinSpeed";
 import PickingOrder from "./PickingOrder";
 import Autospin from "./Autospin";
+import ReturnToMenu from "./ReturnToMenu";
 
 const SettingsPanel = ({ ongoing }) => {
 	return (
@@ -21,6 +22,7 @@ const SettingsPanel = ({ ongoing }) => {
 				<>
 					<SpinSpeed layout="speedOngoing" />
 					<Autospin />
+					<ReturnToMenu />
 				</>
 			)}
 		</div>

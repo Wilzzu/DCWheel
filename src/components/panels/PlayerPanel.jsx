@@ -1,8 +1,8 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import PlayerCard from "./PlayerCard";
-import PlayerSelect from "./PlayerSelect";
-import RemoveAllButton from "./RemoveAllButton";
-import WheelContext from "../contexts/WheelContext";
+import PlayerCard from "../PlayerCard";
+import PlayerSelect from "../PlayerSelect";
+import RemoveAllButton from "../RemoveAllButton";
+import WheelContext from "../../contexts/WheelContext";
 
 const PlayerPanel = () => {
 	const ref = useRef(null);

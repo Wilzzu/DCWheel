@@ -7,7 +7,7 @@ import WheelContext from "../contexts/WheelContext";
 const PlayerPanel = () => {
 	const ref = useRef(null);
 	const [lastAmount, setLastAmount] = useState(0);
-	const { players, setPlayers } = useContext(WheelContext);
+	const { teamAmount, players, setPlayers, teamsNotEven } = useContext(WheelContext);
 
 	// Scroll to bottom when new player is added
 	useEffect(() => {
@@ -21,9 +21,19 @@ const PlayerPanel = () => {
 		<div className="relative w-full h-full flex flex-col gap-2 p-5 rounded-2xl bg-gradient-to-br from-darkBlack to-highlightBlack border-4 border-highlightBlack overflow-hidden shadow-3xl shadow-normalBlack">
 			<PlayerSelect />
 			{/* Amount */}
-			<p className="text-center 2xl:text-lg text-white mt-6 font-semibold pb-1 border-b border-neutral-600 tracking-wide">
-				PLAYERS: {players?.length || 0}
-			</p>
+			<div className="flex justify-center gap-5 text-center 2xl:text-lg text-white mt-6 font-semibold pb-1 border-b border-neutral-600 tracking-wide select-none">
+				<p>PLAYERS: {players?.length || 0}</p>
+				<span className="relative group flex justify-center">
+					<p>
+						TEAMS: {teamAmount} {teamsNotEven ? "❌" : "✔"}
+					</p>
+					{teamsNotEven && (
+						<span className="absolute text-nowrap -top-1 opacity-0 p-2 bg-highlightBlack rounded-lg group-hover:-top-9 group-hover:opacity-100 duration-300 text-xs drop-shadow-md border border-red-500">
+							{"Teams won't be even!"}
+						</span>
+					)}
+				</span>
+			</div>
 			{/* List players */}
 			<ul
 				ref={ref}

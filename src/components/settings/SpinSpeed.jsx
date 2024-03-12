@@ -11,7 +11,7 @@ const icons = {
 	2: <BsSpeedometer2 className="w-auto h-6 z-[2] fill-white drop-shadow-icon" />,
 };
 
-const WheelSpeed = () => {
+const WheelSpeed = ({ layout }) => {
 	const { spinSpeed, setSpinSpeed } = useContext(WheelContext);
 
 	return (
@@ -20,7 +20,7 @@ const WheelSpeed = () => {
 			<ul className="flex items-center bg-darkBlack rounded-lg p-1">
 				<li>
 					<MultiSelectionButton
-						layout="selectedSpeed"
+						layout={layout}
 						name={"Normal"}
 						type={0}
 						icons={icons}
@@ -30,7 +30,7 @@ const WheelSpeed = () => {
 				</li>
 				<li>
 					<MultiSelectionButton
-						layout="selectedSpeed"
+						layout={layout}
 						name={"Fast"}
 						type={1}
 						icons={icons}
@@ -40,7 +40,7 @@ const WheelSpeed = () => {
 				</li>
 				<li>
 					<MultiSelectionButton
-						layout="selectedSpeed"
+						layout={layout}
 						name={"Turbo"}
 						type={2}
 						icons={icons}

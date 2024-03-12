@@ -1,5 +1,6 @@
 import { useContext, useRef, useState } from "react";
 import WheelContext from "../contexts/WheelContext";
+import { v4 as uuidv4 } from "uuid";
 // import useCustomPlayerImage from "../hooks/useCustomPlayerImage";
 
 const CustomPlayerSelect = () => {
@@ -8,7 +9,17 @@ const CustomPlayerSelect = () => {
 	const ref = useRef(null);
 	const [imgCount, setImgCount] = useState(0);
 
-	const { addPlayer } = useContext(WheelContext);
+	const { setPlayers } = useContext(WheelContext);
+
+	const addPlayer = (name, image, id) => {
+		const player = {
+			name,
+			image,
+			id: id || uuidv4(),
+		};
+
+		setPlayers((prev) => [...prev, player]);
+	};
 
 	const chooseImg = () => {
 		setImgCount((prev) => prev + 1);
@@ -53,8 +64,8 @@ const CustomPlayerSelect = () => {
 				/>
 				<button
 					onClick={handleSubmit}
-					className="w-[4.6rem] 2xl:w-20 bg-green-500 border-2 border-green-500 duration-150 rounded-2xl hover:bg-green-900">
-					<p className="text-3xl drop-shadow-md">+</p>
+					className="w-[4.6rem] 2xl:w-20 bg-green-500 border-2 border-green-500 duration-150 rounded-2xl hover:bg-green-800">
+					<p className="text-3xl drop-shadow-icon">+</p>
 				</button>
 			</div>
 			<p className="text-xs 2xl:text-sm opacity-50 text-center">

@@ -14,9 +14,9 @@ const MultiSelectionButton = ({ layout, name, type, icons, val, setVal }) => {
 				/>
 			)}
 			{/* Tooltip */}
-			<div className="absolute text-nowrap -top-1 opacity-0 p-2 bg-highlightBlack bg-opacity-70 backdrop-blur-sm rounded-lg group-hover:-top-8 group-hover:opacity-100 duration-300 text-xs drop-shadow-md">
+			<span className="absolute text-nowrap -top-1 opacity-0 p-2 bg-highlightBlack bg-opacity-70 backdrop-blur-sm rounded-lg group-hover:-top-8 group-hover:opacity-100 duration-300 text-xs drop-shadow-md">
 				<p>{name}</p>
-			</div>
+			</span>
 		</button>
 	);
 };

@@ -106,7 +106,7 @@ const loadSound = async (url) => {
 		.then((arrayBuffer) => audioContext.decodeAudioData(arrayBuffer));
 };
 
-const Wheel = ({ ongoing, setOngoing }) => {
+const Wheel = () => {
 	const [canSpin, setCanSpin] = useState(true);
 	const [rotation, setRotation] = useState(0);
 	const [wheelData, setWheelData] = useState(null);
@@ -117,11 +117,12 @@ const Wheel = ({ ongoing, setOngoing }) => {
 		players,
 		currentPlayers,
 		spinSpeed,
-		returnToStart,
 		removePlayerFromWheel,
 		selectedPlayer,
 		setSelectedPlayer,
-		playersPerTeam,
+		ongoing,
+		setOngoing,
+		returnToStart,
 	} = useContext(WheelContext);
 
 	function parsePlayersToWheel() {
@@ -217,9 +218,11 @@ const Wheel = ({ ongoing, setOngoing }) => {
 		setCanSpin(true);
 	};
 
-	const handleEndWarning = () => {
+	const handleEndWarning = (accepted) => {
 		setEndWarning(false);
 		setCanSpin(true);
+
+		if (accepted) returnToStart();
 	};
 
 	// Spin the wheel when rotation gets resetted and game is ongoing
@@ -280,12 +283,13 @@ const Wheel = ({ ongoing, setOngoing }) => {
 		<section className="relative max-w-full aspect-square flex items-center justify-center select-none">
 			{/* Wheel container to hide overflow */}
 			<div className="w-full h-full overflow-hidden">
-				{/* Spinning wheel div */}
-				<div
+				{/* Clickable spinning wheel */}
+				<button
 					onClick={handleWheelClick}
 					ref={wheelRef}
+					disabled={!canSpin || players.length <= 0}
 					className={cn(
-						"aspect-square shadow-2xl w-full rounded-full overflow-hidden",
+						"aspect-square shadow-2xl w-full rounded-full overflow-hidden disabled:hover:cursor-default",
 						!ongoing && "animate-infinite-rotate",
 						canSpin && players.length > 0 && "hover:cursor-pointer"
 					)}
@@ -295,7 +299,7 @@ const Wheel = ({ ongoing, setOngoing }) => {
 						transitionTimingFunction: "cubic-bezier(.15,.6,.25,1)",
 					}}>
 					{wheelData && <Pie data={wheelData} options={options} />}
-				</div>
+				</button>
 			</div>
 			{/* Selector pin */}
 			<div className="absolute -right-4 w-0 h-0 border-t-transparent border-t-[32px] border-b-transparent border-b-[32px] border-r-neutral-50 border-r-[42px] drop-shadow-lg" />
@@ -334,15 +338,12 @@ const Wheel = ({ ongoing, setOngoing }) => {
 					{/* Selection buttons */}
 					<div className="w-full flex gap-2 text-lg drop-shadow-md">
 						<button
-							onClick={() => {
-								handleEndWarning();
-								returnToStart();
-							}}
+							onClick={() => handleEndWarning(true)}
 							className="bg-green-500 w-full rounded-lg py-4 hover:bg-green-400 duration-150">
 							<p className="drop-shadow-md">Yes</p>
 						</button>
 						<button
-							onClick={handleEndWarning}
+							onClick={() => handleEndWarning(false)}
 							className="bg-red-500 w-full rounded-lg py-4 hover:bg-red-400 duration-150">
 							<p className="drop-shadow-md">Cancel</p>
 						</button>

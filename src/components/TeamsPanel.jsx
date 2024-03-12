@@ -12,7 +12,7 @@ const TeamsPanel = () => {
 			{/* Teams container */}
 			<div className="grid grid-cols-2 gap-2">
 				{teams.map((e, i) => (
-					<TeamCard key={"team" + i} data={e} number={i} />
+					<TeamCard key={"team" + i} data={e} index={i} />
 				))}
 			</div>
 		</div>

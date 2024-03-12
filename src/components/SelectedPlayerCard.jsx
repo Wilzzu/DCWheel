@@ -9,19 +9,21 @@ const SelectedPlayerCard = ({ selectedPlayer }) => {
 				className={cn(
 					"bg-darkBlack w-full rounded-2xl h-16 2xl:h-[4.25rem] p-2 flex items-center justify-center text-2xl 2xl:text-[1.7rem] font-bold gap-4 border-2 border-transparent duration-300",
 					selectedPlayer &&
-						"border-green-500 bg-green-800 shadow-green-600 shadow-[0_1px_20px_-4px]"
+						"border-green-400 bg-green-700 shadow-green-600 shadow-[0_1px_20px_-4px]"
 				)}>
 				{selectedPlayer && (
 					<>
 						{/* Image container to take space while the image is loading */}
-						<div className="h-full aspect-square">
+						<div className="h-full w-12 aspect-square">
 							<img
-								className="h-full rounded-full drop-shadow-lg duration-1000"
+								className="h-full w-12 aspect-square rounded-full drop-shadow-lg duration-1000"
 								src={selectedPlayer.image}
 								alt={`${selectedPlayer.name} image`}
 							/>
 						</div>
-						<p className="drop-shadow-lg truncate">{selectedPlayer.name}</p>
+						<p className="drop-shadow-lg truncate" title={selectedPlayer.name}>
+							{selectedPlayer.name}
+						</p>
 					</>
 				)}
 			</div>

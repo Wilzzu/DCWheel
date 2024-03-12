@@ -59,7 +59,7 @@ const CustomPlayerSelect = () => {
 					className="w-full outline-none border-green-500 border-2 px-4 rounded-xl h-14 2xl:h-16 bg-darkBlack text-base 2xl:text-xl hover:bg-highlightBlack focus:bg-highlightBlack placeholder:text-neutral-400 duration-100"
 					type="text"
 					placeholder="Player name..."
-					name="customPlayer"
+					// name="customPlayer"
 					onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
 				/>
 				<button

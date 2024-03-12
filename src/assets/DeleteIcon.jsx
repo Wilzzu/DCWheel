@@ -4,7 +4,7 @@ const DeleteIcon = () => (
 		width="100%"
 		height="100%"
 		fill="none"
-		className="stroke-black group-hover:stroke-white"
+		className="stroke-black group-hover:stroke-white duration-100"
 		strokeLinecap="round"
 		strokeLinejoin="round"
 		strokeWidth={2}

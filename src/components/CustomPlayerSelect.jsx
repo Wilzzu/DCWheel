@@ -1,11 +1,14 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
+import WheelContext from "../contexts/WheelContext";
 // import useCustomPlayerImage from "../hooks/useCustomPlayerImage";
 
-const CustomPlayerSelect = (props) => {
+const CustomPlayerSelect = () => {
 	// const { data, refetch } = useCustomPlayerImage();
 	// const [newPlayerQueue, setNewPlayerQueue] = useState([]);
 	const ref = useRef(null);
 	const [imgCount, setImgCount] = useState(0);
+
+	const { addPlayer } = useContext(WheelContext);
 
 	const chooseImg = () => {
 		setImgCount((prev) => prev + 1);
@@ -14,7 +17,7 @@ const CustomPlayerSelect = (props) => {
 
 	const handleSubmit = () => {
 		if (!ref.current.value) return;
-		props.addPlayer(ref.current.value, chooseImg());
+		addPlayer(ref.current.value, chooseImg());
 		ref.current.value = "";
 	};
 

@@ -124,7 +124,21 @@ const Wheel = () => {
 		setOngoing,
 		setSpinning,
 		returnToStart,
+		autospin,
+		mute,
 	} = useContext(WheelContext);
+
+	// These allow us to change settings during the spin
+	const muteRef = useRef(mute);
+	const autospinRef = useRef(autospin);
+	const canSpinRef = useRef(canSpin);
+	const ongoingRef = useRef(ongoing);
+	useEffect(() => {
+		muteRef.current = mute;
+		autospinRef.current = autospin;
+		canSpinRef.current = canSpin;
+		ongoingRef.current = ongoing;
+	}, [mute, autospin, canSpin, ongoing]);
 
 	function parsePlayersToWheel() {
 		// Copy template and add placeholder data
@@ -158,8 +172,8 @@ const Wheel = () => {
 		});
 	};
 
-	const handleWheelClick = () => {
-		if (!canSpin) return;
+	const handleWheelClick = (auto) => {
+		if (!canSpin && !auto) return;
 		if (players?.length <= 0) return;
 
 		// When all players have been selected and user presses the wheel
@@ -238,7 +252,7 @@ const Wheel = () => {
 		const source = audioContext.createBufferSource();
 		source.buffer = soundBuffer;
 		const gainNode = audioContext.createGain();
-		gainNode.gain.value = 0.1;
+		gainNode.gain.value = muteRef.current ? 0 : 0.1;
 
 		source.connect(gainNode);
 		gainNode.connect(audioContext.destination);
@@ -277,6 +291,16 @@ const Wheel = () => {
 	useEffect(() => {
 		parsePlayersToWheel();
 	}, [currentPlayers]);
+
+	// Autospin
+	const autospinStart = () => {
+		if (currentPlayers.length === 1) return; // Don't spin if all players have been selected
+		if (autospinRef.current && canSpinRef.current && ongoingRef.current) handleWheelClick(true); // Double check if we can spin
+	};
+
+	useEffect(() => {
+		if (autospinRef.current && canSpin && ongoing) setTimeout(() => autospinStart(), 500);
+	}, [autospinRef.current, canSpin, ongoing]);
 
 	useEffect(() => {
 		const preloadSound = async () => await fetch(spinSound);
@@ -337,18 +361,18 @@ const Wheel = () => {
 			</motion.div>
 			{/* End warning */}
 			{endWarning && (
-				<div className="absolute w-1/2 h-1/5 bg-normalBlack rounded-2xl shadow-2xl flex flex-col items-center justify-center text-white gap-2 p-5">
+				<div className="absolute w-1/2 h-1/5 bg-normalBlack rounded-2xl shadow-xl flex flex-col items-center justify-center bg-opacity-90 backdrop-blur-lg text-white gap-2 p-5">
 					<p className="text-lg">Return to start?</p>
 					{/* Selection buttons */}
 					<div className="w-full flex gap-2 text-lg drop-shadow-md">
 						<button
 							onClick={() => handleEndWarning(true)}
-							className="bg-green-500 w-full rounded-lg py-4 hover:bg-green-600 duration-150">
+							className="bg-green-600 w-full rounded-xl py-4 border-2 shadow-3xl border-green-400 bg-opacity-90 hover:bg-[#15AF4E] hover:shadow-green-800 duration-150">
 							<p className="drop-shadow-md">Yes</p>
 						</button>
 						<button
 							onClick={() => handleEndWarning(false)}
-							className="bg-red-500 w-full rounded-lg py-4 hover:bg-red-600 duration-150">
+							className="bg-red-600 w-full rounded-xl py-4 border-2 shadow-3xl border-red-400 bg-opacity-90 hover:bg-[#D83131] hover:shadow-red-800 duration-150">
 							<p className="drop-shadow-md">Cancel</p>
 						</button>
 					</div>

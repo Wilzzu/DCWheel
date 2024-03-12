@@ -4,6 +4,7 @@ import SpinSpeed from "./SpinSpeed";
 import PickingOrder from "./PickingOrder";
 import Autospin from "./Autospin";
 import ReturnToMenu from "./ReturnToMenu";
+import Mute from "./Mute";
 
 const SettingsPanel = ({ ongoing }) => {
 	return (
@@ -17,11 +18,13 @@ const SettingsPanel = ({ ongoing }) => {
 					<TeamSize />
 					<SpinSpeed layout="speedMenu" />
 					<PickingOrder />
+					<Mute />
 				</>
 			) : (
 				<>
 					<SpinSpeed layout="speedOngoing" />
 					<Autospin />
+					<Mute />
 					<ReturnToMenu />
 				</>
 			)}

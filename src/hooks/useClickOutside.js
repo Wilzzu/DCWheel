@@ -7,8 +7,6 @@ const useClickOutside = (confirmRef, buttonRef) => {
 		const handleClickOutside = (event) => {
 			if (buttonRef && buttonRef.current && buttonRef.current.contains(event.target)) return;
 			if (confirmRef && confirmRef.current && !confirmRef.current.contains(event.target)) {
-				console.log(event.target);
-				console.log("closing");
 				setConfirm(false);
 			}
 		};

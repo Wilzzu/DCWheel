@@ -1,4 +1,4 @@
-import { useContext, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import WheelContext from "../../contexts/WheelContext";
 import { RiLogoutBoxLine } from "react-icons/ri";
 import useClickOutside from "../../hooks/useClickOutside";
@@ -8,6 +8,10 @@ const ReturnToMenu = () => {
 	const confirmRef = useRef(null);
 	const buttonRef = useRef(null);
 	const { confirm, setConfirm } = useClickOutside(confirmRef, buttonRef);
+
+	useEffect(() => {
+		if (spinning) setConfirm(false);
+	}, [spinning]);
 
 	return (
 		<div className="relative flex flex-col items-center">
@@ -19,7 +23,7 @@ const ReturnToMenu = () => {
 				className="flex items-center justify-center bg-darkBlack rounded-lg h-10 w-10 duration-200 hover:bg-red-500 disabled:opacity-50 disabled:hover:bg-darkBlack">
 				<RiLogoutBoxLine className="h-6 w-auto drop-shadow-icon" />
 			</button>
-			{confirm && (
+			{confirm && !spinning && (
 				<div
 					ref={confirmRef}
 					className="absolute -top-[5.2rem] -right-1 text-nowrap p-4 text-lg bg-darkBlack rounded-lg drop-shadow-lg text-center">

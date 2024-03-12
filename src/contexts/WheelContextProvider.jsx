@@ -18,6 +18,7 @@ const WheelContextProvider = ({ children }) => {
 	const [spinSpeed, setSpinSpeed] = useState(2); // 0 = normal, 1 = fast, 2 = turbo
 	const [pickingOrder, setPickingOrder] = useState(1); // 0 = alternate, 1 = fill team
 	const [autospin, setAutospin] = useState(false);
+	const [mute, setMute] = useState(false);
 
 	const removePlayer = (id) => {
 		setPlayers(players.filter((e) => e.id !== id));
@@ -72,6 +73,7 @@ const WheelContextProvider = ({ children }) => {
 		setOngoing(false);
 		setCurrentPlayers(players);
 		setTeams([]);
+		setSelectedPlayer(null);
 	};
 
 	// Update current players whenever "players" get updated while in lobby
@@ -113,6 +115,8 @@ const WheelContextProvider = ({ children }) => {
 				setPlayersPerTeam,
 				autospin,
 				setAutospin,
+				mute,
+				setMute,
 			}}>
 			{children}
 		</WheelContext.Provider>

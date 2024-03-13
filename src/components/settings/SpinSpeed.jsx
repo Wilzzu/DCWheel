@@ -26,6 +26,8 @@ const WheelSpeed = ({ layout }) => {
 						icons={icons}
 						val={spinSpeed}
 						setVal={setSpinSpeed}
+						localKey={"wheelSettings"}
+						localItem={"spinSpeed"}
 					/>
 				</li>
 				<li>
@@ -36,6 +38,8 @@ const WheelSpeed = ({ layout }) => {
 						icons={icons}
 						val={spinSpeed}
 						setVal={setSpinSpeed}
+						localKey={"wheelSettings"}
+						localItem={"spinSpeed"}
 					/>
 				</li>
 				<li>
@@ -46,6 +50,8 @@ const WheelSpeed = ({ layout }) => {
 						icons={icons}
 						val={spinSpeed}
 						setVal={setSpinSpeed}
+						localKey={"wheelSettings"}
+						localItem={"spinSpeed"}
 					/>
 				</li>
 			</ul>

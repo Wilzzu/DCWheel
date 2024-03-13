@@ -1,9 +1,18 @@
 import { motion } from "framer-motion";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
-const MultiSelectionButton = ({ layout, name, type, icons, val, setVal }) => {
+const MultiSelectionButton = ({ layout, name, type, icons, val, setVal, localKey, localItem }) => {
+	const { setItem } = useLocalStorage();
+
+	// Save the value in Context API and local storage
+	const setAndSaveValue = () => {
+		setVal(type);
+		setItem(localKey, localItem, type);
+	};
+
 	return (
 		<button
-			onClick={() => setVal(type)}
+			onClick={setAndSaveValue}
 			className="group relative w-10 h-8 py-1 flex items-center justify-center">
 			{icons[type]}
 			{/* Selected background */}

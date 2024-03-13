@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import WheelContext from "./WheelContext";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 let currentTeamIndex = 0;
 
 const WheelContextProvider = ({ children }) => {
+	const { getItem } = useLocalStorage();
 	const [players, setPlayers] = useState([]); // Players that are on the player list, will be saved so when returned to lobby they will remain there
 	const [currentPlayers, setCurrentPlayers] = useState([]); // Players that are rendered on wheel
 	const [teams, setTeams] = useState([]);
@@ -13,12 +15,14 @@ const WheelContextProvider = ({ children }) => {
 	const [ongoing, setOngoing] = useState(false); // When the game in its entirety is in progress, not just one round
 	const [spinning, setSpinning] = useState(false);
 
-	// Settings
-	const [playersPerTeam, setPlayersPerTeam] = useState(2);
-	const [spinSpeed, setSpinSpeed] = useState(2); // 0 = normal, 1 = fast, 2 = turbo
-	const [pickingOrder, setPickingOrder] = useState(1); // 0 = alternate, 1 = fill team
-	const [autospin, setAutospin] = useState(false);
-	const [mute, setMute] = useState(false);
+	// Read settings from local storage or set a default value
+	const [playersPerTeam, setPlayersPerTeam] = useState(
+		getItem("wheelSettings", "playersPerTeam") || 5
+	);
+	const [spinSpeed, setSpinSpeed] = useState(getItem("wheelSettings", "spinSpeed") || 0); // 0 = normal, 1 = fast, 2 = turbo
+	const [pickingOrder, setPickingOrder] = useState(getItem("wheelSettings", "pickingOrder") || 0); // 0 = alternate, 1 = fill team
+	const [autospin, setAutospin] = useState(getItem("wheelSettings", "autospin") || false);
+	const [mute, setMute] = useState(getItem("wheelSettings", "mute") || false);
 
 	const removePlayer = (id) => {
 		setPlayers(players.filter((e) => e.id !== id));

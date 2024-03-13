@@ -2,14 +2,22 @@ import { useContext, useRef } from "react";
 import { HiOutlineUserGroup } from "react-icons/hi2";
 import WheelContext from "../../contexts/WheelContext";
 import { IoIosArrowUp } from "react-icons/io";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 const TeamSize = () => {
 	const { playersPerTeam, setPlayersPerTeam } = useContext(WheelContext);
+	const { setItem } = useLocalStorage();
+
+	// Save the value in Context API and local storage
+	const setAndSaveValue = (value) => {
+		setPlayersPerTeam(value);
+		setItem("wheelSettings", "playersPerTeam", value);
+	};
 	const ref = useRef(null);
 	// Validate input
 	const handleChange = () => {
 		if (!ref.current.value || isNaN(ref.current.value) || ref.current.value <= 0) return;
-		setPlayersPerTeam(parseInt(ref.current.value));
+		setAndSaveValue(parseInt(ref.current.value));
 	};
 	const handleUnfocus = () => {
 		if (!ref.current.value || isNaN(ref.current.value) || ref.current.value <= 0)
@@ -20,10 +28,10 @@ const TeamSize = () => {
 	const handlePlayersPerTeam = (decrement = false) => {
 		if (decrement === true) {
 			if (playersPerTeam <= 1) return;
-			setPlayersPerTeam((prev) => prev - 1);
+			setAndSaveValue(playersPerTeam - 1);
 			return (ref.current.value = playersPerTeam - 1);
 		}
-		setPlayersPerTeam((prev) => prev + 1);
+		setAndSaveValue(playersPerTeam + 1);
 		ref.current.value = playersPerTeam + 1;
 	};
 

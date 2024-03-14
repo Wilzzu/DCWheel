@@ -19,9 +19,20 @@ const useLocalStorage = () => {
 		}
 	};
 
+	const removeItem = (key, item) => {
+		try {
+			const data = JSON.parse(localStorage.getItem(key) || "{}");
+			delete data[item];
+			localStorage.setItem(key, JSON.stringify(data));
+		} catch (e) {
+			console.error(e);
+		}
+	};
+
 	return {
 		getItem,
 		setItem,
+		removeItem,
 	};
 };
 

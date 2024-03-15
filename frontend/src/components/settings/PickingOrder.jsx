@@ -25,7 +25,7 @@ const PickingOrder = () => {
 						val={pickingOrder}
 						setVal={setPickingOrder}
 						localKey={"wheelSettings"}
-						localItem={"pickingOrder"}
+						localItem={"picking_order"}
 					/>
 				</li>
 				<li>
@@ -37,7 +37,7 @@ const PickingOrder = () => {
 						val={pickingOrder}
 						setVal={setPickingOrder}
 						localKey={"wheelSettings"}
-						localItem={"pickingOrder"}
+						localItem={"picking_order"}
 					/>
 				</li>
 			</ul>

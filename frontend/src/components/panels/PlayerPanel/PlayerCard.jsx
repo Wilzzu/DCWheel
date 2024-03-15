@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import DeleteIcon from "../assets/DeleteIcon.jsx";
-import WheelContext from "../contexts/WheelContext.js";
+import DeleteIcon from "../../../assets/DeleteIcon.jsx";
+import WheelContext from "../../../contexts/WheelContext.js";
 import { motion } from "framer-motion";
 
 const PlayerCard = ({ player }) => {

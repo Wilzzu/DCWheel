@@ -369,7 +369,7 @@ const Wheel = () => {
 						opacity: { duration: 0.2 },
 					}}
 					className="absolute w-1/2 h-1/5 bg-normalBlack rounded-2xl shadow-xl flex flex-col items-center justify-center bg-opacity-90 backdrop-blur-lg text-white gap-2 p-5">
-					<p className="text-lg 2k:text-xl">Return to start?</p>
+					<p className="text-lg 2k:text-xl">Return to player select?</p>
 					{/* Selection buttons */}
 					<div className="w-full flex gap-2 text-lg 2k:text-xl drop-shadow-md">
 						<button

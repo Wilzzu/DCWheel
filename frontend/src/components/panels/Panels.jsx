@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import WheelContext from "../../contexts/WheelContext";
-import PlayerPanel from "./PlayerPanel";
-import TeamsPanel from "./TeamsPanel";
+import PlayerPanel from "./PlayerPanel/PlayerPanel";
+import TeamsPanel from "./TeamsPanel/TeamsPanel";
 import SettingsPanel from "../settings/SettingsPanel";
 
 const Panels = () => {

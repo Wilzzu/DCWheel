@@ -11,7 +11,7 @@ const TeamSize = () => {
 	// Save the value in Context API and local storage
 	const setAndSaveValue = (value) => {
 		setPlayersPerTeam(value);
-		setItem("wheelSettings", "playersPerTeam", value);
+		setItem("wheelSettings", "players_per_team", value);
 	};
 	const ref = useRef(null);
 	// Validate input

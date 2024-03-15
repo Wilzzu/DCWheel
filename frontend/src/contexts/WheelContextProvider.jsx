@@ -19,8 +19,8 @@ const WheelContextProvider = ({ children }) => {
 	const [playersPerTeam, setPlayersPerTeam] = useState(
 		getItem("wheelSettings", "playersPerTeam") || 5
 	);
-	const [spinSpeed, setSpinSpeed] = useState(getItem("wheelSettings", "spinSpeed") || 0); // 0 = normal, 1 = fast, 2 = turbo
-	const [pickingOrder, setPickingOrder] = useState(getItem("wheelSettings", "pickingOrder") || 0); // 0 = alternate, 1 = fill team
+	const [spinSpeed, setSpinSpeed] = useState(getItem("wheelSettings", "spin_speed") || 0); // 0 = normal, 1 = fast, 2 = turbo
+	const [pickingOrder, setPickingOrder] = useState(getItem("wheelSettings", "picking_order") || 0); // 0 = alternate, 1 = fill team
 	const [autospin, setAutospin] = useState(getItem("wheelSettings", "autospin") || false);
 	const [mute, setMute] = useState(getItem("wheelSettings", "mute") || false);
 

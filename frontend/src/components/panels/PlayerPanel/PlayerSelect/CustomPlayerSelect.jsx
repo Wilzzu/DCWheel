@@ -1,5 +1,5 @@
 import { useContext, useRef, useState } from "react";
-import WheelContext from "../contexts/WheelContext";
+import WheelContext from "../../../../contexts/WheelContext";
 import { v4 as uuidv4 } from "uuid";
 // import useCustomPlayerImage from "../hooks/useCustomPlayerImage";
 
@@ -52,24 +52,24 @@ const CustomPlayerSelect = () => {
 	// }, [newPlayerQueue]);
 
 	return (
-		<div className="w-full flex flex-col gap-2 text-white">
+		<div className="w-full flex flex-col gap-1 text-white">
 			<div className="w-full flex gap-2 2xl:gap-4">
 				<input
 					ref={ref}
-					className="w-full outline-none border-green-500 border-2 px-4 rounded-xl h-14 2xl:h-16 bg-darkBlack text-base 2xl:text-xl hover:bg-highlightBlack focus:bg-highlightBlack placeholder:text-neutral-400 duration-100"
+					className="w-full outline-none border-highlightBlack border-2 px-4 rounded-lg h-8 2xl:h-11 bg-darkBlack text-base hover:bg-highlightBlack focus:bg-highlightBlack placeholder:text-neutral-400 duration-100"
 					type="text"
-					placeholder="Player name..."
+					placeholder="Add custom player..."
 					// name="customPlayer"
 					onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
 				/>
 				<button
 					onClick={handleSubmit}
-					className="w-[4.6rem] 2xl:w-20 bg-green-500 border-2 border-green-500 duration-150 rounded-2xl hover:bg-green-800">
+					className="w-12 h-11 aspect-square bg-green-500 border-2 border-green-500 duration-150 rounded-xl hover:bg-green-600">
 					<p className="text-3xl drop-shadow-icon">+</p>
 				</button>
 			</div>
-			<p className="text-xs 2xl:text-sm opacity-50 text-center">
-				You can also press {'"Enter"'} to add a player
+			<p className="text-xs opacity-50 text-center">
+				You can also press {'"Enter"'} to add a player.
 			</p>
 		</div>
 	);

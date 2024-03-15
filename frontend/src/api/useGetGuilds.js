@@ -2,7 +2,7 @@ import axios from "axios";
 import { useQuery } from "react-query";
 
 const useGetGuilds = (providerToken) => {
-	const { isSuccess, isLoading, isError, data, error, refetch } = useQuery(
+	const { isLoading, isRefetching, isError, data, error, refetch } = useQuery(
 		["guilds"],
 		async () => {
 			return axios
@@ -17,15 +17,10 @@ const useGetGuilds = (providerToken) => {
 					throw err;
 				});
 		},
-		{ enabled: false }
+		{ staleTime: Infinity }
 	);
 
-	// Refetch only if there is no data already
-	const refetchGuilds = () => {
-		if (!data) refetch();
-	};
-
-	return { isSuccess, isLoading, isError, data, error, refetchGuilds };
+	return { isLoading, isRefetching, isError, data, error, refetch };
 };
 
 export default useGetGuilds;

@@ -40,6 +40,7 @@ export default {
 			},
 			boxShadow: {
 				"3xl": "0 10px 45px -14px rgba(0, 0, 0, 0.3)",
+				middle: "0 2px 35px -14px rgba(0, 0, 0, 0.3)",
 				wheelBtn: "0 5px 30px rgba(0, 0, 0, 0.3)",
 			},
 			dropShadow: {

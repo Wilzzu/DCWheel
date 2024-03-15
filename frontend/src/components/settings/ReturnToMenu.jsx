@@ -26,17 +26,17 @@ const ReturnToMenu = () => {
 			{confirm && !spinning && (
 				<div
 					ref={confirmRef}
-					className="absolute -top-[5.2rem] -right-1 text-nowrap p-4 text-lg bg-darkBlack rounded-lg drop-shadow-lg text-center">
-					<h1>Return to start?</h1>
+					className="absolute -top-[5.9rem] -right-0 text-nowrap p-5 text-lg bg-darkBlack rounded-lg drop-shadow-lg text-center">
+					<h1>Return to player select?</h1>
 					<div className="flex w-full justify-center gap-2 mt-1">
 						<button
 							onClick={returnToStart}
-							className="py-1 px-3 bg-green-500 hover:bg-green-600 duration-150 rounded-lg">
+							className="py-1 px-3 w-full bg-green-500 hover:bg-green-600 duration-150 rounded-lg">
 							<span className="drop-shadow-icon">Yes</span>
 						</button>
 						<button
 							onClick={() => setConfirm(false)}
-							className="py-1 px-3 bg-red-500 hover:bg-red-600 duration-150 rounded-lg">
+							className="py-1 px-3 w-full bg-red-500 hover:bg-red-600 duration-150 rounded-lg">
 							<span className="drop-shadow-icon">Cancel</span>
 						</button>
 					</div>

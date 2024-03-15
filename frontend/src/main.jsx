@@ -5,6 +5,7 @@ import Root from "./routes/Root.jsx";
 import "./index.css";
 import ErrorPage from "./routes/ErrorPage.jsx";
 import SuccessPage from "./routes/SuccessPage.jsx";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const router = createBrowserRouter([
 	{
@@ -18,8 +19,12 @@ const router = createBrowserRouter([
 	},
 ]);
 
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
-		<RouterProvider router={router} />
+		<QueryClientProvider client={queryClient}>
+			<RouterProvider router={router} />
+		</QueryClientProvider>
 	</React.StrictMode>
 );

@@ -13,7 +13,7 @@ const app = express();
 // Rate limiters
 const guildLimit = rateLimit({
 	windowMs: 1000 * 60 * 5,
-	limit: 120, // Limit each IP to 120 requests per `window` (here, per 5 minutes).
+	limit: 100, // Limit each IP to 100 requests per `window` (here, per 5 minutes).
 	standardHeaders: "draft-7",
 	legacyHeaders: false,
 });

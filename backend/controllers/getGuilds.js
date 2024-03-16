@@ -4,11 +4,7 @@ const axios = require("axios");
 // GET /api/guilds
 module.exports = async function getGuilds(req, res) {
 	console.log("GET /api/guilds");
-	console.log(req.headers.authorization);
 	const accessToken = req.headers.authorization?.split(" ")[1];
-	if (!accessToken || accessToken === "undefined" || accessToken === "null") {
-		return res.status(403).json({ error: "No credentials" });
-	}
 
 	// Get both bot and user guilds
 	const botGuilds = client.guilds.cache.map((guild) => guild.id);

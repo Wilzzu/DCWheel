@@ -1,22 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useLocalStorage from "../../../../../hooks/useLocalStorage";
 import useGetGuilds from "../../../../../api/useGetGuilds";
 import ServerList from "./ServerList";
 import { FaDiscord } from "react-icons/fa";
 import { IoMdRefresh } from "react-icons/io";
 import { FaAngleDown } from "react-icons/fa6";
+import useClickOutside from "../../../../../hooks/useClickOutside";
 
-const ServerSelect = ({ selectedServer }) => {
+const ServerDropdown = ({ selectedServer }) => {
 	const { getItem } = useLocalStorage();
-	const [showServers, setShowServers] = useState(false);
 	const [disabled, setDisabled] = useState(false);
+
+	const dropdownButton = useRef(null);
+	const buttonRef = useRef(null);
+	const { open, setOpen } = useClickOutside(dropdownButton, buttonRef);
 
 	const { isLoading, isRefetching, isError, data, error, refetch } = useGetGuilds(
 		getItem("DCWAuth", "provider_token")
 	);
 
-	const toggleServers = () => {
-		setShowServers((prev) => !prev);
+	const toggleOpen = () => {
+		setOpen((prev) => !prev);
 		if (!data && !isLoading) refetch();
 	};
 
@@ -25,21 +29,29 @@ const ServerSelect = ({ selectedServer }) => {
 		setDisabled(true);
 	};
 
+	// Enable refresh button after some time
 	useEffect(() => {
 		if (!isRefetching) setTimeout(() => setDisabled(false), 5000);
 	}, [isRefetching]);
 
 	return (
-		<div className="relative w-full h-12 text-white bg-darkBlack hover:bg-highlightBlack duration-150 rounded-lg border-2 flex items-center justify-start border-highlightBlack">
+		<div className="relative w-full h-12 text-white flex items-center justify-start">
 			{/* Server select dropdown button */}
 			<button
-				onClick={toggleServers}
-				className="h-full w-full flex items-center justify-between px-4">
+				ref={dropdownButton}
+				onClick={toggleOpen}
+				className="h-full w-full flex items-center justify-between px-4 bg-darkBlack hover:bg-highlightBlack duration-150 border-2 border-highlightBlack rounded-lg">
 				<span className="flex items-center gap-2">
 					{selectedServer ? (
 						<>
-							<img src={selectedServer.icon} alt="" className="h-7 w-auto rounded-full" />
-							{selectedServer.name}
+							<img
+								src={selectedServer.icon}
+								alt={selectedServer.name + " icon"}
+								className="h-7 w-auto aspect-square rounded-full"
+							/>
+							<p className="w-full truncate" title={selectedServer.name}>
+								{selectedServer.name}
+							</p>
 						</>
 					) : (
 						<>
@@ -48,9 +60,9 @@ const ServerSelect = ({ selectedServer }) => {
 						</>
 					)}
 				</span>
-				{!showServers && <FaAngleDown className="h-6 w-auto mt-1" />}
+				{!open && <FaAngleDown className="h-6 w-auto mt-1" />}
 			</button>
-			{showServers && (
+			{open && (
 				<>
 					<ServerList
 						isLoading={isLoading}
@@ -62,6 +74,7 @@ const ServerSelect = ({ selectedServer }) => {
 					/>
 					{/* Refresh button */}
 					<button
+						ref={buttonRef}
 						disabled={disabled}
 						onClick={forceRefetch}
 						className="absolute right-4 h-10 duration-300 hover:text-green-400 disabled:hover:text-white disabled:opacity-40">
@@ -73,4 +86,4 @@ const ServerSelect = ({ selectedServer }) => {
 	);
 };
 
-export default ServerSelect;
+export default ServerDropdown;

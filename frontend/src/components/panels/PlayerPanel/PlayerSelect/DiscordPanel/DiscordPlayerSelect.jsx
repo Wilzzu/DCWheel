@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import ServerSelect from "./ServerSelect";
+import ServerDropdown from "./ServerDropdown";
 import { FiLogOut } from "react-icons/fi";
 import DiscordContext from "../../../../../contexts/DiscordContext";
-import VCSelect from "./VCSelect";
+import VCDropdown from "./VCDropdown";
 import PlayerSearch from "./PlayerSearch";
 
 const DiscordPlayerSelect = ({ handleLogout }) => {
@@ -11,7 +11,7 @@ const DiscordPlayerSelect = ({ handleLogout }) => {
 	return (
 		<>
 			<div className="flex gap-2 justify-between">
-				<ServerSelect selectedServer={selectedServer} />
+				<ServerDropdown selectedServer={selectedServer} />
 				{/* Log out button */}
 				<button
 					onClick={handleLogout}
@@ -22,7 +22,7 @@ const DiscordPlayerSelect = ({ handleLogout }) => {
 			</div>
 			{selectedServer && (
 				<div className="flex gap-2 justify-between">
-					<VCSelect />
+					<VCDropdown />
 					<PlayerSearch />
 				</div>
 			)}

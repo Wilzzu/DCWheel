@@ -1,23 +1,21 @@
 import { useEffect, useState } from "react";
 
-const useClickOutside = (confirmRef, buttonRef) => {
-	const [confirm, setConfirm] = useState(false);
+const useClickOutside = (mainRef, itemRef) => {
+	const [open, setOpen] = useState(false);
 
 	useEffect(() => {
 		const handleClickOutside = (event) => {
-			if (buttonRef && buttonRef.current && buttonRef.current.contains(event.target)) return;
-			if (confirmRef && confirmRef.current && !confirmRef.current.contains(event.target)) {
-				setConfirm(false);
-			}
+			if (itemRef && itemRef.current && itemRef.current.contains(event.target)) return;
+			if (mainRef && mainRef.current && !mainRef.current.contains(event.target)) setOpen(false);
 		};
 
-		if (confirm) document.addEventListener("click", handleClickOutside);
+		if (open) document.addEventListener("click", handleClickOutside);
 		else document.removeEventListener("click", handleClickOutside);
 
 		return () => document.removeEventListener("click", handleClickOutside);
-	}, [confirm]);
+	}, [open]);
 
-	return { confirm, setConfirm };
+	return { open, setOpen };
 };
 
 export default useClickOutside;

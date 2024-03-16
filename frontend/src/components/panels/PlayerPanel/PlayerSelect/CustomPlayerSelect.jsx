@@ -56,7 +56,7 @@ const CustomPlayerSelect = () => {
 			<div className="w-full flex gap-2 2xl:gap-4">
 				<input
 					ref={ref}
-					className="w-full outline-none border-highlightBlack border-2 px-4 rounded-lg h-8 2xl:h-11 bg-darkBlack text-base hover:bg-highlightBlack focus:bg-highlightBlack placeholder:text-neutral-400 duration-100"
+					className="w-full outline-none border-highlightBlack border-2 px-4 rounded-lg h-8 2xl:h-12 bg-darkBlack text-base hover:bg-highlightBlack focus:bg-highlightBlack placeholder:text-neutral-400 duration-100"
 					type="text"
 					placeholder="Add custom player..."
 					// name="customPlayer"
@@ -64,7 +64,7 @@ const CustomPlayerSelect = () => {
 				/>
 				<button
 					onClick={handleSubmit}
-					className="w-12 h-11 aspect-square bg-green-500 border-2 border-green-500 duration-150 rounded-xl hover:bg-green-600">
+					className="w-12 h-12 aspect-square bg-green-500 border-2 border-green-500 duration-150 rounded-xl hover:bg-green-600">
 					<p className="text-3xl drop-shadow-icon">+</p>
 				</button>
 			</div>

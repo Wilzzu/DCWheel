@@ -29,6 +29,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(function (req, res, next) {
 	if (!req.headers.authorization) return res.status(403).json({ error: "No credentials" });
+	const accessToken = req.headers.authorization?.split(" ")[1];
+	if (!accessToken || accessToken === "undefined" || accessToken === "null") {
+		return res.status(403).json({ error: "No credentials" });
+	}
 	next();
 });
 

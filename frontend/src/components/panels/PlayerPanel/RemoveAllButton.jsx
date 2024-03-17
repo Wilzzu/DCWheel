@@ -1,11 +1,16 @@
+import DeleteIcon from "../../../assets/DeleteIcon";
+
 const RemoveAllButton = ({ players, setPlayers }) => {
 	return (
-		<div className="absolute w-full bottom-2 left-0 flex justify-center pointer-events-none">
+		<div className="absolute right-0 flex justify-center">
 			<button
 				onClick={() => setPlayers([])}
 				disabled={players.length === 0}
-				className="text-white pointer-events-auto px-8 py-2 border-2 border-red-600 bg-red-600 rounded-xl bg-opacity-50 backdrop-blur shadow-2xl shadow-red-700 duration-150 hover:bg-opacity-80 disabled:hover:bg-opacity-50 disabled:opacity-50 disabled:hover:cursor-default disabled:hover:bg-red-600">
-				Remove all
+				className="relative group flex justify-center items-center w-10 h-10 border-2 rounded-lg bg-darkBlack border-darkBlack hover:bg-highlightBlack hover:border-red-600 disabled:hover:bg-darkBlack disabled:hover:border-darkBlack disabled:opacity-50 duration-300 z-10">
+				<DeleteIcon className="stroke-red-500 w-5 h-5" />
+				<span className="absolute text-[5px] font-medium group-hover:text-xs rounded-md text-nowrap -top-2 px-2 py-[0.36rem] bg-red-800 border border-red-600 opacity-0 group-hover:-top-9 group-disabled:group-hover:opacity-0 group-hover:opacity-100 duration-200 z-0">
+					Remove all
+				</span>
 			</button>
 		</div>
 	);

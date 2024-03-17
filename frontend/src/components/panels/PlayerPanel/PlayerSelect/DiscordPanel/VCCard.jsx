@@ -3,9 +3,10 @@ import { LuPlusCircle } from "react-icons/lu";
 import { HiOutlineVolumeUp } from "react-icons/hi";
 import WheelContext from "../../../../../contexts/WheelContext";
 import { useContext } from "react";
+import { cn } from "../../../../../../lib/utils";
 
 const VCCard = ({ channel }) => {
-	const { addPlayer } = useContext(WheelContext);
+	const { addPlayer, players } = useContext(WheelContext);
 
 	// Add all players from the channel to the player list
 	const addVCPlayers = () => {
@@ -31,7 +32,12 @@ const VCCard = ({ channel }) => {
 			{/* List of members */}
 			<ul className="flex flex-wrap items-center">
 				{channel.members.map((member) => (
-					<li key={member.id} className="flex items-center gap-2 p-1">
+					<li
+						key={member.id}
+						className={cn(
+							"flex items-center gap-2 p-1",
+							players.find((e) => e.id === member.id) && "opacity-30"
+						)}>
 						<img
 							src={member.avatar}
 							alt={member.name + " avatar"}

@@ -29,7 +29,7 @@ const PlayerCard = ({ player }) => {
 					{player.name}
 				</p>
 				<div className="h-full opacity-40 p-[0.1rem] group-hover:opacity-100 group-hover:drop-shadow-md">
-					<DeleteIcon />
+					<DeleteIcon className="stroke-neutral-500 group-hover:stroke-white group-focus:stroke-white" />
 				</div>
 			</button>
 		</motion.li>

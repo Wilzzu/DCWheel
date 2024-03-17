@@ -1,7 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import PlayerCard from "./PlayerCard";
 import PlayerSelect from "./PlayerSelect/PlayerSelect";
-import RemoveAllButton from "./RemoveAllButton";
 import WheelContext from "../../../contexts/WheelContext";
 import { AnimatePresence } from "framer-motion";
 import PlayerAndTeamAmount from "./PlayerAndTeamAmount";
@@ -9,7 +8,7 @@ import PlayerAndTeamAmount from "./PlayerAndTeamAmount";
 const PlayerPanel = () => {
 	const ref = useRef(null);
 	const [lastAmount, setLastAmount] = useState(0);
-	const { players, setPlayers } = useContext(WheelContext);
+	const { players } = useContext(WheelContext);
 
 	// Scroll to bottom when new player is added
 	useEffect(() => {
@@ -20,7 +19,7 @@ const PlayerPanel = () => {
 	}, [players]);
 
 	return (
-		<div className="relative w-full h-full flex flex-col gap-2 p-5 rounded-2xl overflow-hidden card-dark bg-gradient-to-br border-4">
+		<div className="relative w-full h-full flex flex-col gap-2 p-5 pb-3 rounded-2xl overflow-hidden card-dark bg-gradient-to-br border-4">
 			<PlayerSelect />
 			<PlayerAndTeamAmount />
 			{/* List players */}
@@ -33,7 +32,6 @@ const PlayerPanel = () => {
 					))}
 				</AnimatePresence>
 			</ul>
-			<RemoveAllButton players={players} setPlayers={setPlayers} />
 		</div>
 	);
 };

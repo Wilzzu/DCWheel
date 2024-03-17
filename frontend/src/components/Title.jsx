@@ -9,7 +9,7 @@ const Title = () => {
 						href="https://github.com/Wilzzu"
 						target="_blank"
 						rel="noreferrer"
-						className="text-sm font-bold hover:underline decoration-2 text-green-500 hover:text-green-400 hover:tracking-wider duration-500">
+						className="text-sm font-bold underline decoration-1 hover:decoration-2 text-green-500 hover:text-green-400 hover:tracking-wider duration-500">
 						Wilzzu
 					</a>
 				</p>

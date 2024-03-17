@@ -1,12 +1,23 @@
 import { FaRegUser } from "react-icons/fa";
 import { LuPlusCircle } from "react-icons/lu";
 import { HiOutlineVolumeUp } from "react-icons/hi";
+import WheelContext from "../../../../../contexts/WheelContext";
+import { useContext } from "react";
 
 const VCCard = ({ channel }) => {
+	const { addPlayer } = useContext(WheelContext);
+
+	// Add all players from the channel to the player list
+	const addVCPlayers = () => {
+		channel.members.forEach((member) => addPlayer(member));
+	};
+
 	return (
-		<button className="relative group w-full p-3 hover:bg-highlightBlack rounded-md">
+		<button
+			onClick={addVCPlayers}
+			className="relative group w-full p-3 hover:bg-highlightBlack rounded-md">
 			{/* Channel name and member amount */}
-			<span className="flex justify-between border-b-2 border-highlightBlack mb-1">
+			<span className="flex justify-between border-b-2 border-highlightBlack mb-2">
 				<span className="flex gap-1 items-center">
 					<HiOutlineVolumeUp className="h-[1.3rem] w-auto aspect-square" />
 					<p className="w-full truncate">{channel.name}</p>
@@ -30,7 +41,7 @@ const VCCard = ({ channel }) => {
 				))}
 			</ul>
 			{/* Show add icon on hover and blur background */}
-			<span className="hidden absolute top-0 left-0 group-hover:flex items-center justify-center w-full h-full backdrop-blur-[0.1rem]">
+			<span className="hidden absolute top-0 left-0 group-hover:flex items-center justify-center w-full h-full backdrop-blur-[0.08rem]">
 				<LuPlusCircle className="w-auto h-10 aspect-square drop-shadow-3xl" />
 			</span>
 		</button>

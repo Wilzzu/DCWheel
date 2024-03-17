@@ -19,8 +19,8 @@ const PlayerCard = ({ player }) => {
 				<div className="h-full w-12 aspect-square">
 					<img
 						className="h-full w-12 aspect-square drop-shadow-md rounded-full"
-						src={player.image}
-						alt={`${player.name} image`}
+						src={player.avatar}
+						alt={`${player.name} avatar`}
 					/>
 				</div>
 				<p

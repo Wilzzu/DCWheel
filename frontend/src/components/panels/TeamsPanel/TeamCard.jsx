@@ -22,13 +22,13 @@ const TeamCard = ({ data, index }) => {
 						animate={{ y: 0, opacity: 1 }}
 						transition={{ duration: i === 0 ? 0.25 : 0.35, ease: "easeInOut" }}
 						key={"TeamPlayer" + e.id}
-						className="w-full flex items-center h-12 py-2 gap-2">
-						{/* Image container to take space while the image is loading */}
-						<div className="h-full w-12 aspect-square">
+						className="w-full flex items-center h-12 py-1 pl-2 pr-1 gap-2 rounded-lg">
+						{/* Image container to take space while the avatar is loading */}
+						<div className="h-8 w-8 aspect-square">
 							<img
-								className="h-full w-full aspect-square rounded-full drop-shadow-md"
-								src={e.image}
-								alt={`${e.name} image`}
+								className="h-8 w-8 aspect-square rounded-full drop-shadow-md"
+								src={e.avatar}
+								alt={`${e.name} avatar`}
 							/>
 						</div>
 						{/* Name */}

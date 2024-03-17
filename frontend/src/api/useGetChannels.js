@@ -1,7 +1,8 @@
 import axios from "axios";
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 
 const useGetChannels = (providerToken, params) => {
+	const queryClient = useQueryClient();
 	const { isLoading, isRefetching, isError, isStale, data, error, refetch } = useQuery(
 		["channels"],
 		async () => {
@@ -21,7 +22,11 @@ const useGetChannels = (providerToken, params) => {
 		{ staleTime: 5000 * 100000, enabled: false } // TODO: remove 100000 when testing is done
 	);
 
-	return { isLoading, isRefetching, isError, isStale, data, error, refetch };
+	const removeChannelsCache = () => {
+		queryClient.removeQueries("channels");
+	};
+
+	return { isLoading, isRefetching, isError, isStale, data, error, refetch, removeChannelsCache };
 };
 
 export default useGetChannels;

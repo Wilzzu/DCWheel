@@ -24,6 +24,12 @@ const WheelContextProvider = ({ children }) => {
 	const [autospin, setAutospin] = useState(getItem("wheelSettings", "autospin") || false);
 	const [mute, setMute] = useState(getItem("wheelSettings", "mute") || false);
 
+	// Add player to player list if they aren't there already
+	const addPlayer = (player) => {
+		if (players.find((e) => e.id === player.id)) return;
+		setPlayers((prev) => [...prev, player]);
+	};
+
 	const removePlayer = (id) => {
 		setPlayers(players.filter((e) => e.id !== id));
 	};
@@ -100,6 +106,7 @@ const WheelContextProvider = ({ children }) => {
 				teams,
 				teamAmount,
 				setPlayers,
+				addPlayer,
 				currentPlayers,
 				ongoing,
 				setOngoing,

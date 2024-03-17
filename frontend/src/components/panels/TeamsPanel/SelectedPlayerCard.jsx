@@ -13,12 +13,12 @@ const SelectedPlayerCard = ({ selectedPlayer }) => {
 				)}>
 				{selectedPlayer && (
 					<>
-						{/* Image container to take space while the image is loading */}
+						{/* Image container to take space while the avatar is loading */}
 						<div className="h-full w-12 aspect-square">
 							<img
 								className="h-full w-12 aspect-square rounded-full drop-shadow-lg duration-1000"
-								src={selectedPlayer.image}
-								alt={`${selectedPlayer.name} image`}
+								src={selectedPlayer.avatar}
+								alt={`${selectedPlayer.name} avatar`}
 							/>
 						</div>
 						<p className="drop-shadow-icon truncate" title={selectedPlayer.name}>

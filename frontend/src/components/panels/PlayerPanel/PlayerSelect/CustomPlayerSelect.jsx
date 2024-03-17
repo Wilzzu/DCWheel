@@ -9,16 +9,17 @@ const CustomPlayerSelect = () => {
 	const ref = useRef(null);
 	const [imgCount, setImgCount] = useState(0);
 
-	const { setPlayers } = useContext(WheelContext);
+	const { addPlayer } = useContext(WheelContext);
 
-	const addPlayer = (name, image, id) => {
+	// Create new player and add them to the player list
+	const newPlayer = (name, avatar) => {
 		const player = {
 			name,
-			image,
-			id: id || uuidv4(),
+			avatar,
+			id: uuidv4(),
 		};
 
-		setPlayers((prev) => [...prev, player]);
+		addPlayer(player);
 	};
 
 	const chooseImg = () => {
@@ -28,7 +29,7 @@ const CustomPlayerSelect = () => {
 
 	const handleSubmit = () => {
 		if (!ref.current.value) return;
-		addPlayer(ref.current.value, chooseImg());
+		newPlayer(ref.current.value, chooseImg());
 		ref.current.value = "";
 	};
 

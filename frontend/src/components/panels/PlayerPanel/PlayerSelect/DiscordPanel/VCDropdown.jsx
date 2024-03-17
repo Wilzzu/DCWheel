@@ -42,7 +42,11 @@ const VCDropdown = () => {
 	}, [isStale, open, disabled]);
 
 	return (
-		<div className="relative w-full h-12 text-white flex items-center justify-start">
+		<div
+			className={cn(
+				"relative grow h-12 text-white flex items-center justify-start",
+				open && "w-full"
+			)}>
 			{/* Server select dropdown button */}
 			<button
 				ref={dropdownButton}
@@ -56,8 +60,9 @@ const VCDropdown = () => {
 					<img src={voiceIcon} alt="" className="w-5 h-auto mt-[0.1rem]" />
 					Add from VC
 				</span>
-				{/* {!open && <FaAngleDown className="h-6 w-auto mt-1" />} */}
 			</button>
+
+			{/* Show list of voice channels */}
 			{open && (
 				<>
 					<VCList
@@ -66,14 +71,13 @@ const VCDropdown = () => {
 						isError={isError}
 						error={error}
 						data={data}
-						selectedServer={selectedServer}
 					/>
 					{/* Refresh button */}
 					<button
 						ref={buttonRef}
 						disabled={disabled}
 						onClick={forceRefetch}
-						className="absolute right-4 h-10 duration-300 hover:text-green-400 disabled:hover:text-white disabled:opacity-40">
+						className="absolute right-4 h-10 duration-300 hover:text-green-400 disabled:hover:text-white disabled:opacity-30">
 						<IoMdRefresh className="h-6 w-auto" />
 					</button>
 				</>

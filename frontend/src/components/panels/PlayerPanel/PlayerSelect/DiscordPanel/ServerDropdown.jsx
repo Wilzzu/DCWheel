@@ -62,6 +62,8 @@ const ServerDropdown = ({ selectedServer }) => {
 				</span>
 				{!open && <FaAngleDown className="h-6 w-auto mt-1" />}
 			</button>
+
+			{/* Show list of servers */}
 			{open && (
 				<>
 					<ServerList
@@ -77,7 +79,7 @@ const ServerDropdown = ({ selectedServer }) => {
 						ref={buttonRef}
 						disabled={disabled}
 						onClick={forceRefetch}
-						className="absolute right-4 h-10 duration-300 hover:text-green-400 disabled:hover:text-white disabled:opacity-40">
+						className="absolute right-4 h-10 duration-300 hover:text-green-400 disabled:hover:text-white disabled:opacity-30">
 						<IoMdRefresh className="h-6 w-auto" />
 					</button>
 				</>

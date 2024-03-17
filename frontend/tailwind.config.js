@@ -45,6 +45,8 @@ export default {
 			},
 			dropShadow: {
 				icon: "0 2px 2px rgba(0, 0, 0, 0.5)",
+				"3xl": "0 2px 3px rgba(0, 0, 0, 1)",
+				wheel: "2px 2px 16px rgba(0, 0, 0, 0.3)",
 			},
 		},
 	},

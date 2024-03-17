@@ -1,11 +1,11 @@
 const axios = require("axios");
+const { client } = require("../bot");
 
 // GET /api/channels
 module.exports = async function getChannels(req, res) {
 	console.log("GET /api/channels");
 	const accessToken = req.headers.authorization?.split(" ")[1];
-	console.log(accessToken);
-	console.log(req.query.guildId);
+
 	// Confirm user is part of the guild
 	const userGuilds = await axios
 		.get("https://discord.com/api/users/@me/guilds", {
@@ -21,5 +21,31 @@ module.exports = async function getChannels(req, res) {
 	if (!userGuilds?.find((guild) => guild?.id === req.query?.guildId))
 		return res.status(401).json({ error: "Unauthorized" });
 
-	return res.status(200).json({ message: "getChannels" });
+	// Get channels
+	const guild = client.guilds.cache.get(req.query.guildId);
+	const channels = guild?.channels?.cache
+		?.filter((channel) => channel.type === 2) // Get only voice channels
+		.map((channel) => ({
+			id: channel.id,
+			name: channel.name,
+			members: channel.members,
+		}));
+
+	// Remove bots from the list and format members
+	const filteredChannels = channels?.reduce((acc, channel) => {
+		const members = Array.from(channel.members.values())
+			.filter((member) => !member.user.bot)
+			.map((member) => ({
+				id: member.id,
+				name: member.nickname || member.user.globalName || member.user.username,
+				avatar: member.user.displayAvatarURL(),
+			}));
+
+		if (members.length > 0) acc.push({ ...channel, members });
+		return acc;
+	}, []);
+
+	// Check if any channels are left after filtering
+	if (!filteredChannels?.length) return res.status(200).json({ success: true, channels: [] });
+	return res.status(200).json({ success: true, channels: filteredChannels });
 };

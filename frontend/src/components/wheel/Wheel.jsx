@@ -310,14 +310,14 @@ const Wheel = () => {
 	return (
 		<section className="relative max-w-full aspect-square flex items-center justify-center select-none">
 			{/* Wheel container to hide overflow */}
-			<div className="w-full h-full overflow-hidden">
+			<div className="w-full h-full overflow-hidden drop-shadow-wheel">
 				{/* Clickable spinning wheel */}
 				<button
 					onClick={handleWheelClick}
 					ref={wheelRef}
 					disabled={!canSpin || players.length <= 0}
 					className={cn(
-						"aspect-square shadow-2xl w-full rounded-full overflow-hidden disabled:hover:cursor-default",
+						"aspect-square w-full rounded-full overflow-hidden disabled:hover:cursor-default",
 						!ongoing && "animate-infinite-rotate",
 						canSpin && players.length > 0 && "hover:cursor-pointer"
 					)}

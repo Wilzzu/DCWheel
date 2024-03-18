@@ -58,7 +58,15 @@ const PlayerSearchDropdown = () => {
 				)}
 			</button>
 
-			{open && <PlayerSearchContent />}
+			{open && (
+				<PlayerSearchContent
+					isLoading={isLoading}
+					isRefetching={isRefetching}
+					isError={isError}
+					data={data}
+					error={error}
+				/>
+			)}
 		</div>
 	);
 };

@@ -15,10 +15,10 @@ const PlayerCard = ({ player }) => {
 			transition={{ duration: 0.2, layout: { duration: 0.1 } }}>
 			<button
 				onClick={() => removePlayer(player.id)}
-				className="w-full h-10 2xl:h-12 bg-darkBlack border-2 border-darkBlack rounded-xl flex gap-2 py-1 px-2 items-center hover:cursor-pointer hover:bg-red-900 hover:border-red-600 focus:bg-red-900 focus:outline-red-600 group">
-				<div className="h-full w-12 aspect-square">
+				className="group w-full h-10 2xl:h-12 bg-darkBlack border-2 border-darkBlack drop-shadow-button rounded-xl flex gap-3 py-1 px-2 items-center hover:cursor-pointer hover:bg-red-900 hover:border-red-600 focus:bg-red-900 focus:outline-red-600">
+				<div className="h-9 w-9 aspect-square">
 					<img
-						className="h-full w-12 aspect-square drop-shadow-md rounded-full"
+						className="h-9 w-9 aspect-square drop-shadow-md rounded-full"
 						src={player.avatar}
 						alt={`${player.name} avatar`}
 					/>

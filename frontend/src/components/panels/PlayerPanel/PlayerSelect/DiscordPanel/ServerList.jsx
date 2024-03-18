@@ -18,7 +18,7 @@ const ServerList = ({ isLoading, isRefetching, isError, data, error }) => {
 	});
 
 	return (
-		<ul className="absolute top-12 max-h-56 w-full p-1 overflow-y-auto bg-darkBlack rounded-md border-2 border-highlightBlack z-10">
+		<ul className="absolute top-[3.25rem] max-h-56 w-full p-2 overflow-y-auto bg-darkBlack rounded-md border-2 border-highlightBlack z-10 drop-shadow-button">
 			{data?.guilds?.map((server) => (
 				<li key={server.id}>
 					<ServerCard server={server} favorites={favorites} />

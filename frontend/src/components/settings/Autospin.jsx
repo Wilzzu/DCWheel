@@ -19,7 +19,7 @@ const Autospin = () => {
 			<button
 				onClick={setAndSaveValue}
 				className={cn(
-					"flex items-center bg-darkBlack rounded-lg px-1 h-10 duration-200 hover:bg-neutral-700",
+					"flex items-center bg-darkBlack rounded-lg px-1 h-10 duration-200 hover:bg-neutral-700 drop-shadow-icon",
 					autospin && "bg-green-500 hover:bg-green-600"
 				)}>
 				<MdRestartAlt className="h-6 w-auto drop-shadow-icon" />

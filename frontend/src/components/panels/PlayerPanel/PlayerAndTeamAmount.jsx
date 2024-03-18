@@ -12,14 +12,14 @@ const PlayerAndTeamAmount = () => {
 		<div className="relative flex justify-center gap-5 text-center text-white mt-4 font-semibold pb-2 border-b border-neutral-600 tracking-wide select-none">
 			<div className="flex gap-1 items-center">
 				<p>Players</p>
-				<span className="bg-darkBlack rounded-lg p-2 min-w-[4.2rem] flex gap-2 items-center justify-center">
+				<span className="bg-darkBlack rounded-lg p-2 min-w-[4.2rem] flex gap-2 items-center justify-center drop-shadow-button">
 					<FaRegUser />
 					<p>{players?.length || 0}</p>
 				</span>
 			</div>
 			<div className="relative group flex gap-2 items-center justify-center">
 				<p>Teams</p>
-				<span className="bg-darkBlack rounded-lg p-2 min-w-[4.2rem] flex gap-2 items-center justify-center">
+				<span className="bg-darkBlack rounded-lg p-2 min-w-[4.2rem] flex gap-2 items-center justify-center drop-shadow-button">
 					<HiOutlineUserGroup className={cn("h-auto w-6", teamsNotEven && "stroke-[#FF5858]")} />
 					<p className={teamsNotEven ? "text-[#FF5858]" : ""}>{teamAmount}</p>
 				</span>

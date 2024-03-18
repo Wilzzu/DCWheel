@@ -20,7 +20,7 @@ const ReturnToMenu = () => {
 				ref={buttonRef}
 				disabled={spinning}
 				onClick={() => setOpen((prev) => !prev)}
-				className="flex items-center justify-center bg-darkBlack rounded-lg h-10 w-10 duration-200 hover:bg-red-500 disabled:opacity-50 disabled:hover:bg-darkBlack">
+				className="flex items-center justify-center bg-darkBlack rounded-lg h-10 w-10 duration-200 hover:bg-red-500 disabled:opacity-50 disabled:hover:bg-darkBlack drop-shadow-icon">
 				<RiLogoutBoxLine className="h-6 w-auto drop-shadow-icon" />
 			</button>
 			{open && !spinning && (
@@ -31,12 +31,12 @@ const ReturnToMenu = () => {
 					<div className="flex w-full justify-center gap-2 mt-1">
 						<button
 							onClick={returnToStart}
-							className="py-1 px-3 w-full bg-green-500 hover:bg-green-600 duration-150 rounded-lg">
+							className="py-1 px-3 w-full bg-green-500 hover:bg-green-600 duration-150 rounded-lg drop-shadow-button">
 							<span className="drop-shadow-icon">Yes</span>
 						</button>
 						<button
 							onClick={() => setOpen(false)}
-							className="py-1 px-3 w-full bg-red-500 hover:bg-red-600 duration-150 rounded-lg">
+							className="py-1 px-3 w-full bg-red-500 hover:bg-red-600 duration-150 rounded-lg drop-shadow-button">
 							<span className="drop-shadow-icon">Cancel</span>
 						</button>
 					</div>

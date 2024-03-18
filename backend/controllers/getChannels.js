@@ -16,9 +16,11 @@ module.exports = async function getChannels(req, res) {
 		.then((res) => res.data)
 		.catch((err) => {
 			console.error(err.message, "Token:", accessToken);
-			return "error";
+			return null;
 		});
-	if (!userGuilds?.find((guild) => guild?.id === req.query?.guildId))
+
+	if (!userGuilds) return res.status(200).json({ success: true, members: [] });
+	if (!userGuilds.find((guild) => guild?.id === req.query?.guildId))
 		return res.status(401).json({ error: "Unauthorized" });
 
 	// Get channels
@@ -33,7 +35,7 @@ module.exports = async function getChannels(req, res) {
 
 	// Remove bots from the list and format members
 	const filteredChannels = channels?.reduce((acc, channel) => {
-		const members = Array.from(channel.members.values())
+		const members = Array.from(channel?.members?.values())
 			.filter((member) => !member.user.bot)
 			.map((member) => ({
 				id: member.id,
@@ -41,7 +43,7 @@ module.exports = async function getChannels(req, res) {
 				avatar: member.user.displayAvatarURL(),
 			}));
 
-		if (members.length > 0) acc.push({ ...channel, members });
+		if (members?.length > 0) acc.push({ ...channel, members });
 		return acc;
 	}, []);
 

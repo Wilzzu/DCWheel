@@ -6,18 +6,19 @@ require("dotenv").config();
 const { botPromise } = require("./bot");
 const getGuilds = require("./controllers/getGuilds");
 const getChannels = require("./controllers/getChannels");
+const getAllMembers = require("./controllers/getAllMembers");
 
 const port = process.env.PORT || 3001;
 const app = express();
 
 // Rate limiters
-const guildLimit = rateLimit({
+const strictLimit = rateLimit({
 	windowMs: 1000 * 60 * 5,
 	limit: 100, // Limit each IP to 100 requests per `window` (here, per 5 minutes).
 	standardHeaders: "draft-7",
 	legacyHeaders: false,
 });
-const channelLimit = rateLimit({
+const looseLimit = rateLimit({
 	windowMs: 1000 * 60 * 5,
 	limit: 200,
 	standardHeaders: "draft-7",
@@ -36,8 +37,9 @@ app.use(function (req, res, next) {
 	next();
 });
 
-app.get("/api/guilds", guildLimit, getGuilds);
-app.get("/api/channels", channelLimit, getChannels);
+app.get("/api/guilds", strictLimit, getGuilds);
+app.get("/api/channels", looseLimit, getChannels);
+app.get("/api/members", looseLimit, getAllMembers);
 
 // Wait for the bot to be ready before starting the server
 botPromise

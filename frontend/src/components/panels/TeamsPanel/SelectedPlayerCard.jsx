@@ -7,7 +7,7 @@ const SelectedPlayerCard = ({ selectedPlayer }) => {
 			{/* Player name container */}
 			<div
 				className={cn(
-					"bg-darkBlack w-full rounded-2xl h-16 2xl:h-[4.25rem] p-2 flex items-center justify-center text-2xl 2xl:text-[1.7rem] font-bold gap-4 border-2 border-transparent duration-300",
+					"bg-darkBlack drop-shadow-button w-full rounded-2xl h-16 2xl:h-[4.25rem] p-2 flex items-center justify-center text-2xl 2xl:text-[1.7rem] font-bold gap-4 border-2 border-transparent duration-300",
 					selectedPlayer &&
 						"border-green-400 bg-gradient-to-br from-green-700 to-green-500 shadow-green-600 shadow-[0_1px_20px_-4px]"
 				)}>

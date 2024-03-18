@@ -15,7 +15,7 @@ const PickingOrder = () => {
 	return (
 		<div className="flex flex-col items-center">
 			<p>Picking order</p>
-			<ul className="flex items-center bg-darkBlack rounded-lg p-1">
+			<ul className="flex items-center bg-darkBlack rounded-lg p-1 drop-shadow-icon">
 				<li>
 					<MultiSelectionButton
 						layout="selectedOrder"

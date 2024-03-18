@@ -38,7 +38,7 @@ const TeamSize = () => {
 	return (
 		<div className="flex flex-col items-center">
 			<p>Team size</p>
-			<div className="flex items-center gap-1 bg-darkBlack rounded-lg px-2 h-10">
+			<div className="flex items-center gap-1 bg-darkBlack rounded-lg px-2 h-10 drop-shadow-icon">
 				<HiOutlineUserGroup className="h-6 w-auto mr-[0.2rem]" />
 				<input
 					ref={ref}

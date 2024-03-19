@@ -4,7 +4,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./routes/Root.jsx";
 import "./index.css";
 import ErrorPage from "./routes/ErrorPage.jsx";
-import SuccessPage from "./routes/SuccessPage.jsx";
 import { QueryClient, QueryClientProvider } from "react-query";
 import WheelContextProvider from "../src/contexts/WheelContextProvider.jsx";
 import PrivacyPolicy from "./routes/PrivacyPolicy.jsx";

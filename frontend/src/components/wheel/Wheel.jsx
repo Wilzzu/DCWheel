@@ -19,9 +19,11 @@ const defaultData = {
 		// Players circle
 		{
 			backgroundColor: [],
+			borderColor: [],
 			additionalProperties: [],
 			data: [],
-			borderWidth: 0,
+			borderWidth: 10,
+			borderAlign: "inner",
 			datasetIndex: 0,
 		},
 		// Inner white circle
@@ -149,11 +151,17 @@ const Wheel = () => {
 		if (currentPlayers.length > 0) addData = currentPlayers;
 		if (ongoing) addData = currentPlayers;
 
+		// Change border width based on player count
+		template.datasets[0].borderWidth = 26 - currentPlayers.length;
+
 		// Go through each player and add bg and font color, or if ongoing use the colors they were assigned
 		addData.forEach((e, i) => {
 			template.labels.push(e.name);
 			template.datasets[0].backgroundColor.push(
 				ongoing ? e.bgColor : config.wheelColors[i % 20].bgColor
+			);
+			template.datasets[0].borderColor.push(
+				ongoing ? e.borderColor : config.wheelColors[i % 20].borderColor
 			);
 			template.datasets[0].additionalProperties.push(
 				ongoing ? e.fontColor : config.wheelColors[i % 20].fontColor
@@ -168,6 +176,7 @@ const Wheel = () => {
 	const lockPlayerColors = () => {
 		currentPlayers.forEach((e, i) => {
 			(e.bgColor = wheelData.datasets[0].backgroundColor[i]),
+				(e.borderColor = wheelData.datasets[0].borderColor[i]),
 				(e.fontColor = wheelData.datasets[0].additionalProperties[i]);
 		});
 	};

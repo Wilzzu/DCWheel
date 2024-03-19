@@ -1,14 +1,18 @@
 import { createClient } from "@supabase/supabase-js";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useLocalStorage from "../../../../../hooks/useLocalStorage";
 import { FaDiscord } from "react-icons/fa";
 import DiscordPlayerSelect from "./DiscordPlayerSelect";
 import DiscordContextProvider from "../../../../../contexts/DiscordContextProvider";
+import useSessionStorage from "../../../../../hooks/useSessionStorage";
+import WheelContext from "../../../../../contexts/WheelContext";
 
 const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_KEY);
 
 const DiscordPanel = () => {
 	const { setItem, removeItem } = useLocalStorage();
+	const { clearSessionStorage } = useSessionStorage();
+	const { setPlayers } = useContext(WheelContext);
 	const [sessionStatus, setSessionStatus] = useState(0); // 0 = loading, 1 = logged in, 2 = logged out
 
 	const handleLogin = async () => {
@@ -34,10 +38,12 @@ const DiscordPanel = () => {
 				console.log("No session");
 				setSessionStatus(2);
 			}
-
+			// When user signs out, clear all data
 			if (event === "SIGNED_OUT") {
 				console.log("Signed out");
 				removeItem("DCWAuth", "provider_token");
+				setPlayers([]);
+				clearSessionStorage();
 				setSessionStatus(2);
 			}
 		});

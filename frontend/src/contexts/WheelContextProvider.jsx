@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import WheelContext from "./WheelContext";
 import useLocalStorage from "../hooks/useLocalStorage";
+import useSessionStorage from "../hooks/useSessionStorage";
 
 let currentTeamIndex = 0;
 
 const WheelContextProvider = ({ children }) => {
 	const { getItem } = useLocalStorage();
-	const [players, setPlayers] = useState([]); // Players that are on the player list, will be saved so when returned to lobby they will remain there
+	const { getSessionItem, setSessionItem } = useSessionStorage();
+	const [players, setPlayers] = useState(getSessionItem("DCWPlayers", "players") || []); // Players that are on the player list, will be saved so when returned to lobby they will remain there
 	const [currentPlayers, setCurrentPlayers] = useState([]); // Players that are rendered on wheel
 	const [teams, setTeams] = useState([]);
 	const [teamAmount, setTeamAmount] = useState(0);
@@ -94,10 +96,16 @@ const WheelContextProvider = ({ children }) => {
 		setTeamsNotEven(players.length % playersPerTeam !== 0);
 	}, [players, playersPerTeam]);
 
+	// Add player to a team when selected player changes
 	useEffect(() => {
 		if (!selectedPlayer) return;
 		handleTeams();
 	}, [selectedPlayer]);
+
+	// Save players to session storage
+	useEffect(() => {
+		setSessionItem("DCWPlayers", "players", players);
+	}, [players]);
 
 	return (
 		<WheelContext.Provider

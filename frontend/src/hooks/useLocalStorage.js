@@ -12,8 +12,8 @@ const useLocalStorage = () => {
 
 	const getItem = (key, item) => {
 		try {
-			const storedData = JSON.parse(localStorage.getItem(key) || "{}");
-			return storedData[item];
+			const data = JSON.parse(localStorage.getItem(key) || "{}");
+			return data[item];
 		} catch (e) {
 			console.error(e);
 		}

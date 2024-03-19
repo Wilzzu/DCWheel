@@ -53,7 +53,7 @@ const CustomPlayerSelect = () => {
 	// }, [newPlayerQueue]);
 
 	return (
-		<div className="w-full flex flex-col gap-1 text-white">
+		<div className="w-full flex flex-col gap-2 text-white">
 			<div className="w-full flex gap-2 2xl:gap-4">
 				<input
 					ref={ref}

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Title = () => {
 	return (
 		<div className="absolute left-4 top-4 text-white">
@@ -14,6 +16,11 @@ const Title = () => {
 					</a>
 				</p>
 			</div>
+			<Link
+				to="/privacy"
+				className="text-xs font-light opacity-50 hover:opacity-100 duration-150 underline">
+				Privacy Policy
+			</Link>
 		</div>
 	);
 };

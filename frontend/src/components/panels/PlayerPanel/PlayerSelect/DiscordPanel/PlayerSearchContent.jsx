@@ -1,11 +1,12 @@
 import { LuPlusCircle } from "react-icons/lu";
 import { IoSearch } from "react-icons/io5";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import WheelContext from "../../../../../contexts/WheelContext";
 
 const PlayerSearchContent = ({ isLoading, isRefetching, isError, data, error }) => {
 	const [searchInput, setSearchInput] = useState("");
 	const { players, addPlayer } = useContext(WheelContext);
+	const inputRef = useRef(null);
 
 	// Filter data, check if any of the searchNames include the user input and the player isn't already in the list
 	const filteredData = data?.members?.filter(
@@ -16,6 +17,11 @@ const PlayerSearchContent = ({ isLoading, isRefetching, isError, data, error }) 
 			member
 	);
 
+	// Focus on input when dropdown is opened
+	useEffect(() => {
+		inputRef?.current?.focus();
+	}, []);
+
 	return (
 		<div
 			onClick={(e) => e.stopPropagation()}
@@ -24,6 +30,7 @@ const PlayerSearchContent = ({ isLoading, isRefetching, isError, data, error }) 
 			<div className="w-full flex gap-2 items-center justify-center bg-highlightBlack rounded-md px-3 py-0 mb-2 drop-shadow-button">
 				<IoSearch className="w-5 h-auto" />
 				<input
+					ref={inputRef}
 					type="text"
 					placeholder="Search players..."
 					onChange={(e) => setSearchInput(e.target.value)}

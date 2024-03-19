@@ -19,3 +19,31 @@
 .card-dark {
 	@apply from-darkBlack to-highlightBlack border-highlightBlack shadow-3xl shadow-normalBlack;
 }
+
+.gdpr h1 {
+	@apply text-2xl;
+}
+
+.gdpr h2 {
+	@apply text-xl font-semibold;
+}
+
+.gdpr h3 {
+	@apply font-semibold mt-2;
+}
+
+.gdpr p {
+	@apply font-thin;
+}
+
+.gdpr a {
+	@apply underline font-normal;
+}
+
+.gdpr a:hover {
+	@apply no-underline;
+}
+
+.gdpr ul {
+	@apply font-thin list-disc list-inside my-2;
+}

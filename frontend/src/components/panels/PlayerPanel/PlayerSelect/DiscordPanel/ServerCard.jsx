@@ -20,7 +20,7 @@ const ServerCard = ({ server, favorites }) => {
 			className="flex items-center h-10 p-2 gap-2 w-full overflow-hidden hover:bg-highlightBlack rounded-md">
 			<img src={server.icon} alt="" className="rounded-full h-6 w-auto" />
 			<p className="w-full truncate text-left">{server.name}</p>
-			{favorites.includes(server.id) ? <p>❤</p> : <p>🤍</p>}
+			{/* {favorites.includes(server.id) ? <p>❤</p> : <p>🤍</p>} */}
 		</button>
 	);
 };

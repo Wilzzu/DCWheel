@@ -1,6 +1,7 @@
 import Wheel from "../components/wheel/Wheel";
 import Panels from "../components/panels/Panels";
 import Title from "../components/Title";
+import GDPRPopup from "../components/GDPRPopup";
 
 function Root() {
 	return (
@@ -8,6 +9,7 @@ function Root() {
 			<Title />
 			<Wheel />
 			<Panels />
+			<GDPRPopup />
 		</main>
 	);
 }

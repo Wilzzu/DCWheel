@@ -19,7 +19,7 @@ module.exports = async function getChannels(req, res) {
 			return null;
 		});
 
-	if (!userGuilds) return res.status(200).json({ success: true, members: [] });
+	if (!userGuilds) return res.status(404).json({ error: "Error fetching channels" });
 	if (!userGuilds.find((guild) => guild?.id === req.query?.guildId))
 		return res.status(401).json({ error: "Unauthorized" });
 

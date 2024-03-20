@@ -64,16 +64,20 @@ const ServerDropdown = ({ selectedServer }) => {
 			</button>
 
 			{/* Show list of servers */}
+			{/* TODO: Make the scrollbar look better */}
+
 			{open && (
 				<>
-					<ServerList
-						isLoading={isLoading}
-						isRefetching={isRefetching}
-						isError={isError}
-						error={error}
-						data={data}
-						selectedServer={selectedServer}
-					/>
+					<ul className="absolute top-[3.25rem] max-h-[30rem] w-full p-2 overflow-y-auto bg-darkBlack rounded-md border-2 border-highlightBlack z-10 drop-shadow-button scrollbar scrollbar-thumb-green-500 scrollbar-thumb-rounded-full scrollbar-w-2">
+						<ServerList
+							isLoading={isLoading}
+							isRefetching={isRefetching}
+							isError={isError}
+							error={error}
+							data={data}
+							selectedServer={selectedServer}
+						/>
+					</ul>
 					{/* Refresh button */}
 					<button
 						ref={buttonRef}

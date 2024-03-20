@@ -21,9 +21,10 @@ module.exports = async function getGuilds(req, res) {
 		});
 
 	// Check if any guilds were found
+	if (userGuilds === null || userGuilds === "error") {
+		return res.status(404).json({ error: "Error fetching guilds" });
+	}
 	if (!userGuilds) return res.status(200).json({ success: true, guilds: [] });
-	if (userGuilds === "error")
-		return res.status(403).json({ error: "Couldn't fetch user's guilds" });
 
 	// Filter out the guilds the bot is not in
 	const availableGuilds = userGuilds.filter((guild) => botGuilds.includes(guild.id));

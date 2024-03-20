@@ -73,7 +73,7 @@ const DiscordPanel = () => {
 				</button>
 			) : (
 				// Loading
-				<p className="text-white h-10">Loading...</p>
+				<div className="w-full h-12 bg-highlightBlack animate-pulse duration-200 rounded-xl" />
 			)}
 		</div>
 	);

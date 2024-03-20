@@ -2,11 +2,12 @@ import { FaRegUser } from "react-icons/fa";
 import { LuPlusCircle } from "react-icons/lu";
 import { HiOutlineVolumeUp } from "react-icons/hi";
 import WheelContext from "../../../../../contexts/WheelContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { cn } from "../../../../../../lib/utils";
 
 const VCCard = ({ channel }) => {
 	const { addPlayer, players } = useContext(WheelContext);
+	const [isLoaded, setIsLoaded] = useState(false);
 
 	// Add all players from the channel to the player list
 	const addVCPlayers = () => {
@@ -41,8 +42,13 @@ const VCCard = ({ channel }) => {
 						<img
 							src={member.avatar}
 							alt={member.name + " avatar"}
-							className="h-7 w-auto aspect-square rounded-full"
+							className="h-7 w-7 aspect-square rounded-full"
+							loading="lazy"
+							onLoad={() => setIsLoaded(true)}
 						/>
+						{!isLoaded && (
+							<div className="absolute h-7 w-7 aspect-square bg-neutral-700 rounded-full animate-pulse" />
+						)}
 					</li>
 				))}
 			</ul>

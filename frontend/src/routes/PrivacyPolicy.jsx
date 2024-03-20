@@ -180,7 +180,7 @@ const PrivacyPolicy = () => {
 					<li>
 						<b>
 							Submit a request through our{" "}
-							<a href="https://forms.gle/5UX94bnDDCNv3ryN7" target="_blank" rel="noreferrer">
+							<a href="https://forms.gle/qQw7f4xcCdnP2qYJ9" target="_blank" rel="noreferrer">
 								GDPR Data Request Form
 							</a>
 							.

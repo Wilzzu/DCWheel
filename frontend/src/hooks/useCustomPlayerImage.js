@@ -23,7 +23,7 @@ const useCustomPlayerImage = () => {
 
 	const fetchData = async () => {
 		await axios
-			.get(`http://localhost:3000/api/customimage`)
+			.get(`/api/customimage`)
 			.then((img) => {
 				setData("data:image/svg+xml," + encodeSvg(img.data));
 			})

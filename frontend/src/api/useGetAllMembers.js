@@ -6,7 +6,7 @@ const useGetAllMembers = (providerToken, params) => {
 		["allMembers"],
 		async () => {
 			return axios
-				.get("http://localhost:3000/api/members", {
+				.get("/api/members", {
 					params,
 					headers: {
 						Authorization: `Bearer ${providerToken}`,

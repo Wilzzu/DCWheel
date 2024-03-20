@@ -7,7 +7,7 @@ const useGetChannels = (providerToken, params) => {
 		["channels"],
 		async () => {
 			return axios
-				.get("http://localhost:3000/api/channels", {
+				.get("/api/channels", {
 					params,
 					headers: {
 						Authorization: `Bearer ${providerToken}`,

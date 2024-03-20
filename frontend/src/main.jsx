@@ -15,7 +15,7 @@ const router = createBrowserRouter([
 		errorElement: <ErrorPage />,
 	},
 	{
-		path: "privacy",
+		path: "/privacy",
 		element: <PrivacyPolicy />,
 	},
 ]);

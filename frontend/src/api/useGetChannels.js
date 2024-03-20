@@ -19,7 +19,7 @@ const useGetChannels = (providerToken, params) => {
 					throw err;
 				});
 		},
-		{ staleTime: 5000 * 100000, enabled: false } // TODO: remove 100000 when testing is done
+		{ staleTime: 5000, enabled: false } // TODO: remove 100000 when testing is done
 	);
 
 	const removeChannelsCache = () => {

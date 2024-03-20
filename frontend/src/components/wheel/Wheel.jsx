@@ -7,6 +7,7 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 import config from "../../../config.json";
 import spinSound from "../../assets/spinSound.mp3";
 import WheelContext from "../../contexts/WheelContext";
+import useClickAnywhere from "../../hooks/useClickAnywhere";
 ChartJS.register(ArcElement, Tooltip, Legend);
 ChartJS.register(ChartDataLabels);
 ChartJS.defaults.font.family =
@@ -129,6 +130,7 @@ const Wheel = () => {
 		autospin,
 		mute,
 	} = useContext(WheelContext);
+	const clicked = useClickAnywhere(); // Used for audio context creation on first click
 
 	// These allow us to change settings during the spin
 	const muteRef = useRef(mute);
@@ -311,10 +313,15 @@ const Wheel = () => {
 		if (autospinRef.current && canSpin && ongoing) setTimeout(() => autospinStart(), 500);
 	}, [autospinRef.current, canSpin, ongoing]);
 
+	// Preload sound and create audio context on first click
 	useEffect(() => {
 		const preloadSound = async () => await fetch(spinSound);
 		preloadSound();
 	}, []);
+
+	useEffect(() => {
+		if (clicked) createAudioContext();
+	}, [clicked]);
 
 	return (
 		<section className="relative max-w-full aspect-square flex items-center justify-center select-none">

@@ -4,7 +4,7 @@ const Title = () => {
 	return (
 		<div className="absolute left-4 top-4 text-white">
 			<div className="opacity-50 hover:opacity-100 duration-500">
-				<h1>DCWheel v0.16.1 (Beta)</h1>
+				<h1>DCWheel v0.20.1 (Beta)</h1>
 				<p className="text-xs">
 					Made with 💚 by{" "}
 					<a

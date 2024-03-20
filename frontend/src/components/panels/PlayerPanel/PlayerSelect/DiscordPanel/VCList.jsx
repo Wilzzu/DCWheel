@@ -1,12 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ErrorCard from "./ErrorCard";
 import LoadingPlaceholder from "./LoadingPlaceholder";
 import VCCard from "./VCCard";
 
 const VCList = ({ isLoading, isRefetching, isError, error, data, showLoading, setShowLoading }) => {
+	const [first, setFirst] = useState(true);
 	// Show loading spinner only on the first load and when force refetching
 	useEffect(() => {
-		if (!isRefetching && !isLoading) setShowLoading(false);
+		if (first && (isRefetching || isLoading)) setFirst(false);
+		if (!first && !isRefetching && !isLoading) setShowLoading(false);
 	}, [isRefetching, isLoading]);
 
 	if (showLoading) {

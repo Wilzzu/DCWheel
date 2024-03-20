@@ -22,10 +22,14 @@ const VCDropdown = () => {
 		{ guildId: selectedServer.id }
 	);
 
+	// Show loading when force refetching
+	const [showLoading, setShowLoading] = useState(true);
+
 	const forceRefetch = (e) => {
 		e.stopPropagation();
 		refetch();
 		setDisabled(true);
+		setShowLoading(true);
 	};
 
 	// Enable refresh button after some time
@@ -74,6 +78,8 @@ const VCDropdown = () => {
 						isError={isError}
 						error={error}
 						data={data}
+						showLoading={showLoading}
+						setShowLoading={setShowLoading}
 					/>
 				</ul>
 			)}

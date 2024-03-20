@@ -52,9 +52,9 @@ const PrivacyPolicy = () => {
 				<br />
 				<h2>Introduction</h2>
 				<p>
-					This website, wheel.wilzzu.motorcycles, values your privacy. This policy explains our use
-					of local storage and cookies, and how we use third party services to provide a functional
-					and secure website experience.
+					This website, dcwheel.wilzzu.dev, values your privacy. This policy explains our use of
+					local storage and cookies, and how we use third party services to provide a functional and
+					secure website experience.
 				</p>
 				<br />
 
@@ -180,7 +180,7 @@ const PrivacyPolicy = () => {
 					<li>
 						<b>
 							Submit a request through our{" "}
-							<a href="https://forms.gle/dRQBRPr96zHtsEY6A" target="_blank" rel="noreferrer">
+							<a href="https://forms.gle/5UX94bnDDCNv3ryN7" target="_blank" rel="noreferrer">
 								GDPR Data Request Form
 							</a>
 							.

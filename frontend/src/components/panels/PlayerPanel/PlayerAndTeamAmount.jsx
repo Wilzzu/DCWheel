@@ -9,7 +9,7 @@ const PlayerAndTeamAmount = () => {
 	const { teamAmount, players, setPlayers, teamsNotEven } = useContext(WheelContext);
 
 	return (
-		<div className="relative flex justify-center gap-5 text-center text-white mt-4 font-semibold pb-2 border-b border-neutral-600 tracking-wide select-none">
+		<div className="relative flex justify-center gap-5 text-center text-white mt-1 font-semibold pb-2 border-b border-neutral-600 tracking-wide select-none">
 			<div className="flex gap-1 items-center">
 				<p>Players</p>
 				<span className="bg-darkBlack rounded-lg p-2 min-w-[4.2rem] flex gap-2 items-center justify-center drop-shadow-button">

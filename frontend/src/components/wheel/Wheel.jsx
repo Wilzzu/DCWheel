@@ -233,9 +233,12 @@ const Wheel = () => {
 		soundPromise.then(playSound);
 
 		// Call round end after spin has stopped
-		setTimeout(() => {
-			handleRoundEnd(findSelectedIndex(newRotation));
-		}, spinTime[spinSpeed]);
+		setTimeout(
+			() => {
+				handleRoundEnd(findSelectedIndex(newRotation));
+			},
+			currentPlayers?.length === 1 ? 1000 : spinTime[spinSpeed] // If only one player, end round in 1s
+		);
 	};
 
 	const handleRoundEnd = (index) => {
@@ -285,7 +288,7 @@ const Wheel = () => {
 			// If tick has entered new slice, play audio if enough time has passed from last audio clip
 			// Tweak the 0.00001, 10 and 5 values to determine how easily the sound is played
 			if ((curRotation - 0.00001) % (360 / currentPlayers.length) < 10) {
-				if (lastAudioPlayed > 10) {
+				if (lastAudioPlayed > 5) {
 					lastAudioPlayed = 0;
 					soundPromise.then(playSound);
 				}
@@ -339,7 +342,11 @@ const Wheel = () => {
 					)}
 					style={{
 						rotate: rotation + 90 + "deg", // +90deg because selector tick is on the right
-						transitionDuration: rotation ? spinTime[spinSpeed] + "ms" : "0ms",
+						transitionDuration: rotation
+							? currentPlayers?.length === 1 // If only one player, spin for 1s
+								? "1000ms"
+								: spinTime[spinSpeed] + "ms"
+							: "0ms",
 						transitionTimingFunction: "cubic-bezier(.15,.6,.25,1)",
 					}}>
 					{wheelData && <Pie data={wheelData} options={options} />}

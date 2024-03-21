@@ -33,7 +33,7 @@ const GDPRPopup = () => {
 					<span className="flex border-l pl-3">
 						<Link
 							to="/privacy"
-							reloaddocument
+							reloadDocument={true}
 							className="h-full hover:bg-green-700 p-3 rounded-lg duration-150">
 							<p className="drop-shadow-text">Learn more</p>
 						</Link>

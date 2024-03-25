@@ -7,7 +7,7 @@ const useGetChannels = (providerToken, params) => {
 		["channels"],
 		async () => {
 			return axios
-				.get("http://localhost:3000/api/channels", {
+				.get("/api/channels", {
 					params,
 					headers: {
 						Authorization: `Bearer ${providerToken}`,
@@ -19,7 +19,7 @@ const useGetChannels = (providerToken, params) => {
 					throw err;
 				});
 		},
-		{ staleTime: 5000 * 100000, enabled: false } // TODO: remove 100000 when testing is done
+		{ staleTime: 5000, enabled: false } // TODO: remove 100000 when testing is done
 	);
 
 	const removeChannelsCache = () => {

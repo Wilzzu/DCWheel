@@ -16,7 +16,7 @@ const PlayerSearchList = ({ data, addPlayer, isLoading, isRefetching, isError, e
 				<li key={member.id}>
 					<button
 						onClick={() => addPlayer(member)}
-						className="group flex items-center w-full gap-2 p-2 hover:bg-highlightBlack rounded-md">
+						className="group relative flex items-center w-full gap-2 p-2 hover:bg-highlightBlack rounded-md">
 						<img
 							src={member.avatar}
 							alt={member.name + " avatar"}

@@ -6,7 +6,7 @@ const useGetGuilds = (providerToken) => {
 		["guilds"],
 		async () => {
 			return axios
-				.get("http://localhost:3000/api/guilds", {
+				.get("/api/guilds", {
 					headers: {
 						Authorization: `Bearer ${providerToken}`,
 					},

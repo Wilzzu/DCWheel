@@ -18,7 +18,7 @@ const Title = () => {
 			</div>
 			<Link
 				to="/privacy"
-				reloaddocument
+				reloadDocument={true}
 				className="text-xs font-light opacity-50 hover:opacity-100 duration-150 underline">
 				Privacy Policy
 			</Link>

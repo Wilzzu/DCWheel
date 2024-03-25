@@ -16,16 +16,6 @@ const Title = () => {
 					</a>
 				</p>
 			</div>
-			<div className="opacity-50 hover:opacity-100 duration-500 my-2">
-				<p className="text-xs">Tulossa olevat ominaisuudet:</p>
-				<ul className="list-disc text-xs list-inside">
-					<li>Pelaajien siirtäminen tiimistä toiseen</li>
-					<li>Automaattinen kuvankaappaus</li>
-					<li>Voiton todennäköisyys</li>
-					<li>Serverin ja pelaajien lisääminen suosikkeihin</li>
-					<li>Parempi responsiivisuus</li>
-				</ul>
-			</div>
 			<Link
 				to="/privacy"
 				reloadDocument={true}

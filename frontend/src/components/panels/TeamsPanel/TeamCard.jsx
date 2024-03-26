@@ -4,7 +4,7 @@ const TeamCard = ({ data, index }) => {
 	return (
 		<motion.div
 			layout
-			className="w-full h-fit rounded-xl flex flex-col gap-2 p-3 overflow-hidden card-dark bg-gradient-to-tr border-2">
+			className="w-full h-fit rounded-xl flex flex-col gap-2 p-3 overflow-hidden card-dark bg-gradient-to-tr border-2 team-card">
 			<motion.p
 				layout="position"
 				initial={{ y: 2, opacity: 0 }}

@@ -3,7 +3,7 @@ const { client } = require("../bot");
 
 // GET /api/channels
 module.exports = async function getChannels(req, res) {
-	console.log("GET /api/channels");
+	console.log("GET /api/channels", new Date().toLocaleString());
 	const accessToken = req.headers.authorization?.split(" ")[1];
 
 	// Confirm user is part of the guild

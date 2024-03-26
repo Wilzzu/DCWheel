@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from "react";
 import useLocalStorage from "../../../../../hooks/useLocalStorage";
 import { FaDiscord } from "react-icons/fa";
 import DiscordPlayerSelect from "./DiscordPlayerSelect";
-import DiscordContextProvider from "../../../../../contexts/DiscordContextProvider";
 import useSessionStorage from "../../../../../hooks/useSessionStorage";
 import WheelContext from "../../../../../contexts/WheelContext";
 
@@ -61,9 +60,7 @@ const DiscordPanel = () => {
 	return (
 		<div className="flex flex-col gap-1 text-white z-10">
 			{sessionStatus === 1 ? ( // Logged in
-				<DiscordContextProvider>
-					<DiscordPlayerSelect handleLogout={handleLogout} />
-				</DiscordContextProvider>
+				<DiscordPlayerSelect handleLogout={handleLogout} />
 			) : sessionStatus === 2 ? ( // Logged out
 				<button
 					onClick={handleLogin}

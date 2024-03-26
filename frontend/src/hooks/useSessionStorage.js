@@ -1,5 +1,5 @@
 const useSessionStorage = () => {
-	// Key: Name of the group of items eg. "DCWPlayers", Item: Name of the item eg. "players", Value: Value of the item
+	// Key: Name of the group of items eg. "DCWSession", Item: Name of the item eg. "players", Value: Value of the item
 	const setSessionItem = (key, item, value) => {
 		try {
 			const data = JSON.parse(sessionStorage.getItem(key) || "{}");

@@ -8,7 +8,7 @@ let currentTeamIndex = 0;
 const WheelContextProvider = ({ children }) => {
 	const { getItem } = useLocalStorage();
 	const { getSessionItem, setSessionItem } = useSessionStorage();
-	const [players, setPlayers] = useState(getSessionItem("DCWPlayers", "players") || []); // Players that are on the player list, will be saved so when returned to lobby they will remain there
+	const [players, setPlayers] = useState(getSessionItem("DCWSession", "players") || []); // Players that are on the player list, will be saved so when returned to lobby they will remain there
 	const [currentPlayers, setCurrentPlayers] = useState([]); // Players that are rendered on wheel
 	const [teams, setTeams] = useState([]);
 	const [teamAmount, setTeamAmount] = useState(0);
@@ -104,7 +104,7 @@ const WheelContextProvider = ({ children }) => {
 
 	// Save players to session storage
 	useEffect(() => {
-		setSessionItem("DCWPlayers", "players", players);
+		setSessionItem("DCWSession", "players", players);
 	}, [players]);
 
 	return (

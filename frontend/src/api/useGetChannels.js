@@ -7,7 +7,7 @@ const useGetChannels = (providerToken, params) => {
 		["channels"],
 		async () => {
 			return axios
-				.get("/api/channels", {
+				.get(`${import.meta.env.VITE_SERVER_URL}/api/channels`, {
 					params,
 					headers: {
 						Authorization: `Bearer ${providerToken}`,

@@ -6,7 +6,7 @@ const useGetAllMembers = (providerToken, params) => {
 		["allMembers"],
 		async () => {
 			return axios
-				.get("/api/members", {
+				.get(`${import.meta.env.VITE_SERVER_URL}/api/members`, {
 					params,
 					headers: {
 						Authorization: `Bearer ${providerToken}`,

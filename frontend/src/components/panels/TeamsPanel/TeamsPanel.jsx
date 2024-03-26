@@ -1,20 +1,23 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import SelectedPlayerCard from "./SelectedPlayerCard";
 import TeamCard from "./TeamCard";
 import WheelContext from "../../../contexts/WheelContext";
+import EndOptions from "./EndOptions";
 
 const TeamsPanel = () => {
 	const { teams, selectedPlayer } = useContext(WheelContext);
+	const teamsRef = useRef(null);
 
 	return (
 		<div className="w-full text-white flex flex-col gap-2">
 			<SelectedPlayerCard selectedPlayer={selectedPlayer} />
 			{/* Teams container */}
-			<div className="grid grid-cols-2 gap-2">
+			<div ref={teamsRef} className="grid grid-cols-2 gap-2 bg-transparent">
 				{teams.map((e, i) => (
 					<TeamCard key={"team" + i} data={e} index={i} />
 				))}
 			</div>
+			<EndOptions containerRef={teamsRef} />
 		</div>
 	);
 };

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import DiscordContext from "./DiscordContext";
-import useLocalStorage from "../hooks/useLocalStorage";
+import useSessionStorage from "../hooks/useSessionStorage";
 
 const DiscordContextProvider = ({ children }) => {
-	const { getItem } = useLocalStorage();
+	const { getSessionItem } = useSessionStorage();
 	const [selectedServer, setSelectedServer] = useState(
-		getItem("DCWDiscord", "selected_server") || null
+		getSessionItem("DCWSession", "selected_server") || null
 	);
 
 	return (

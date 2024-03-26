@@ -7,6 +7,7 @@ import ErrorPage from "./routes/ErrorPage.jsx";
 import { QueryClient, QueryClientProvider } from "react-query";
 import WheelContextProvider from "../src/contexts/WheelContextProvider.jsx";
 import PrivacyPolicy from "./routes/PrivacyPolicy.jsx";
+import DiscordContextProvider from "./contexts/DiscordContextProvider.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -25,9 +26,11 @@ const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
 	// <React.StrictMode>
 	<QueryClientProvider client={queryClient}>
-		<WheelContextProvider>
-			<RouterProvider router={router} />
-		</WheelContextProvider>
+		<DiscordContextProvider>
+			<WheelContextProvider>
+				<RouterProvider router={router} />
+			</WheelContextProvider>
+		</DiscordContextProvider>
 	</QueryClientProvider>
 	// </React.StrictMode>
 );

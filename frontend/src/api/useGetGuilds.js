@@ -6,7 +6,7 @@ const useGetGuilds = (providerToken) => {
 		["guilds"],
 		async () => {
 			return axios
-				.get("/api/guilds", {
+				.get(`${import.meta.env.VITE_SERVER_URL}/api/guilds`, {
 					headers: {
 						Authorization: `Bearer ${providerToken}`,
 					},

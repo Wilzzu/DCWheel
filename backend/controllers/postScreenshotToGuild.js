@@ -1,14 +1,14 @@
 const { client } = require("../bot");
 const axios = require("axios");
 const CryptoJS = require("crypto-js");
-const { AttachmentBuilder, userMention } = require("discord.js");
+const { AttachmentBuilder, userMention, inlineCode } = require("discord.js");
 
 const createEmbed = (imageBuffer, userId) => {
 	const imageName = `DCWheel_teams_${new Date().toLocaleString().replace(" ", "_")}.webp`;
 	const image = new AttachmentBuilder(imageBuffer, { name: imageName });
 	const user = userId ? userMention(userId) : "User";
 
-	return { content: `## ${user} created new teams:`, files: [image] };
+	return { content: `## ${user} ${inlineCode("created new teams:")}`, files: [image] };
 };
 
 // POST /api/screenshot

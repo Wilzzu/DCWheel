@@ -13,7 +13,7 @@ const itemVariant = {
 
 const EndOptions = ({ containerRef }) => {
 	const [show, setShow] = useState(true);
-	const { sendScreenshot, isLoading, error, isSuccess } = useSendScreenshot();
+	const { sendScreenshot, isLoading, error, isSuccess, reset } = useSendScreenshot();
 	const { getItem } = useLocalStorage();
 	const providerToken = getItem("DCWAuth", "provider_token") || null;
 
@@ -23,6 +23,12 @@ const EndOptions = ({ containerRef }) => {
 			setTimeout(() => setShow(false), 2500);
 		}
 	}, [isSuccess]);
+
+	useEffect(() => {
+		if (error) {
+			setTimeout(() => reset(), 4500);
+		}
+	}, [error]);
 
 	return (
 		<div className="w-full flex items-center justify-center">
@@ -36,7 +42,7 @@ const EndOptions = ({ containerRef }) => {
 						transition={{ duration: 0.5, ease: "easeInOut", delay: 0.7 }}
 						variants={itemVariant}>
 						<button
-							disabled={isLoading || isSuccess}
+							disabled={isLoading || isSuccess || error}
 							className={cn(
 								"flex items-center justify-center min-w-48 gap-2 p-4 text-white bg-normalBlack border-2 border-highlightBlack rounded-md hover:bg-highlightBlack duration-150 disabled:hover:bg-normalBlack disabled:cursor-default disabled:opacity-70",
 								isSuccess &&

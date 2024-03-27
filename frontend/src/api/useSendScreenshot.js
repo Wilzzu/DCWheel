@@ -48,7 +48,7 @@ const useSendScreenshot = () => {
 				`${import.meta.env.VITE_SERVER_URL}/api/screenshot`,
 				{
 					guildId: selectedServer?.id,
-					channelId: "924300455851458562", // Temporary hardcoded channel ID
+					channelId: import.meta.env.VITE_TEMP_CHANNEL_ID, // Temporary channel ID
 					userId: getSessionItem("DCWSession", "user")?.provider_id,
 					data,
 				},
@@ -74,6 +74,7 @@ const useSendScreenshot = () => {
 		isLoading: sendScreenshotMutation.isLoading,
 		error: sendScreenshotMutation.error,
 		isSuccess: sendScreenshotMutation.isSuccess,
+		reset: sendScreenshotMutation.reset,
 	};
 };
 

@@ -125,6 +125,8 @@ const Wheel = () => {
 		setSelectedPlayer,
 		ongoing,
 		setOngoing,
+		allPlayersDrawn,
+		setAllPlayersDrawn,
 		setSpinning,
 		returnToStart,
 		autospin,
@@ -188,7 +190,7 @@ const Wheel = () => {
 		if (players?.length <= 0) return;
 
 		// When all players have been selected and user presses the wheel
-		if (ongoing && currentPlayers.length === 1) {
+		if (ongoing && allPlayersDrawn) {
 			setEndWarning(true);
 			return setCanSpin(false);
 		}
@@ -245,6 +247,9 @@ const Wheel = () => {
 		// Reverse array because we are spinning clockwise, return selected slice
 		let rev = currentPlayers.slice().reverse();
 		setSelectedPlayer({ ...rev[index], index });
+
+		// If only one player, set all players drawn
+		if (currentPlayers.length === 1) setAllPlayersDrawn(true);
 
 		setCanSpin(true);
 		setSpinning(false);
@@ -308,7 +313,7 @@ const Wheel = () => {
 
 	// Autospin
 	const autospinStart = () => {
-		if (currentPlayers.length === 1) return; // Don't spin if all players have been selected
+		if (allPlayersDrawn) return; // Don't spin if all players have been selected
 		if (autospinRef.current && canSpinRef.current && ongoingRef.current) handleWheelClick(true); // Double check if we can spin
 	};
 

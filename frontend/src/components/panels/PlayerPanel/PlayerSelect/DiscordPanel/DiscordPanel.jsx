@@ -10,6 +10,7 @@ const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env
 
 const DiscordPanel = () => {
 	const { setItem, removeItem } = useLocalStorage();
+	const { setSessionItem } = useSessionStorage();
 	const { clearSessionStorage } = useSessionStorage();
 	const { setPlayers } = useContext(WheelContext);
 	const [sessionStatus, setSessionStatus] = useState(0); // 0 = loading, 1 = logged in, 2 = logged out
@@ -30,6 +31,7 @@ const DiscordPanel = () => {
 			if (session) {
 				if (session.provider_token) setItem("DCWAuth", "provider_token", session.provider_token); // Save token to local storage
 				setSessionStatus(1);
+				setSessionItem("DCWSession", "user", session.user?.user_metadata || {});
 				console.log("Signed in");
 			}
 			// No user is signed in

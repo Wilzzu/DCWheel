@@ -5,7 +5,7 @@ import WheelContext from "../../../contexts/WheelContext";
 import EndOptions from "./EndOptions";
 
 const TeamsPanel = () => {
-	const { teams, selectedPlayer } = useContext(WheelContext);
+	const { teams, selectedPlayer, allPlayersDrawn } = useContext(WheelContext);
 	const teamsRef = useRef(null);
 
 	return (
@@ -17,7 +17,7 @@ const TeamsPanel = () => {
 					<TeamCard key={"team" + i} data={e} index={i} />
 				))}
 			</div>
-			<EndOptions containerRef={teamsRef} />
+			{allPlayersDrawn && <EndOptions containerRef={teamsRef} />}
 		</div>
 	);
 };

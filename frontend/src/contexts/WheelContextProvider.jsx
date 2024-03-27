@@ -16,6 +16,7 @@ const WheelContextProvider = ({ children }) => {
 	const [selectedPlayer, setSelectedPlayer] = useState(null);
 	const [ongoing, setOngoing] = useState(false); // When the game in its entirety is in progress, not just one round
 	const [spinning, setSpinning] = useState(false);
+	const [allPlayersDrawn, setAllPlayersDrawn] = useState(false);
 
 	// Read settings from local storage or set a default value
 	const [playersPerTeam, setPlayersPerTeam] = useState(
@@ -86,6 +87,7 @@ const WheelContextProvider = ({ children }) => {
 		setCurrentPlayers(players);
 		setTeams([]);
 		setSelectedPlayer(null);
+		setAllPlayersDrawn(false);
 	};
 
 	// Update current players whenever "players" get updated while in lobby
@@ -120,6 +122,8 @@ const WheelContextProvider = ({ children }) => {
 				setOngoing,
 				spinning,
 				setSpinning,
+				allPlayersDrawn,
+				setAllPlayersDrawn,
 				returnToStart,
 				removePlayerFromWheel,
 				removePlayer,

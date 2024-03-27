@@ -1,13 +1,14 @@
 const { client } = require("../bot");
 const axios = require("axios");
 const CryptoJS = require("crypto-js");
-const { AttachmentBuilder, EmbedBuilder } = require("discord.js");
+const { AttachmentBuilder, userMention } = require("discord.js");
 
-const createEmbed = (imageBuffer, user) => {
+const createEmbed = (imageBuffer, userId) => {
 	const imageName = `DCWheel_teams_${new Date().toLocaleString().replace(" ", "_")}.webp`;
 	const image = new AttachmentBuilder(imageBuffer, { name: imageName });
+	const user = userId ? userMention(userId) : "User";
 
-	return { content: `## ${user?.name || "User"} created new teams:`, files: [image] };
+	return { content: `## ${user} created new teams:`, files: [image] };
 };
 
 // POST /api/screenshot
@@ -16,7 +17,6 @@ module.exports = async function postScreenshotToGuild(req, res) {
 
 	// Confirm request has the required parameters
 	if (!req.body?.guildId || !req.body?.channelId || !req.body?.data)
-		// !req.body?.user
 		return res.status(400).json({ error: "Missing parameters" });
 	const accessToken = req.headers.authorization?.split(" ")[1];
 
@@ -38,7 +38,7 @@ module.exports = async function postScreenshotToGuild(req, res) {
 		return res.status(401).json({ error: "Unauthorized" });
 
 	// Confirm selected channel is approved by the moderators
-	// TODO: Implement this
+	// TODO: Implement this, also show only channels that the bot has permission to send messages to
 
 	// Decrypt data and convert it to binary buffer
 	const decryptedData = CryptoJS.AES.decrypt(req.body.data, process.env.ENCRYPTION_KEY).toString(
@@ -51,13 +51,11 @@ module.exports = async function postScreenshotToGuild(req, res) {
 	if (!channel) return res.status(404).json({ error: "Channel not found" });
 
 	try {
-		await channel.send(createEmbed(imageBuffer));
+		await channel.send(createEmbed(imageBuffer, req.body?.userId));
 	} catch (err) {
 		console.error(err);
 		return res.status(500).json({ error: "Failed to send screenshot" });
 	}
 
 	return res.status(200).json({ success: true });
-
-	// const guild = client.guilds.cache.get(req.query.guildId);
 };

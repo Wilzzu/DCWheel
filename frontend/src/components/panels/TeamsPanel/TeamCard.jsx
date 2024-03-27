@@ -1,10 +1,27 @@
 import { motion } from "framer-motion";
+import WheelContext from "../../../contexts/WheelContext";
+import { useContext, useEffect, useState } from "react";
+import { cn } from "../../../../lib/utils";
 
 const TeamCard = ({ data, index }) => {
+	const [addDuration, setAddDuration] = useState(false);
+	const { allPlayersDrawn } = useContext(WheelContext);
+
+	// Add duration after all players have been drawn
+	useEffect(() => {
+		if (!allPlayersDrawn) return;
+		setTimeout(() => {
+			setAddDuration(true);
+		}, 500);
+	}, [allPlayersDrawn]);
+
 	return (
 		<motion.div
 			layout
-			className="w-full h-fit rounded-xl flex flex-col gap-2 p-3 overflow-hidden card-dark bg-gradient-to-tr border-2 team-card">
+			className={cn(
+				"w-full h-fit rounded-xl flex flex-col gap-2 p-3 overflow-hidden card-dark bg-gradient-to-tr border-2 team-card",
+				addDuration && "duration-[10s] ease-in-out" // This is to hide the border color changing when taking screenshot
+			)}>
 			<motion.p
 				layout="position"
 				initial={{ y: 2, opacity: 0 }}

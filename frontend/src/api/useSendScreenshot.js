@@ -5,10 +5,12 @@ import CryptoJS from "crypto-js";
 import { useContext } from "react";
 import DiscordContext from "../contexts/DiscordContext";
 import useLocalStorage from "../hooks/useLocalStorage";
+import useSessionStorage from "../hooks/useSessionStorage";
 
 const useSendScreenshot = () => {
 	const { selectedServer } = useContext(DiscordContext);
 	const { getItem } = useLocalStorage();
+	const { getSessionItem } = useSessionStorage();
 
 	const createScreenshot = async (containerRef) => {
 		const container = containerRef.current;
@@ -47,6 +49,7 @@ const useSendScreenshot = () => {
 				{
 					guildId: selectedServer?.id,
 					channelId: "924300455851458562", // Temporary hardcoded channel ID
+					userId: getSessionItem("DCWSession", "user")?.provider_id,
 					data,
 				},
 				{

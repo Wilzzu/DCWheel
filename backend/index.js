@@ -11,6 +11,7 @@ const postScreenshotToGuild = require("./controllers/postScreenshotToGuild");
 
 const port = process.env.PORT || 3001;
 const app = express();
+app.set("trust proxy", 1); // For express-rate-limit
 
 // Rate limiters
 const limiter = (limit) => {

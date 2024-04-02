@@ -20,7 +20,7 @@ const WheelContextProvider = ({ children }) => {
 
 	// Read settings from local storage or set a default value
 	const [playersPerTeam, setPlayersPerTeam] = useState(
-		getItem("wheelSettings", "playersPerTeam") || 5
+		getItem("wheelSettings", "players_per_team") || 5
 	);
 	const [spinSpeed, setSpinSpeed] = useState(getItem("wheelSettings", "spin_speed") || 0); // 0 = normal, 1 = fast, 2 = turbo
 	const [pickingOrder, setPickingOrder] = useState(getItem("wheelSettings", "picking_order") || 0); // 0 = alternate, 1 = fill team
@@ -39,6 +39,15 @@ const WheelContextProvider = ({ children }) => {
 
 	const removePlayerFromWheel = (id) => {
 		setCurrentPlayers(currentPlayers.filter((e) => e.id !== id));
+	};
+
+	const reorderTeams = (oldTeamIndex, newTeamIndex, player) => {
+		const newTeams = teams.map((team, i) => {
+			if (i === oldTeamIndex) return team.filter((e) => e.id !== player.id);
+			if (i === newTeamIndex) return [...team, player];
+			return team;
+		});
+		setTeams(newTeams);
 	};
 
 	const handleAlternatePicking = () => {
@@ -115,6 +124,7 @@ const WheelContextProvider = ({ children }) => {
 				players,
 				teams,
 				teamAmount,
+				reorderTeams,
 				setPlayers,
 				addPlayer,
 				currentPlayers,

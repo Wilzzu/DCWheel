@@ -4,6 +4,7 @@ import { cn } from "../../../../lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import useLocalStorage from "../../../hooks/useLocalStorage";
+import { LuArrowRightLeft } from "react-icons/lu";
 
 const itemVariant = {
 	hidden: { y: -7, opacity: 0 },
@@ -11,7 +12,7 @@ const itemVariant = {
 	exit: { y: -5, opacity: 0 },
 };
 
-const EndOptions = ({ containerRef }) => {
+const EndOptions = ({ containerRef, teams }) => {
 	const [show, setShow] = useState(true);
 	const { sendScreenshot, isLoading, error, isSuccess, reset } = useSendScreenshot();
 	const { getItem } = useLocalStorage();
@@ -30,17 +31,30 @@ const EndOptions = ({ containerRef }) => {
 		}
 	}, [error]);
 
+	// Show button again if teams are changed
+	useEffect(() => {
+		reset();
+		setShow(true);
+	}, [teams]);
+
 	return (
-		<div className="w-full flex items-center justify-center">
+		<div className="w-full flex items-center justify-center mt-2">
 			<AnimatePresence mode="wait">
 				{show && providerToken && (
 					<motion.div
-						key="sendScreenshot"
+						key="endOptions"
 						initial="hidden"
 						animate="visible"
 						exit="exit"
 						transition={{ duration: 0.5, ease: "easeInOut", delay: 0.7 }}
-						variants={itemVariant}>
+						variants={itemVariant}
+						className="flex gap-4 items-center justify-center w-full">
+						{/* Hint text */}
+						<div className="flex gap-2">
+							<LuArrowRightLeft className="w-6 h-6" />
+							<p className="text-sm text-center">Drag players to change teams</p>
+						</div>
+						{/* Screenshot button */}
 						<button
 							disabled={isLoading || isSuccess || error}
 							className={cn(

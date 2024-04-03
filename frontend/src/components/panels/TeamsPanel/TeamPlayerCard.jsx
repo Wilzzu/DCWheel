@@ -4,7 +4,7 @@ import { cn } from "../../../../lib/utils";
 import WheelContext from "../../../contexts/WheelContext";
 
 const TeamPlayerCard = ({ player, index, teamIndex, containerRef, setDraggedPlayerTeamIndex }) => {
-	const { reorderTeams } = useContext(WheelContext);
+	const { reorderTeams, allPlayersDrawn } = useContext(WheelContext);
 	const [dragging, setDragging] = useState(false);
 	const dragStart = () => {
 		setDragging(true);
@@ -26,15 +26,16 @@ const TeamPlayerCard = ({ player, index, teamIndex, containerRef, setDraggedPlay
 			initial={{ y: index === 0 ? -2 : -8, opacity: 0 }}
 			animate={{ y: 0, opacity: 1 }}
 			transition={{ duration: index === 0 ? 0.25 : 0.35, ease: "easeInOut" }}
-			drag
+			drag={allPlayersDrawn}
 			dragSnapToOrigin
 			dragConstraints={containerRef}
 			onDragStart={dragStart}
 			onDragEnd={dragEnd}
 			className={cn(
-				"w-full flex items-center h-12 py-1 pl-2 pr-1 gap-2 rounded-lg touch-none z-0 bg-transparent border-2 border-transparent hover:bg-highlightBlack hover:cursor-grab",
+				"w-full flex items-center h-12 py-1 pl-2 pr-1 gap-2 rounded-lg touch-none z-0 bg-transparent border-2 border-transparent",
+				allPlayersDrawn && "hover:bg-highlightBlack hover:cursor-grab",
 				dragging &&
-					"!z-10 bg-highlightBlack !cursor-grabbing pointer-events-none border-green-500 bg-opacity-45 backdrop-blur-sm"
+					"!z-10 bg-highlightBlack pointer-events-none border-green-500 bg-opacity-45 backdrop-blur-sm"
 			)}>
 			{/* Image container to take space while the avatar is loading */}
 			<div className="h-8 w-8 aspect-square">

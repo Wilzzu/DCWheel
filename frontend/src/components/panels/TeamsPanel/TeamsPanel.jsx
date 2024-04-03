@@ -3,6 +3,7 @@ import SelectedPlayerCard from "./SelectedPlayerCard";
 import TeamCard from "./TeamCard";
 import WheelContext from "../../../contexts/WheelContext";
 import EndOptions from "./EndOptions";
+import { cn } from "../../../../lib/utils";
 
 const TeamsPanel = () => {
 	const { teams, selectedPlayer, allPlayersDrawn } = useContext(WheelContext);
@@ -10,7 +11,11 @@ const TeamsPanel = () => {
 	const [draggedPlayerTeamIndex, setDraggedPlayerTeamIndex] = useState(null);
 
 	return (
-		<div className="w-full text-white flex flex-col gap-2">
+		<div
+			className={cn(
+				"w-full text-white flex flex-col gap-2",
+				draggedPlayerTeamIndex !== null && "!cursor-grabbing"
+			)}>
 			<SelectedPlayerCard selectedPlayer={selectedPlayer} />
 			{/* Teams container */}
 			<div ref={teamsRef} className="grid grid-cols-2 gap-2 bg-transparent">

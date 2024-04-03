@@ -1,12 +1,12 @@
 import useClickOutside from "../../../../../hooks/useClickOutside";
 import useLocalStorage from "../../../../../hooks/useLocalStorage";
-import useGetChannels from "../../../../../api/useGetChannels";
 import DiscordContext from "../../../../../contexts/DiscordContext";
 import VCList from "./VCList";
 import { useContext, useEffect, useRef, useState } from "react";
 import { IoMdRefresh } from "react-icons/io";
 import voiceIcon from "../../../../../assets/voiceIcon.svg";
 import { cn } from "../../../../../../lib/utils";
+import useGetVoiceChannels from "../../../../../api/useGetVoiceChannels";
 
 const VCDropdown = () => {
 	const { getItem } = useLocalStorage();
@@ -17,7 +17,7 @@ const VCDropdown = () => {
 	const buttonRef = useRef(null);
 	const { open, setOpen } = useClickOutside(dropdownButton, buttonRef);
 
-	const { isLoading, isRefetching, isError, isStale, data, error, refetch } = useGetChannels(
+	const { isLoading, isRefetching, isError, isStale, data, error, refetch } = useGetVoiceChannels(
 		getItem("DCWAuth", "provider_token"),
 		{ guildId: selectedServer.id }
 	);

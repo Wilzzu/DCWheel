@@ -1,13 +1,13 @@
 import axios from "axios";
 import { useQuery, useQueryClient } from "react-query";
 
-const useGetChannels = (providerToken, params) => {
+const useGetVoiceChannels = (providerToken, params) => {
 	const queryClient = useQueryClient();
 	const { isLoading, isRefetching, isError, isStale, data, error, refetch } = useQuery(
-		["channels"],
+		["voicechannels"],
 		async () => {
 			return axios
-				.get(`${import.meta.env.VITE_SERVER_URL}/api/channels`, {
+				.get(`${import.meta.env.VITE_SERVER_URL}/api/voicechannels`, {
 					params,
 					headers: {
 						Authorization: `Bearer ${providerToken}`,
@@ -19,14 +19,23 @@ const useGetChannels = (providerToken, params) => {
 					throw err;
 				});
 		},
-		{ staleTime: 5000, enabled: false } // TODO: remove 100000 when testing is done
+		{ staleTime: 5000, enabled: false }
 	);
 
-	const removeChannelsCache = () => {
-		queryClient.removeQueries("channels");
+	const removeVoiceChannelsCache = () => {
+		queryClient.removeQueries("voicechannels");
 	};
 
-	return { isLoading, isRefetching, isError, isStale, data, error, refetch, removeChannelsCache };
+	return {
+		isLoading,
+		isRefetching,
+		isError,
+		isStale,
+		data,
+		error,
+		refetch,
+		removeVoiceChannelsCache,
+	};
 };
 
-export default useGetChannels;
+export default useGetVoiceChannels;

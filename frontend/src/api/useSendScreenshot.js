@@ -43,15 +43,15 @@ const useSendScreenshot = () => {
 	};
 
 	// Send screenshot to the server and listen to the mutations
-	const sendScreenshotMutation = useMutation(async (data) => {
+	const sendScreenshotMutation = useMutation(async (variables) => {
 		try {
 			await axios.post(
 				`${import.meta.env.VITE_SERVER_URL}/api/screenshot`,
 				{
 					guildId: selectedServer?.id,
-					channelId: import.meta.env.VITE_TEMP_CHANNEL_ID, // Temporary channel ID
+					channelId: variables.channelId,
 					userId: getSessionItem("DCWSession", "user")?.provider_id,
-					data,
+					data: variables.encryptedData,
 				},
 				{
 					headers: {
@@ -65,9 +65,9 @@ const useSendScreenshot = () => {
 	});
 
 	// Function that can be called from the component with containerRef
-	const sendScreenshot = async (containerRef) => {
+	const sendScreenshot = async (containerRef, channelId) => {
 		const encryptedData = await createScreenshot(containerRef);
-		sendScreenshotMutation.mutate(encryptedData);
+		sendScreenshotMutation.mutate({ encryptedData, channelId });
 	};
 
 	return {

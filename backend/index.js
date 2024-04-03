@@ -5,9 +5,10 @@ require("dotenv").config();
 
 const { botPromise } = require("./bot");
 const getGuilds = require("./controllers/getGuilds");
-const getChannels = require("./controllers/getChannels");
 const getAllMembers = require("./controllers/getAllMembers");
 const postScreenshotToGuild = require("./controllers/postScreenshotToGuild");
+const getVoiceChannels = require("./controllers/getVoiceChannels");
+const getTextChannels = require("./controllers/getTextChannels");
 
 const port = process.env.PORT || 3001;
 const app = express();
@@ -36,7 +37,8 @@ app.use(function (req, res, next) {
 });
 
 app.get("/api/guilds", limiter(100), getGuilds);
-app.get("/api/channels", limiter(200), getChannels);
+app.get("/api/voicechannels", limiter(200), getVoiceChannels);
+app.get("/api/textchannels", limiter(200), getTextChannels);
 app.get("/api/members", limiter(200), getAllMembers);
 app.post("/api/screenshot", limiter(20), postScreenshotToGuild);
 

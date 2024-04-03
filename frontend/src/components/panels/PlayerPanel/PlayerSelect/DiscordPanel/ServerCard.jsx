@@ -1,11 +1,13 @@
 import { useContext, useState } from "react";
 import DiscordContext from "../../../../../contexts/DiscordContext";
-import useGetChannels from "../../../../../api/useGetChannels";
 import useSessionStorage from "../../../../../hooks/useSessionStorage";
+import useGetVoiceChannels from "../../../../../api/useGetVoiceChannels";
+import useGetTextChannels from "../../../../../api/useGetTextChannels";
 
 const ServerCard = ({ server, favorites }) => {
 	const { selectedServer, setSelectedServer } = useContext(DiscordContext);
-	const { removeChannelsCache } = useGetChannels();
+	const { removeVoiceChannelsCache } = useGetVoiceChannels();
+	const { removeTextChannelsCache } = useGetTextChannels();
 	const [isLoaded, setIsLoaded] = useState(false);
 	const { setSessionItem } = useSessionStorage();
 
@@ -14,7 +16,8 @@ const ServerCard = ({ server, favorites }) => {
 		if (selectedServer?.id === server.id) return;
 		setSelectedServer(server);
 		setSessionItem("DCWSession", "selected_server", server);
-		removeChannelsCache();
+		removeVoiceChannelsCache();
+		removeTextChannelsCache();
 	};
 
 	return (

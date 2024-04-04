@@ -2,7 +2,7 @@ import axios from "axios";
 import { useQuery } from "react-query";
 
 const useGetTextChannels = (providerToken, params) => {
-	const { isLoading, isRefetching, isError, data, error, refetch } = useQuery(
+	const { isLoading, isError, data, isStale, refetch } = useQuery(
 		["textchannels"],
 		async () => {
 			return axios
@@ -18,10 +18,10 @@ const useGetTextChannels = (providerToken, params) => {
 					throw err;
 				});
 		},
-		{ staleTime: Infinity }
+		{ staleTime: 5000, refetchOnWindowFocus: false }
 	);
 
-	return { isLoading, isRefetching, isError, data, error, refetch };
+	return { isLoading, isError, isStale, data, refetch };
 };
 
 export default useGetTextChannels;

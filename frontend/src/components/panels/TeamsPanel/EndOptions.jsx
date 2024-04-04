@@ -1,8 +1,9 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useLocalStorage from "../../../hooks/useLocalStorage";
 import { LuArrowRightLeft } from "react-icons/lu";
 import ScreenshotButton from "./ScreenshotButton";
+import DiscordContext from "../../../contexts/DiscordContext";
 
 const itemVariant = {
 	hidden: { y: -7, opacity: 0 },
@@ -12,7 +13,7 @@ const itemVariant = {
 
 const EndOptions = ({ containerRef, teams }) => {
 	const [show, setShow] = useState(true);
-
+	const { selectedServer } = useContext(DiscordContext);
 	const { getItem } = useLocalStorage();
 	const providerToken = getItem("DCWAuth", "provider_token") || null;
 
@@ -38,7 +39,13 @@ const EndOptions = ({ containerRef, teams }) => {
 							<LuArrowRightLeft className="w-6 h-6" />
 							<p className="text-sm text-center">Drag players to change teams</p>
 						</div>
-						<ScreenshotButton containerRef={containerRef} setShow={setShow} />
+						{selectedServer && (
+							<ScreenshotButton
+								containerRef={containerRef}
+								setShow={setShow}
+								selectedServer={selectedServer}
+							/>
+						)}
 					</motion.div>
 				)}
 			</AnimatePresence>

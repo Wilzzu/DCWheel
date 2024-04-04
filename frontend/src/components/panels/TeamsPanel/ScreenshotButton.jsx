@@ -1,17 +1,15 @@
-import { useContext, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import useSendScreenshot from "../../../api/useSendScreenshot";
 import { PiImagesSquare } from "react-icons/pi";
 import { cn } from "../../../../lib/utils";
 import useGetTextChannels from "../../../api/useGetTextChannels";
 import useLocalStorage from "../../../hooks/useLocalStorage";
-import DiscordContext from "../../../contexts/DiscordContext";
 import { FaHashtag } from "react-icons/fa6";
 import { RiMailSendLine } from "react-icons/ri";
 import useClickOutside from "../../../hooks/useClickOutside";
 
-const ScreenshotButton = ({ containerRef, setShow }) => {
+const ScreenshotButton = ({ containerRef, setShow, selectedServer }) => {
 	const { getItem } = useLocalStorage();
-	const { selectedServer } = useContext(DiscordContext);
 	const buttonRef = useRef(null);
 	const {
 		isLoading: textIsLoading,

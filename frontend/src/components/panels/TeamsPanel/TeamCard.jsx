@@ -41,7 +41,7 @@ const TeamCard = ({
 				)}>
 				{data.map((e, i) => (
 					<TeamPlayerCard
-						key={"TeamPlayer" + e.id}
+						key={"TeamPlayer" + e?.id}
 						player={e}
 						index={i}
 						teamIndex={index}

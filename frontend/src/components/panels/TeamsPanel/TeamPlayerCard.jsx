@@ -1,11 +1,12 @@
-import { motion } from "framer-motion";
-import { useContext, useState } from "react";
+import { motion, useAnimationControls } from "framer-motion";
+import { useContext, useEffect, useState } from "react";
 import { cn } from "../../../../lib/utils";
 import WheelContext from "../../../contexts/WheelContext";
 
 const TeamPlayerCard = ({ player, index, teamIndex, containerRef, setDraggedPlayerTeamIndex }) => {
 	const { reorderTeams, allPlayersDrawn } = useContext(WheelContext);
 	const [dragging, setDragging] = useState(false);
+	const animationControls = useAnimationControls();
 	const dragStart = () => {
 		setDragging(true);
 		setDraggedPlayerTeamIndex(teamIndex);
@@ -14,21 +15,33 @@ const TeamPlayerCard = ({ player, index, teamIndex, containerRef, setDraggedPlay
 		setDragging(false);
 		setDraggedPlayerTeamIndex(null);
 
-		// Reorder teams
+		// Reset the player card position if it's not dropped on a new team. We use animationControls since dragSnapToOrigin was unreliable
 		const droppedTeamIndex = event.target.dataset.teamIndex;
-		if (!droppedTeamIndex || teamIndex === parseInt(droppedTeamIndex)) return;
+		if (!droppedTeamIndex || teamIndex === parseInt(droppedTeamIndex)) {
+			return animationControls.start({
+				x: 0,
+				y: 0,
+			});
+		}
+
+		// If the player is dropped on a new team, reorder the teams
 		reorderTeams(teamIndex, parseInt(droppedTeamIndex), player);
 	};
+
+	useEffect(() => {
+		animationControls.start({ y: 0, opacity: 1 });
+	}, []);
+
 	return (
 		// Draggable player card
 		<motion.div
 			layout="position"
 			initial={{ y: index === 0 ? -2 : -8, opacity: 0 }}
-			animate={{ y: 0, opacity: 1 }}
+			animate={animationControls}
 			transition={{ duration: index === 0 ? 0.25 : 0.35, ease: "easeInOut" }}
 			drag={allPlayersDrawn}
-			dragSnapToOrigin
 			dragConstraints={containerRef}
+			dragMomentum={false}
 			onDragStart={dragStart}
 			onDragEnd={dragEnd}
 			className={cn(

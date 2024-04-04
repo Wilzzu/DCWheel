@@ -1,8 +1,7 @@
 import axios from "axios";
-import { useQuery, useQueryClient } from "react-query";
+import { useQuery } from "react-query";
 
 const useGetTextChannels = (providerToken, params) => {
-	const queryClient = useQueryClient();
 	const { isLoading, isRefetching, isError, data, error, refetch } = useQuery(
 		["textchannels"],
 		async () => {
@@ -22,11 +21,7 @@ const useGetTextChannels = (providerToken, params) => {
 		{ staleTime: Infinity }
 	);
 
-	const removeTextChannelsCache = () => {
-		queryClient.removeQueries("textchannels");
-	};
-
-	return { isLoading, isRefetching, isError, data, error, refetch, removeTextChannelsCache };
+	return { isLoading, isRefetching, isError, data, error, refetch };
 };
 
 export default useGetTextChannels;

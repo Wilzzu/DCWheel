@@ -1,23 +1,24 @@
 import { useContext, useState } from "react";
 import DiscordContext from "../../../../../contexts/DiscordContext";
 import useSessionStorage from "../../../../../hooks/useSessionStorage";
-import useGetVoiceChannels from "../../../../../api/useGetVoiceChannels";
-import useGetTextChannels from "../../../../../api/useGetTextChannels";
+import { useQueryClient } from "react-query";
 
 const ServerCard = ({ server, favorites }) => {
 	const { selectedServer, setSelectedServer } = useContext(DiscordContext);
-	const { removeVoiceChannelsCache } = useGetVoiceChannels();
-	const { removeTextChannelsCache } = useGetTextChannels();
 	const [isLoaded, setIsLoaded] = useState(false);
 	const { setSessionItem } = useSessionStorage();
+	const queryClient = useQueryClient();
 
 	// Select server and remove channels cache
 	const selectServer = () => {
 		if (selectedServer?.id === server.id) return;
 		setSelectedServer(server);
 		setSessionItem("DCWSession", "selected_server", server);
-		removeVoiceChannelsCache();
-		removeTextChannelsCache();
+
+		// Remove query cache
+		queryClient.removeQueries({ queryKey: ["textchannels"] });
+		queryClient.removeQueries({ queryKey: ["voicechannels"] });
+		queryClient.removeQueries({ queryKey: ["allMembers"] });
 	};
 
 	return (

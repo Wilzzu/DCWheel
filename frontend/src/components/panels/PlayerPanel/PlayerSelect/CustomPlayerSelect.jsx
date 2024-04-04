@@ -8,6 +8,7 @@ const CustomPlayerSelect = () => {
 	// const [newPlayerQueue, setNewPlayerQueue] = useState([]);
 	const ref = useRef(null);
 	const [imgCount, setImgCount] = useState(0);
+	const [disabled, setDisabled] = useState(true);
 
 	const { addPlayer } = useContext(WheelContext);
 
@@ -31,6 +32,7 @@ const CustomPlayerSelect = () => {
 		if (!ref.current.value) return;
 		newPlayer(ref.current.value, chooseImg());
 		ref.current.value = "";
+		setDisabled(true);
 	};
 
 	// Add new player to the queue and find a new image for them
@@ -60,12 +62,13 @@ const CustomPlayerSelect = () => {
 					className="w-full outline-none border-highlightBlack border-2 px-4 rounded-lg h-12 bg-darkBlack text-base hover:bg-highlightBlack focus:bg-highlightBlack placeholder:text-neutral-400 duration-100"
 					type="text"
 					placeholder="Add custom player..."
-					// name="customPlayer"
+					onChange={(e) => (e.target.value ? setDisabled(false) : setDisabled(true))}
 					onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
 				/>
 				<button
 					onClick={handleSubmit}
-					className="w-12 h-12 aspect-square bg-green-500 border-2 border-green-500 duration-150 rounded-xl hover:bg-green-600">
+					disabled={disabled}
+					className="w-12 h-12 aspect-square border-2 rounded-xl disabled:opacity-70 disabled:bg-darkBlack disabled:hover:bg-darkBlack disabled:border-highlightBlack disabled:hover:shadow-none bg-green-500/80 hover:bg-green-500 hover:shadow-green-500 hover:shadow-middle border-transparent duration-150">
 					<p className="text-3xl drop-shadow-icon">+</p>
 				</button>
 			</div>

@@ -1,8 +1,7 @@
 import axios from "axios";
-import { useQuery, useQueryClient } from "react-query";
+import { useQuery } from "react-query";
 
 const useGetVoiceChannels = (providerToken, params) => {
-	const queryClient = useQueryClient();
 	const { isLoading, isRefetching, isError, isStale, data, error, refetch } = useQuery(
 		["voicechannels"],
 		async () => {
@@ -22,10 +21,6 @@ const useGetVoiceChannels = (providerToken, params) => {
 		{ staleTime: 5000, enabled: false }
 	);
 
-	const removeVoiceChannelsCache = () => {
-		queryClient.removeQueries("voicechannels");
-	};
-
 	return {
 		isLoading,
 		isRefetching,
@@ -34,7 +29,6 @@ const useGetVoiceChannels = (providerToken, params) => {
 		data,
 		error,
 		refetch,
-		removeVoiceChannelsCache,
 	};
 };
 

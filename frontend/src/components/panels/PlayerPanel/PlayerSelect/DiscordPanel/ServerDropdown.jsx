@@ -6,6 +6,7 @@ import { FaDiscord } from "react-icons/fa";
 import { IoMdRefresh } from "react-icons/io";
 import { FaAngleDown } from "react-icons/fa6";
 import useClickOutside from "../../../../../hooks/useClickOutside";
+import AddBotNotice from "./AddBotNotice";
 
 const ServerDropdown = ({ selectedServer }) => {
 	const { getItem } = useLocalStorage();
@@ -68,7 +69,7 @@ const ServerDropdown = ({ selectedServer }) => {
 
 			{open && (
 				<>
-					<ul className="absolute top-[3.25rem] max-h-[30rem] w-full p-2 overflow-y-auto bg-darkBlack rounded-md border-2 border-highlightBlack z-10 drop-shadow-button scrollbar scrollbar-thumb-green-500 scrollbar-thumb-rounded-full scrollbar-w-2">
+					<div className="absolute top-[3.25rem] w-full p-2 bg-darkBlack rounded-md border-2 border-highlightBlack z-10 drop-shadow-button">
 						<ServerList
 							isLoading={isLoading}
 							isRefetching={isRefetching}
@@ -77,7 +78,8 @@ const ServerDropdown = ({ selectedServer }) => {
 							data={data}
 							selectedServer={selectedServer}
 						/>
-					</ul>
+						<AddBotNotice />
+					</div>
 					{/* Refresh button */}
 					<button
 						ref={buttonRef}

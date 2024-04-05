@@ -60,7 +60,7 @@ const useSendScreenshot = () => {
 				}
 			);
 		} catch (error) {
-			throw new Error("Failed to send screenshot: " + error.message);
+			throw new Error("Failed to send screenshot: " + error?.message);
 		}
 	});
 

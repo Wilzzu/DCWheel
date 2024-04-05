@@ -22,7 +22,7 @@ const DiscordPanel = () => {
 			provider: "discord",
 			options: { scopes: "guilds" },
 		});
-		if (error) console.error("Error: ", error.message);
+		if (error) console.error("Error: ", error?.message);
 	};
 
 	useEffect(() => {
@@ -59,7 +59,7 @@ const DiscordPanel = () => {
 
 	const handleLogout = async () => {
 		const { error } = await supabase.auth.signOut();
-		if (error) console.error("Error: ", error.message);
+		if (error) console.error("Error: ", error?.message);
 	};
 
 	return (

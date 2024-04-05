@@ -1,17 +1,30 @@
 import useLocalStorage from "../../../../../hooks/useLocalStorage";
-import AddBotNotice from "./AddBotNotice";
 import ErrorCard from "./ErrorCard";
 import LoadingPlaceholder from "./LoadingPlaceholder";
 import ServerCard from "./ServerCard";
+
+const List = ({ children }) => (
+	<ul className="max-h-[30rem] relative overflow-y-auto scrollbar scrollbar-thumb-green-500 scrollbar-thumb-rounded-full scrollbar-w-2">
+		{children}
+	</ul>
+);
 
 const ServerList = ({ isLoading, isRefetching, isError, data, error }) => {
 	const { getItem } = useLocalStorage();
 	const favorites = getItem("DCWDiscord", "favorite_servers") || [];
 
-	if (isRefetching) return <LoadingPlaceholder />;
-	if (isLoading) return <LoadingPlaceholder />;
-	if (isError) return <ErrorCard content={error?.response?.data?.error || error.message} />;
-	if (!data?.guilds?.length) return <AddBotNotice />;
+	if (isLoading || isRefetching)
+		return (
+			<List>
+				<LoadingPlaceholder />
+			</List>
+		);
+	if (isError)
+		return (
+			<List>
+				<ErrorCard content={error?.response?.data?.error || error?.message} />
+			</List>
+		);
 
 	// Sort servers by favorite
 	data?.guilds?.sort((a, b) => {
@@ -21,13 +34,13 @@ const ServerList = ({ isLoading, isRefetching, isError, data, error }) => {
 	});
 
 	return (
-		<>
+		<List>
 			{data?.guilds?.map((server) => (
 				<li key={server.id}>
 					<ServerCard server={server} favorites={favorites} />
 				</li>
 			))}
-		</>
+		</List>
 	);
 };
 

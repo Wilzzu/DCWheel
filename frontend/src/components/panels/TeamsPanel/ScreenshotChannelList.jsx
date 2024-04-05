@@ -30,10 +30,7 @@ const ScreenshotChannelList = ({ containerRef, selectedServer, sendScreenshot, o
 
 	// Refetch when user opens the dropdown and the data is stale
 	useEffect(() => {
-		if (open && isStale) {
-			console.log("refetching");
-			refetch();
-		}
+		if (open && isStale) refetch();
 	}, [open]);
 
 	if (!open) return;

@@ -10,7 +10,7 @@ const ServerList = ({ isLoading, isRefetching, isError, data, error }) => {
 
 	if (isRefetching) return <LoadingPlaceholder />;
 	if (isLoading) return <LoadingPlaceholder />;
-	if (isError) return <ErrorCard content={error.message} />;
+	if (isError) return <ErrorCard content={error?.response?.data?.error || error.message} />;
 	if (!data?.guilds?.length) return <AddBotNotice />;
 
 	// Sort servers by favorite

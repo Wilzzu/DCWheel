@@ -8,7 +8,7 @@ const PlayerSearchList = ({ data, addPlayer, isLoading, isRefetching, isError, e
 
 	if (isRefetching) return <LoadingPlaceholder />;
 	if (isLoading) return <LoadingPlaceholder />;
-	if (isError) return <ErrorCard content={error.message} />;
+	if (isError) return <ErrorCard content={error?.response?.data?.error || error.message} />;
 
 	return (
 		<ul>

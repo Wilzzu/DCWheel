@@ -5,6 +5,7 @@ import { FaDiscord } from "react-icons/fa";
 import DiscordPlayerSelect from "./DiscordPlayerSelect";
 import useSessionStorage from "../../../../../hooks/useSessionStorage";
 import WheelContext from "../../../../../contexts/WheelContext";
+import { useQueryClient } from "react-query";
 
 const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_KEY);
 
@@ -14,6 +15,7 @@ const DiscordPanel = () => {
 	const { clearSessionStorage } = useSessionStorage();
 	const { setPlayers } = useContext(WheelContext);
 	const [sessionStatus, setSessionStatus] = useState(0); // 0 = loading, 1 = logged in, 2 = logged out
+	const queryClient = useQueryClient();
 
 	const handleLogin = async () => {
 		const { error } = await supabase.auth.signInWithOAuth({
@@ -45,6 +47,7 @@ const DiscordPanel = () => {
 				removeItem("DCWAuth", "provider_token");
 				setPlayers([]);
 				clearSessionStorage();
+				queryClient.removeQueries();
 				setSessionStatus(2);
 			}
 		});

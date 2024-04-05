@@ -17,7 +17,7 @@ const ScreenshotButton = ({ containerRef, setShow, selectedServer }) => {
 		}
 	}, [isSuccess]);
 
-	// Reset after error
+	// Reset button after error
 	useEffect(() => {
 		if (error) setTimeout(() => reset(), 4500);
 	}, [error]);

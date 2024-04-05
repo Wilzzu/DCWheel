@@ -16,7 +16,7 @@ const VCList = ({ isLoading, isRefetching, isError, error, data, showLoading, se
 		if (isLoading) return <LoadingPlaceholder />;
 	}
 
-	if (isError) return <ErrorCard content={error.message} />;
+	if (isError) return <ErrorCard content={error?.response?.data?.error || error.message} />;
 	if (!data?.channels?.length) return <ErrorCard content={"All voice channels are empty!"} />;
 
 	return (

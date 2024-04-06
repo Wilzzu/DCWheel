@@ -1,4 +1,5 @@
 import useLocalStorage from "../../../../../hooks/useLocalStorage";
+import AddBotNotice from "./AddBotNotice";
 import ErrorCard from "./ErrorCard";
 import LoadingPlaceholder from "./LoadingPlaceholder";
 import ServerCard from "./ServerCard";
@@ -23,6 +24,13 @@ const ServerList = ({ isLoading, isRefetching, isError, data, error }) => {
 		return (
 			<List>
 				<ErrorCard content={error?.response?.data?.error || error?.message} />
+			</List>
+		);
+
+	if (!data?.guilds?.length)
+		return (
+			<List>
+				<AddBotNotice />
 			</List>
 		);
 

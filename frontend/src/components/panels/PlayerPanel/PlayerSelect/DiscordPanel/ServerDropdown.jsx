@@ -6,7 +6,7 @@ import { FaDiscord } from "react-icons/fa";
 import { IoMdRefresh } from "react-icons/io";
 import { FaAngleDown } from "react-icons/fa6";
 import useClickOutside from "../../../../../hooks/useClickOutside";
-import AddBotNotice from "./AddBotNotice";
+import BotInviteButton from "./BotInviteButton";
 
 const ServerDropdown = ({ selectedServer }) => {
 	const { getItem } = useLocalStorage();
@@ -78,7 +78,7 @@ const ServerDropdown = ({ selectedServer }) => {
 							data={data}
 							selectedServer={selectedServer}
 						/>
-						<AddBotNotice />
+						<BotInviteButton />
 					</div>
 					{/* Refresh button */}
 					<button

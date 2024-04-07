@@ -14,7 +14,13 @@ const Footer = () => {
 				</p>
 			</div>
 			<span className="flex gap-4">
-				<p className="pl-1">© 2024 Wilzzu</p>
+				<a
+					href="https://github.com/Wilzzu"
+					target="_blank"
+					rel="noreferrer"
+					className="pl-1 decoration-1 hover:underline">
+					© 2024 Wilzzu
+				</a>
 				<p className="underline">
 					<Link to="/privacy" reloadDocument={true}>
 						Privacy Policy

@@ -332,7 +332,7 @@ const Wheel = () => {
 	}, [clicked]);
 
 	return (
-		<section className="relative max-w-full aspect-square flex items-center justify-center select-none">
+		<section className="sticky top-0 max-w-full h-dvh p-5 aspect-square flex items-center justify-center select-none">
 			{/* Wheel container to hide overflow */}
 			<div className="w-full h-full overflow-hidden drop-shadow-wheel">
 				{/* Clickable spinning wheel */}
@@ -358,7 +358,7 @@ const Wheel = () => {
 				</button>
 			</div>
 			{/* Selector pin */}
-			<div className="absolute -right-4 w-0 h-0 border-t-transparent border-t-[32px] border-b-transparent border-b-[32px] border-r-neutral-50 border-r-[42px] drop-shadow-lg" />
+			<div className="absolute right-1 w-0 h-0 border-t-transparent border-t-[32px] border-b-transparent border-b-[32px] border-r-neutral-50 border-r-[42px] drop-shadow-lg" />
 			{/* Help button */}
 			<motion.div
 				initial={{ scale: 1.1, opacity: 0, rotate: 0.001 }}

@@ -3,14 +3,18 @@ import Panels from "../components/panels/Panels";
 import Title from "../components/Title";
 import GDPRPopup from "../components/GDPRPopup";
 import Footer from "../components/Footer";
+import { useRef } from "react";
 
 function Root() {
+	const rootRef = useRef(null);
 	return (
-		<div className="scrollbar-thin scrollbar-track-darkBlack scrollbar-thumb-green-500 overflow-y-auto overflow-x-hidden max-h-dvh">
-			<main className="relative h-[100dvh] flex p-5 gap-28 justify-center font-outfit">
+		<div
+			ref={rootRef}
+			className="scrollbar-thin scrollbar-track-darkBlack scrollbar-thumb-green-500 overflow-y-auto overflow-x-hidden max-h-dvh">
+			<main className="relative min-h-dvh flex gap-28 justify-center font-outfit">
 				<Title />
 				<Wheel />
-				<Panels />
+				<Panels rootRef={rootRef} />
 			</main>
 			<GDPRPopup />
 			<Footer />

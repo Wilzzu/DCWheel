@@ -55,26 +55,21 @@ const CustomPlayerSelect = () => {
 	// }, [newPlayerQueue]);
 
 	return (
-		<div className="w-full flex flex-col gap-2 text-white">
-			<div className="w-full flex gap-2 2xl:gap-4">
-				<input
-					ref={ref}
-					className="w-full outline-none border-highlightBlack border-2 px-4 rounded-lg h-12 bg-darkBlack text-base hover:bg-highlightBlack focus:bg-highlightBlack placeholder:text-neutral-400 duration-100"
-					type="text"
-					placeholder="Add custom player..."
-					onChange={(e) => (e.target.value ? setDisabled(false) : setDisabled(true))}
-					onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
-				/>
-				<button
-					onClick={handleSubmit}
-					disabled={disabled}
-					className="w-12 h-12 aspect-square border-2 rounded-xl disabled:opacity-70 disabled:bg-darkBlack disabled:hover:bg-darkBlack disabled:border-highlightBlack disabled:hover:shadow-none bg-green-500/80 hover:bg-green-500 hover:shadow-green-500 hover:shadow-middle border-transparent duration-150">
-					<p className="text-3xl drop-shadow-icon">+</p>
-				</button>
-			</div>
-			<p className="text-xs opacity-50 text-center">
-				You can also press {'"Enter"'} to add a player.
-			</p>
+		<div className="w-full flex gap-2 2xl:gap-4 text-white">
+			<input
+				ref={ref}
+				className="w-full outline-none border-highlightBlack border-2 px-4 rounded-lg h-12 bg-darkBlack text-base hover:bg-highlightBlack focus:bg-highlightBlack placeholder:text-neutral-400 duration-100"
+				type="text"
+				placeholder="Add custom player..."
+				onChange={(e) => (e.target.value ? setDisabled(false) : setDisabled(true))}
+				onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
+			/>
+			<button
+				onClick={handleSubmit}
+				disabled={disabled}
+				className="w-12 h-12 aspect-square border-2 rounded-xl disabled:opacity-70 disabled:bg-darkBlack disabled:hover:bg-darkBlack disabled:border-highlightBlack disabled:hover:shadow-none bg-green-500/80 hover:bg-green-500 hover:shadow-green-500 hover:shadow-middle border-transparent duration-150">
+				<p className="text-3xl drop-shadow-icon">+</p>
+			</button>
 		</div>
 	);
 };

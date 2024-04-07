@@ -1,8 +1,33 @@
+import { useContext, useEffect, useState } from "react";
 import { cn } from "../../../../lib/utils";
+import useWindowSize from "../../../hooks/useWindowSize";
+import WheelContext from "../../../contexts/WheelContext";
 
-const SelectedPlayerCard = ({ selectedPlayer }) => {
+const SelectedPlayerCard = ({ selectedPlayer, mainRef }) => {
+	const { height } = useWindowSize();
+	const { allPlayersDrawn } = useContext(WheelContext);
+	const [mainHeight, setMainHeight] = useState(mainRef?.current?.clientHeight || 0);
+
+	// Listen for changes in the main container's height and update the state
+	useEffect(() => {
+		const resizeObserver = new ResizeObserver((entries) => {
+			setMainHeight(entries[0]?.borderBoxSize[0]?.blockSize);
+		});
+
+		if (mainRef?.current) resizeObserver.observe(mainRef.current);
+		return () => {
+			if (mainRef?.current) {
+				resizeObserver.unobserve(mainRef.current);
+			}
+		};
+	}, []);
+
 	return (
-		<div className="flex flex-col items-center justify-center p-3 gap-3 rounded-2xl card-dark bg-gradient-to-br border-2">
+		<div
+			className={cn(
+				"flex flex-col items-center justify-center p-3 gap-3 rounded-2xl card-dark bg-gradient-to-br border-2 z-10",
+				height < mainHeight && !allPlayersDrawn && "sticky top-0" // Stick to the top when teams overflow
+			)}>
 			<p className="text-xl 2xl:text-2xl font-bold tracking-[0.01rem]">Selected player</p>
 			{/* Player name container */}
 			<div

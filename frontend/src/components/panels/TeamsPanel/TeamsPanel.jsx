@@ -5,7 +5,7 @@ import WheelContext from "../../../contexts/WheelContext";
 import EndOptions from "./EndOptions";
 import { cn } from "../../../../lib/utils";
 
-const TeamsPanel = () => {
+const TeamsPanel = ({ mainRef }) => {
 	const { teams, selectedPlayer, allPlayersDrawn } = useContext(WheelContext);
 	const teamsRef = useRef(null);
 	const [draggedPlayerTeamIndex, setDraggedPlayerTeamIndex] = useState(null);
@@ -16,7 +16,7 @@ const TeamsPanel = () => {
 				"w-full text-white flex flex-col gap-2",
 				draggedPlayerTeamIndex !== null && "!cursor-grabbing"
 			)}>
-			<SelectedPlayerCard selectedPlayer={selectedPlayer} />
+			<SelectedPlayerCard selectedPlayer={selectedPlayer} mainRef={mainRef} />
 			{/* Teams container */}
 			<div ref={teamsRef} className="grid grid-cols-2 gap-2 bg-transparent">
 				{teams.map((e, i) => (

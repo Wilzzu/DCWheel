@@ -15,7 +15,7 @@ const TeamCard = ({
 
 	return (
 		<motion.div
-			layout="size"
+			layout
 			data-team-index={index}
 			className={cn(
 				"w-full h-fit rounded-xl flex flex-col gap-2 p-3 card-dark bg-gradient-to-tr border-2 team-card overflow-hidden",
@@ -34,7 +34,7 @@ const TeamCard = ({
 				Team {index + 1}
 			</motion.p>
 			{/* Players */}
-			<ul
+			<motion.ul
 				className={cn(
 					"w-full flex flex-col gap-2",
 					draggedPlayerTeamIndex !== null && "pointer-events-none"
@@ -49,7 +49,7 @@ const TeamCard = ({
 						setDraggedPlayerTeamIndex={setDraggedPlayerTeamIndex}
 					/>
 				))}
-			</ul>
+			</motion.ul>
 		</motion.div>
 	);
 };

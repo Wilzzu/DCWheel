@@ -11,45 +11,47 @@ const itemVariant = {
 	exit: { y: -5, opacity: 0 },
 };
 
-const EndOptions = ({ containerRef, teams }) => {
-	const [show, setShow] = useState(true);
+const EndOptions = ({ mainRef, containerRef }) => {
 	const { selectedServer } = useContext(DiscordContext);
 	const { getItem } = useLocalStorage();
 	const providerToken = getItem("DCWAuth", "provider_token") || null;
+	const [open, setOpen] = useState(false);
 
-	// Show button again if teams are changed
 	useEffect(() => {
-		setShow(true);
-	}, [teams]);
+		setTimeout(() => setOpen(true), 600);
+	}, []);
 
 	return (
-		<div className="w-full flex items-center justify-center mt-2">
-			<AnimatePresence mode="wait">
-				{show && providerToken && (
-					<motion.div
-						key="endOptions"
-						initial="hidden"
-						animate="visible"
-						exit="exit"
-						transition={{ duration: 0.5, ease: "easeInOut", delay: 0.7 }}
-						variants={itemVariant}
-						className="flex gap-4 items-center justify-center w-full">
+		<motion.div
+			key="endOptions"
+			initial="hidden"
+			animate="visible"
+			exit="exit"
+			layout
+			variants={itemVariant}
+			className="w-full flex items-center justify-center h-16 mt-2">
+			<AnimatePresence>
+				{open && (
+					<>
 						{/* Hint text */}
-						<div className="flex gap-2">
+						<motion.div
+							variants={itemVariant}
+							transition={{ duration: 0.5, ease: "easeInOut" }}
+							className="flex gap-2">
 							<LuArrowRightLeft className="w-6 h-6" />
 							<p className="text-sm text-center">Drag players to change teams</p>
-						</div>
-						{selectedServer && (
+						</motion.div>
+						{providerToken && selectedServer && (
 							<ScreenshotButton
+								mainRef={mainRef}
 								containerRef={containerRef}
-								setShow={setShow}
 								selectedServer={selectedServer}
 							/>
 						)}
-					</motion.div>
+					</>
 				)}
 			</AnimatePresence>
-		</div>
+		</motion.div>
 	);
 };
 

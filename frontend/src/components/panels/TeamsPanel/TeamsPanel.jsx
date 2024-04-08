@@ -30,7 +30,7 @@ const TeamsPanel = ({ mainRef }) => {
 					/>
 				))}
 			</div>
-			{allPlayersDrawn && <EndOptions containerRef={teamsRef} teams={teams} />}
+			{allPlayersDrawn && <EndOptions mainRef={mainRef} containerRef={teamsRef} />}
 		</div>
 	);
 };

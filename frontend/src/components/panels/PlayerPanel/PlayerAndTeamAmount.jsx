@@ -23,11 +23,13 @@ const PlayerAndTeamAmount = () => {
 					<HiOutlineUserGroup className={cn("h-auto w-6", teamsNotEven && "stroke-[#FF5858]")} />
 					<p className={teamsNotEven ? "text-[#FF5858]" : ""}>{teamAmount}</p>
 				</span>
-				{/* {teamsNotEven ? "❌" : "✔"} */}
+				{/* Tooltip | Due to z-index fighting, there's an additional div to always show tooltip on top of other elements */}
 				{teamsNotEven && (
-					<span className="absolute text-nowrap -top-1 opacity-0 p-2 bg-highlightBlack rounded-lg group-hover:-top-9 group-hover:opacity-100 duration-300 text-xs drop-shadow-md border border-red-500">
-						{"Teams won't be even!"}
-					</span>
+					<div className="absolute z-0 group-hover:z-10 flex justify-center">
+						<span className="absolute text-nowrap -bottom-2 opacity-0 p-2 bg-highlightBlack rounded-lg group-hover:bottom-5 group-hover:opacity-100 duration-300 text-xs drop-shadow-md border border-red-500">
+							{"Teams won't be even!"}
+						</span>
+					</div>
 				)}
 			</div>
 			<RemoveAllButton players={players} setPlayers={setPlayers} />

@@ -5,10 +5,28 @@ import PickingOrder from "./PickingOrder";
 import Autospin from "./Autospin";
 import ReturnToMenu from "./ReturnToMenu";
 import Mute from "./Mute";
+import { motion } from "framer-motion";
+import { useContext, useRef } from "react";
+import WheelContext from "../../contexts/WheelContext";
 
 const SettingsPanel = ({ ongoing }) => {
+	const { allPlayersDrawn } = useContext(WheelContext);
+	const ref = useRef(null);
+
+	// When new teams are added, the settings panel will change position
+	// Keep the settings panel in view by scrolling to the bottom of it
+	// This will also show the newest team by default, so we don't need another function for it
+	const scrollToElement = () => {
+		if (allPlayersDrawn) return;
+		ref.current.scrollIntoView({ behavior: "smooth", block: "end" });
+	};
+
 	return (
-		<div
+		<motion.div
+			ref={ref}
+			layout
+			transition={{ layout: { duration: 0.2 } }}
+			onLayoutAnimationStart={scrollToElement}
 			className={cn(
 				"mt-2 w-full text-xs 2k:text-sm bg-gradient-to-r from-normalBlack to-highlightBlack rounded-lg text-white flex px-2 py-1 items-center justify-between border-4 border-highlightBlack shadow-xl shadow-[#1E1E1E] z-10"
 			)}>
@@ -28,7 +46,7 @@ const SettingsPanel = ({ ongoing }) => {
 					<ReturnToMenu />
 				</>
 			)}
-		</div>
+		</motion.div>
 	);
 };
 

@@ -332,7 +332,7 @@ const Wheel = () => {
 	}, [clicked]);
 
 	return (
-		<section className="sticky top-0 max-w-full h-dvh p-5 aspect-square flex items-center justify-center select-none">
+		<section className="sticky top-0 max-w-full h-dvh p-5 aspect-square flex items-center justify-center select-none pointer-events-none">
 			{/* Wheel container to hide overflow */}
 			<div className="w-full h-full overflow-hidden drop-shadow-wheel">
 				{/* Clickable spinning wheel */}
@@ -341,7 +341,7 @@ const Wheel = () => {
 					ref={wheelRef}
 					disabled={!canSpin || players.length <= 0}
 					className={cn(
-						"aspect-square w-full rounded-full overflow-hidden disabled:hover:cursor-default",
+						"aspect-square w-full rounded-full overflow-hidden disabled:hover:cursor-default pointer-events-auto",
 						!ongoing && "animate-infinite-rotate",
 						canSpin && players.length > 0 && "hover:cursor-pointer"
 					)}
@@ -396,7 +396,7 @@ const Wheel = () => {
 						y: { type: "spring", stiffness: 140, damping: 14 },
 						opacity: { duration: 0.2 },
 					}}
-					className="absolute w-1/2 h-1/5 bg-normalBlack rounded-2xl shadow-xl flex flex-col items-center justify-center bg-opacity-90 backdrop-blur-lg text-white gap-2 p-5">
+					className="absolute w-1/2 h-1/5 bg-normalBlack rounded-2xl shadow-xl flex flex-col items-center justify-center bg-opacity-90 backdrop-blur-lg text-white gap-2 p-5 pointer-events-auto">
 					<p className="text-lg 2k:text-xl">Return to player select?</p>
 					{/* Selection buttons */}
 					<div className="w-full flex gap-2 text-lg 2k:text-xl drop-shadow-md">

@@ -45,11 +45,19 @@ const ServerDropdown = ({ selectedServer }) => {
 				<span className="flex items-center gap-2">
 					{selectedServer ? (
 						<>
-							<img
-								src={selectedServer.icon}
-								alt={selectedServer.name + " icon"}
-								className="h-7 w-auto aspect-square rounded-full"
-							/>
+							{selectedServer.icon ? (
+								<img
+									src={selectedServer.icon}
+									alt={selectedServer.name + " icon"}
+									className="h-7 w-auto aspect-square rounded-full"
+								/> // Server icon placeholder
+							) : (
+								<div className="flex items-center justify-center h-7 w-7 aspect-square bg-[#5865F2] rounded-full">
+									<p className="text-neutral-100 text-center text-sm">
+										{selectedServer.name[0].toUpperCase()}
+									</p>
+								</div>
+							)}
 							<p className="w-full truncate" title={selectedServer.name}>
 								{selectedServer.name}
 							</p>
@@ -61,7 +69,7 @@ const ServerDropdown = ({ selectedServer }) => {
 						</>
 					)}
 				</span>
-				{!open && <FaAngleDown className="h-6 w-auto mt-1" />}
+				{!open && <FaAngleDown className="h-6 w-auto mt-1 pointer-events-none" />}
 			</button>
 
 			{/* Show list of servers */}

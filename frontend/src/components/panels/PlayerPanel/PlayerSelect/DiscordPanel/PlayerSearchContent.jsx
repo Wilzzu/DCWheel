@@ -41,6 +41,7 @@ const PlayerSearchContent = ({ isLoading, isRefetching, isError, data, error }) 
 			<div className="max-h-[30rem] overflow-y-auto scrollbar scrollbar-thumb-green-500 scrollbar-thumb-rounded-full scrollbar-w-2 pr-1">
 				<PlayerSearchList
 					data={filteredData}
+					searchInput={searchInput}
 					addPlayer={addPlayer}
 					isLoading={isLoading}
 					isRefetching={isRefetching}

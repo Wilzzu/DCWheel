@@ -3,12 +3,32 @@ import LoadingPlaceholder from "./LoadingPlaceholder";
 import ErrorCard from "./ErrorCard";
 import { useState } from "react";
 
-const PlayerSearchList = ({ data, addPlayer, isLoading, isRefetching, isError, error }) => {
+const PlayerSearchList = ({
+	data,
+	searchInput,
+	addPlayer,
+	isLoading,
+	isRefetching,
+	isError,
+	error,
+}) => {
 	const [isLoaded, setIsLoaded] = useState(false);
 
-	if (isRefetching) return <LoadingPlaceholder />;
-	if (isLoading) return <LoadingPlaceholder />;
+	if (isRefetching || isLoading) return <LoadingPlaceholder />;
 	if (isError) return <ErrorCard content={error?.response?.data?.error || error?.message} />;
+	if (!data?.length) {
+		if (searchInput)
+			return (
+				<div className="p-2 gap-2 w-full text-sm text-center">
+					<p>No players found.</p>
+				</div>
+			);
+		return (
+			<div className="p-2 gap-2 w-full text-sm text-center text-pretty">
+				<p>All members from the server have been added!</p>
+			</div>
+		);
+	}
 
 	return (
 		<ul>

@@ -1,11 +1,13 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { FiLogOut } from "react-icons/fi";
 import useClickOutside from "../../../../../hooks/useClickOutside";
+import DiscordContext from "../../../../../contexts/DiscordContext";
 
 const LogOutButton = ({ handleLogout }) => {
 	const confirmRef = useRef(null);
 	const buttonRef = useRef(null);
 	const { open, setOpen } = useClickOutside(confirmRef, buttonRef);
+	const { selectedServer } = useContext(DiscordContext);
 
 	return (
 		<div className="relative">
@@ -14,7 +16,7 @@ const LogOutButton = ({ handleLogout }) => {
 				onClick={() => setOpen((prev) => !prev)}
 				className="flex items-center justify-center gap-2 h-full bg-darkBlack hover:bg-highlightBlack duration-150 border-2 border-highlightBlack text-sm rounded-lg text-nowrap px-3">
 				<FiLogOut className="h-6 w-auto" />
-				<p>Log out</p>
+				{!selectedServer && <p>Log out</p>}
 			</button>
 			{open && (
 				<div

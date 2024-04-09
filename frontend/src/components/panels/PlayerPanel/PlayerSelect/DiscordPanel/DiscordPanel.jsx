@@ -69,7 +69,8 @@ const DiscordPanel = () => {
 			) : sessionStatus === 2 ? ( // Logged out
 				<button
 					onClick={handleLogin}
-					className="group w-full flex items-center justify-center gap-2 p-3 bg-highlightBlack hover:bg-green-600 duration-200 rounded-xl shadow-middle shadow-transparent hover:shadow-green-600 border-2 border-green-500">
+					className="group relative w-full flex items-center justify-center gap-2 p-3 bg-gradient-to-b from-highlightBlack to-darkBlack duration-200 rounded-xl shadow-middle shadow-transparent hover:shadow-green-600 border-2 border-green-500 overflow-hidden">
+					<div className="absolute w-full h-full bg-gradient-to-br from-green-500 to-green-600 opacity-0 group-hover:opacity-100 duration-300 " />
 					<FaDiscord className="w-8 h-auto drop-shadow-icon" />
 					<p className="drop-shadow-icon text-lg">Login to add Discord players</p>
 				</button>

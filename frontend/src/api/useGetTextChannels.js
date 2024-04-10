@@ -1,10 +1,13 @@
 import axios from "axios";
+import { useState } from "react";
 import { useQuery } from "react-query";
 
 const useGetTextChannels = (providerToken, params) => {
-	const { isLoading, isError, data, isStale, refetch } = useQuery(
+	const [lastFetch, setLastFetch] = useState(null);
+	const { isLoading, isRefetching, isError, data, refetch } = useQuery(
 		["textchannels"],
 		async () => {
+			setLastFetch(Date.now());
 			return axios
 				.get(`${import.meta.env.VITE_SERVER_URL}/api/textchannels`, {
 					params,
@@ -18,10 +21,18 @@ const useGetTextChannels = (providerToken, params) => {
 					throw err;
 				});
 		},
-		{ staleTime: 5000, refetchOnWindowFocus: false }
+		{ staleTime: Infinity, refetchOnWindowFocus: false }
 	);
 
-	return { isLoading, isError, isStale, data, refetch };
+	// Refetch when enough time has passed since the last fetch
+	const refetchTextChannels = () => {
+		if (lastFetch !== null && Date.now() - lastFetch > 10000) {
+			refetch();
+			setLastFetch(Date.now());
+		}
+	};
+
+	return { isLoading, isRefetching, isError, data, refetchTextChannels };
 };
 
 export default useGetTextChannels;

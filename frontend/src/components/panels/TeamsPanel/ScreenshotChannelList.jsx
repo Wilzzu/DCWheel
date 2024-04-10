@@ -17,7 +17,7 @@ function calculateOpeningDirection(container, child) {
 
 const ScreenshotChannelList = ({ mainRef, containerRef, selectedServer, sendScreenshot, open }) => {
 	const { getItem } = useLocalStorage();
-	const { isLoading, isError, isStale, data, refetch } = useGetTextChannels(
+	const { isLoading, isRefetching, isError, data, refetchTextChannels } = useGetTextChannels(
 		getItem("DCWAuth", "provider_token"),
 		{ guildId: selectedServer.id }
 	);
@@ -26,14 +26,15 @@ const ScreenshotChannelList = ({ mainRef, containerRef, selectedServer, sendScre
 
 	// Component for the list
 	const List = ({ children }) => (
-		<ul
-			ref={listRef}
-			className={cn(
-				"absolute right-0 w-full z-10 p-1 max-h-40 overflow-y-auto overflow-x-hidden bg-darkBlack border-2 border-highlightBlack rounded-md scrollbar-thin scrollbar-thumb-green-500 scrollbar-thumb-rounded-full scrollbar-track-rounded-full",
-				openBelow ? "top-16" : "bottom-16"
-			)}>
-			{children}
-		</ul>
+		<div className={cn("absolute right-0 w-full z-10 pl-4", openBelow ? "top-16" : "bottom-16")}>
+			<div className="p-1 bg-darkBlack border-2 border-highlightBlack rounded-md">
+				<ul
+					ref={listRef}
+					className="max-h-40 pr-1 overflow-y-auto overflow-x-hidden scrollbar scrollbar-w-1 scrollbar-thumb-green-500 scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
+					{children}
+				</ul>
+			</div>
+		</div>
 	);
 
 	// Show only allowed channels
@@ -50,19 +51,19 @@ const ScreenshotChannelList = ({ mainRef, containerRef, selectedServer, sendScre
 	useEffect(() => {
 		if (!open) return;
 		if (openBelow) setOpenBelow(calculateOpeningDirection(mainRef, listRef));
-		if (isStale) refetch();
+		refetchTextChannels(); // Use this to refetch, since making the data stale would reset scroll position
 	}, [open]);
 
 	if (!open) return;
 
 	// Loading state
-	if (isLoading)
+	if (isLoading || isRefetching)
 		return (
 			<List>
-				<div className="flex items-center h-10 p-2 gap-2 w-full">
+				<li className="flex items-center h-10 p-2 gap-2 w-full">
 					<ImSpinner2 className="animate-spin h-5 w-5" />
 					Loading...
-				</div>
+				</li>
 			</List>
 		);
 
@@ -70,10 +71,10 @@ const ScreenshotChannelList = ({ mainRef, containerRef, selectedServer, sendScre
 	if (isError) {
 		return (
 			<List>
-				<div className="flex items-center h-10 p-2 gap-1 w-full">
+				<li className="flex items-center h-10 p-2 gap-1 w-full">
 					<BiError className="text-red-500 h-5 w-5" />
 					<p>Error</p>
-				</div>
+				</li>
 			</List>
 		);
 	}

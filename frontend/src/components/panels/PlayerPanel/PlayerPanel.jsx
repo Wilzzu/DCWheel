@@ -19,13 +19,13 @@ const PlayerPanel = () => {
 	}, [players]);
 
 	return (
-		<div className="relative w-full h-full flex flex-col gap-2 p-5 pb-2 rounded-2xl overflow-hidden card-dark bg-gradient-to-br border-4">
+		<div className="relative w-full h-full flex flex-col gap-2 p-5 pb-2 rounded-2xl overflow-hidden card-dark bg-gradient-to-br border-4 text-sm 2xl:text-base">
 			<PlayerSelect />
 			<PlayerAndTeamAmount />
 			{/* List players */}
 			<ul
 				ref={ref}
-				className="flex flex-col gap-1 h-full overflow-auto scrollbar scrollbar-thumb-green-500 scrollbar-thumb-rounded-full scrollbar-w-2 pr-2">
+				className="flex flex-col gap-1 h-full overflow-auto scrollbar scrollbar-w-1 2xl:scrollbar-w-2 scrollbar-thumb-green-500 scrollbar-thumb-rounded-full pr-2">
 				<AnimatePresence>
 					{players?.map((e) => (
 						<PlayerCard key={e.id} player={e} />

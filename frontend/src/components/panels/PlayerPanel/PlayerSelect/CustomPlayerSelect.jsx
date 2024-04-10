@@ -59,7 +59,7 @@ const CustomPlayerSelect = () => {
 		<div className="w-full flex gap-2 2xl:gap-2 text-white">
 			<input
 				ref={ref}
-				className="w-full outline-none border-highlightBlack border-2 px-4 rounded-lg h-12 bg-darkBlack text-base hover:bg-highlightBlack focus:bg-highlightBlack placeholder:text-neutral-400 duration-100"
+				className="w-full outline-none border-highlightBlack border-2 px-3 2xl:px-4 rounded-md 2xl:rounded-lg h-10 2xl:h-12 bg-darkBlack hover:bg-highlightBlack focus:bg-highlightBlack placeholder:text-neutral-400 duration-100"
 				type="text"
 				placeholder="Add custom player..."
 				onChange={(e) => (e.target.value ? setDisabled(false) : setDisabled(true))}
@@ -68,8 +68,8 @@ const CustomPlayerSelect = () => {
 			<button
 				onClick={handleSubmit}
 				disabled={disabled}
-				className="h-full border-2 rounded-lg px-[0.6rem] disabled:opacity-70 disabled:bg-darkBlack disabled:hover:bg-darkBlack disabled:border-highlightBlack disabled:hover:shadow-none bg-green-600 hover:bg-green-500 hover:shadow-green-500 hover:shadow-middle border-green-500 duration-150">
-				<FiPlus className="h-6 w-auto drop-shadow" />
+				className="h-full border-2 rounded-md 2xl:rounded-lg px-[0.6rem] disabled:opacity-70 disabled:bg-darkBlack disabled:hover:bg-darkBlack disabled:border-highlightBlack disabled:hover:shadow-none bg-green-600 hover:bg-green-500 hover:shadow-green-500 hover:shadow-middle border-green-500 duration-150">
+				<FiPlus className="h-4 2xl:h-6 w-auto drop-shadow" />
 			</button>
 		</div>
 	);

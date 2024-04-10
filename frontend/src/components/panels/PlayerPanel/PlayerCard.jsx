@@ -15,11 +15,11 @@ const PlayerCard = ({ player }) => {
 			transition={{ duration: 0.2, layout: { duration: 0.1 } }}>
 			<button
 				onClick={() => removePlayer(player.id)}
-				className="group w-full h-11 2k:h-12 bg-darkBlack border-2 border-darkBlack drop-shadow-button rounded-xl flex gap-3 py-1 px-2 items-center hover:cursor-pointer hover:bg-red-900 hover:border-red-600 focus:bg-red-900 focus:outline-red-600">
+				className="group w-full h-9 2xl:h-11 2k:h-12 bg-darkBlack border-2 border-darkBlack drop-shadow-button rounded-lg 2xl:rounded-xl flex gap-2 2xl:gap-3 py-1 px-2 items-center hover:cursor-pointer hover:bg-red-900 hover:border-red-600 focus:bg-red-900 focus:outline-red-600">
 				{/* Avatar */}
-				<div className="h-8 w-8 aspect-square">
+				<div className="h-6 2xl:h-8 w-6 2xl:w-8 aspect-square">
 					<img
-						className="h-8 w-8 aspect-square drop-shadow-md rounded-full"
+						className="h-6 2xl:h-8 w-6 2xl:w-8 aspect-square drop-shadow-md rounded-full"
 						src={player.avatar}
 						alt={`${player.name} avatar`}
 					/>
@@ -31,8 +31,8 @@ const PlayerCard = ({ player }) => {
 					{player.name}
 				</p>
 				{/* Delete icon */}
-				<div className="h-full opacity-40 p-[0.1rem] group-hover:opacity-100 group-hover:drop-shadow-md">
-					<DeleteIcon className="stroke-neutral-500 group-hover:stroke-white group-focus:stroke-white" />
+				<div className="h-full flex items-center justify-center opacity-40 p-[0.1rem] group-hover:opacity-100 group-hover:drop-shadow-md">
+					<DeleteIcon className="w-4 2xl:w-6 h-4 2xl:h-6 stroke-neutral-500 group-hover:stroke-white group-focus:stroke-white" />
 				</div>
 			</button>
 		</motion.li>

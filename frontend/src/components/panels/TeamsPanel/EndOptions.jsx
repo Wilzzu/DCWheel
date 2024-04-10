@@ -37,7 +37,7 @@ const EndOptions = ({ mainRef, containerRef }) => {
 						<motion.div
 							variants={itemVariant}
 							transition={{ duration: 0.5, ease: "easeInOut" }}
-							className="flex gap-2">
+							className="flex gap-2 items-center">
 							<LuArrowRightLeft className="w-6 h-6" />
 							<p className="text-sm text-center">Drag players to change teams</p>
 						</motion.div>

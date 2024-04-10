@@ -293,7 +293,7 @@ const Wheel = () => {
 			// If tick has entered new slice, play audio if enough time has passed from last audio clip
 			// Tweak the 0.00001, 10 and 5 values to determine how easily the sound is played
 			if ((curRotation - 0.00001) % (360 / currentPlayers.length) < 10) {
-				if (lastAudioPlayed > 5) {
+				if (lastAudioPlayed > 3) {
 					lastAudioPlayed = 0;
 					soundPromise.then(playSound);
 				}

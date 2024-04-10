@@ -19,12 +19,12 @@ const PlayerSearchList = ({
 	if (!data?.length) {
 		if (searchInput)
 			return (
-				<div className="p-2 gap-2 w-full text-sm text-center">
+				<div className="p-1 2xl:p-2 gap-2 w-full text-sm text-center">
 					<p>No players found.</p>
 				</div>
 			);
 		return (
-			<div className="p-2 gap-2 w-full text-sm text-center text-pretty">
+			<div className="p-1 2xl:p-2 gap-2 w-full text-sm text-center text-pretty">
 				<p>All members from the server have been added!</p>
 			</div>
 		);
@@ -40,17 +40,17 @@ const PlayerSearchList = ({
 						<img
 							src={member.avatar}
 							alt={member.name + " avatar"}
-							className="w-8 h-8 rounded-full"
+							className="w-6 2xl:w-8 h-6 2xl:h-8 rounded-full"
 							loading="lazy"
 							onLoad={() => setIsLoaded(true)}
 						/>
 						{!isLoaded && (
-							<div className="absolute h-8 w-8 aspect-square bg-neutral-700 rounded-full animate-pulse" />
+							<div className="absolute h-6 2xl:h-8 w-6 2xl:w-8 aspect-square bg-neutral-700 rounded-full animate-pulse" />
 						)}
 						<p className="w-full truncate text-left" title={member.name}>
 							{member.name}
 						</p>
-						<LuPlusCircle className="w-7 h-7 opacity-20 group-hover:opacity-100" />
+						<LuPlusCircle className="w-6 2xl:w-7 h-6 2xl:h-7 opacity-20 group-hover:opacity-100" />
 					</button>
 				</li>
 			))}

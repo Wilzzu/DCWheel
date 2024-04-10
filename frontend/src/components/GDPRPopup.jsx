@@ -16,13 +16,13 @@ const GDPRPopup = () => {
 
 	return (
 		// Overflow hidden container
-		<div className="w-full h-full absolute left-0 top-0 pointer-events-none overflow-hidden">
+		<div className="w-full h-full absolute left-0 top-0 pointer-events-none overflow-hidden text-sm 2xl:text-base">
 			{/* Popup */}
 			<motion.div
 				initial={{ y: 200, opacity: 0 }}
 				animate={{ y: 0, opacity: 1 }}
 				transition={{ type: "spring", stiffness: 60, delay: 0.5 }}
-				className="absolute p-6 gap-4 flex bottom-14 left-14 bg-green-600 rounded-xl text-white drop-shadow-icon z-50 pointer-events-auto">
+				className="absolute p-4 2xl:p-6 gap-4 flex bottom-14 left-14 bg-green-600 rounded-md 2xl:rounded-xl text-white drop-shadow-icon z-50 pointer-events-auto">
 				<div className="flex gap-6">
 					<p className="drop-shadow-text">
 						This site uses local storage to save your preferences. We also use trusted external{" "}

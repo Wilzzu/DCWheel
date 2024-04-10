@@ -43,17 +43,17 @@ const VCDropdown = () => {
 	}, [isStale, open, disabled]);
 
 	return (
-		<div className="w-1/2 h-12 flex items-center justify-start">
+		<div className="w-1/2 h-10 2xl:h-12 flex items-center justify-start">
 			{/* Voice channel dropdown button */}
 			<button
 				ref={dropdownButton}
 				onClick={() => setOpen((prev) => !prev)}
 				className={cn(
-					"h-full w-full flex items-center justify-center px-4 bg-darkBlack hover:bg-highlightBlack duration-150 border-2 border-highlightBlack rounded-lg",
+					"h-full w-full flex items-center justify-center px-4 bg-darkBlack hover:bg-highlightBlack duration-150 border-2 border-highlightBlack rounded-md 2xl:rounded-lg",
 					open && "justify-between"
 				)}>
 				<span className="flex items-center gap-2">
-					<img src={voiceIcon} alt="" className="w-5 h-auto mt-[0.1rem]" />
+					<img src={voiceIcon} alt="Add from VC icon" className="w-5 h-auto mt-[0.1rem]" />
 					Add from VC
 				</span>
 				{/* Refresh button */}
@@ -71,7 +71,7 @@ const VCDropdown = () => {
 			{/* Show list of voice channels */}
 			{/* TODO: Make the scrollbar look better */}
 			{open && (
-				<ul className="absolute top-[3.25rem] max-h-[30rem] w-3/4 p-2 overflow-y-auto bg-darkBlack rounded-md border-2 border-highlightBlack z-10 scrollbar scrollbar-thumb-green-500 scrollbar-thumb-rounded-full scrollbar-w-2">
+				<ul className="absolute top-11 2xl:top-[3.25rem] max-h-[30rem] w-3/4 p-2 overflow-y-auto bg-darkBlack rounded-md border-2 border-highlightBlack z-10 scrollbar scrollbar-thumb-green-500 scrollbar-thumb-rounded-full scrollbar-w-2">
 					<VCList
 						isLoading={isLoading}
 						isRefetching={isRefetching}

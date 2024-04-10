@@ -25,7 +25,7 @@ const PlayerSearchContent = ({ isLoading, isRefetching, isError, data, error }) 
 	return (
 		<div
 			onClick={(e) => e.stopPropagation()}
-			className="absolute top-[3.25rem] right-0 w-3/4 p-2 bg-darkBlack rounded-md border-2 border-highlightBlack">
+			className="absolute top-11 2xl:top-[3.25rem] right-0 w-3/4 p-2 bg-darkBlack rounded-md border-2 border-highlightBlack">
 			{/* Search bar */}
 			<div className="w-full flex gap-2 items-center justify-center bg-highlightBlack rounded-md px-3 py-0 mb-2 drop-shadow-button">
 				<IoSearch className="w-5 h-auto" />
@@ -34,7 +34,7 @@ const PlayerSearchContent = ({ isLoading, isRefetching, isError, data, error }) 
 					type="text"
 					placeholder="Search players..."
 					onChange={(e) => setSearchInput(e.target.value)}
-					className="h-12 w-full outline-none bg-transparent"
+					className="h-10 2xl:h-12 w-full outline-none bg-transparent"
 				/>
 			</div>
 			{/* Filtered list of players */}

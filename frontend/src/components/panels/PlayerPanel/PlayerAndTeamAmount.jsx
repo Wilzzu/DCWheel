@@ -13,7 +13,7 @@ const PlayerAndTeamAmount = () => {
 			<div className="flex gap-1 items-center">
 				<p>Players</p>
 				<span className="bg-darkBlack rounded-md 2xl:rounded-lg p-2 2xl:min-w-[4.2rem] flex gap-2 items-center justify-center drop-shadow-button">
-					<FaRegUser className="h-auto w-2 2xl:w-4" />
+					<FaRegUser className="h-auto w-3 2xl:w-4" />
 					<p>{players?.length || 0}</p>
 				</span>
 			</div>

@@ -25,24 +25,26 @@ const ServerCard = ({ server, favorites }) => {
 		<button
 			key={server.id}
 			onClick={selectServer}
-			className="flex items-center h-10 p-2 gap-2 w-full overflow-hidden hover:bg-highlightBlack rounded-md">
+			className="flex items-center h-8 2xl:h-10 p-2 gap-2 w-full overflow-hidden hover:bg-highlightBlack rounded 2xl:rounded-md">
 			{server.icon ? (
 				<>
 					<img
 						src={server.icon}
 						alt={server.name + " icon"}
-						className="rounded-full h-6 w-auto aspect-square"
+						className="rounded-full h-5 2xl:h-6 w-auto aspect-square"
 						loading="lazy"
 						onLoad={() => setIsLoaded(true)}
 					/>
 					{!isLoaded && (
-						<div className="absolute h-6 w-6 aspect-square bg-neutral-700 rounded-full animate-pulse" />
+						<div className="absolute h-5 2xl:h-6 w-5 2xl:w-6 aspect-square bg-neutral-700 rounded-full animate-pulse" />
 					)}
 				</>
 			) : (
 				// Server icon placeholder
-				<div className="flex items-center justify-center h-6 w-6 aspect-square bg-[#5865F2] rounded-full">
-					<p className="text-neutral-100 text-center text-sm">{server.name[0].toUpperCase()}</p>
+				<div className="flex items-center justify-center h-5 2xl:h-6 w-5 2xl:w-6 aspect-square bg-[#5865F2] rounded-full">
+					<p className="text-neutral-100 text-center text-xs 2xl:text-sm">
+						{server.name[0].toUpperCase()}
+					</p>
 				</div>
 			)}
 			<p className="w-full truncate text-left">{server.name}</p>

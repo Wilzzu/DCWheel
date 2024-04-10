@@ -14,14 +14,14 @@ const LogOutButton = ({ handleLogout }) => {
 			<button
 				ref={buttonRef}
 				onClick={() => setOpen((prev) => !prev)}
-				className="flex items-center justify-center gap-2 h-full bg-darkBlack hover:bg-highlightBlack duration-150 border-2 border-highlightBlack text-sm rounded-lg text-nowrap px-3">
-				<FiLogOut className="h-6 w-auto" />
+				className="flex items-center justify-center gap-2 h-full bg-darkBlack hover:bg-highlightBlack duration-150 border-2 border-highlightBlack text-sm rounded-md 2xl:rounded-lg text-nowrap px-3">
+				<FiLogOut className="h-5 2xl:h-6 w-auto" />
 				{!selectedServer && <p>Log out</p>}
 			</button>
 			{open && (
 				<div
 					ref={confirmRef}
-					className="absolute top-[3.25rem] right-0 p-2 bg-darkBlack rounded-md border-2 border-highlightBlack z-10 drop-shadow-button text-center">
+					className="absolute top-11 2xl:top-[3.25rem] right-0 p-2 bg-darkBlack rounded-md border-2 border-highlightBlack z-10 drop-shadow 2xl:drop-shadow-button text-center">
 					<h1>Log out?</h1>
 					<div className="flex w-full justify-center gap-2 mt-1">
 						<button

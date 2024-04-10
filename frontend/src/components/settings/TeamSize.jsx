@@ -38,8 +38,8 @@ const TeamSize = () => {
 	return (
 		<div className="flex flex-col items-center">
 			<p>Team size</p>
-			<div className="flex items-center gap-1 bg-darkBlack rounded-lg px-2 h-10 drop-shadow-icon">
-				<HiOutlineUserGroup className="h-6 w-auto mr-[0.2rem]" />
+			<div className="flex items-center gap-1 bg-darkBlack rounded-md 2xl:rounded-lg px-1 2xl:px-2 h-8 2xl:h-10 drop-shadow-icon">
+				<HiOutlineUserGroup className="h-5 2xl:h-6 w-auto 2xl:mr-[0.2rem]" />
 				<input
 					ref={ref}
 					defaultValue={playersPerTeam}
@@ -49,7 +49,7 @@ const TeamSize = () => {
 					onClick={(e) => e.target.select()}
 					onChange={handleChange}
 					onBlur={handleUnfocus}
-					className="text-center outline-none font-bold bg-neutral-700 rounded-md h-7 2xl:h-8 w-8 2xl:w-9"
+					className="text-center outline-none font-semibold 2xl:font-bold bg-neutral-700 rounded 2xl:rounded-md h-6 2xl:h-8 w-7 2xl:w-9 text-[0.65rem] 2xl:text-xs"
 				/>
 				{/* Buttons */}
 				<div className="h-full flex flex-col justify-center">

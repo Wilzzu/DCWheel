@@ -18,7 +18,7 @@ const TeamCard = ({
 			layout
 			data-team-index={index}
 			className={cn(
-				"w-full h-fit rounded-xl flex flex-col gap-2 p-3 card-dark bg-gradient-to-tr border-2 team-card overflow-hidden",
+				"w-full h-fit rounded-lg 2xl:rounded-xl flex flex-col gap-1 2xl:gap-2 p-2 2xl:p-3 card-dark bg-gradient-to-tr border-2 team-card overflow-hidden",
 				allPlayersDrawn && "overflow-visible",
 				draggedPlayerTeamIndex !== null &&
 					draggedPlayerTeamIndex !== index &&
@@ -30,13 +30,13 @@ const TeamCard = ({
 				initial={{ y: 2, opacity: 0 }}
 				animate={{ y: 0, opacity: 1 }}
 				transition={{ duration: 0.25, ease: "easeInOut" }}
-				className="text-lg 2k:text-xl font-semibold text-center pointer-events-none select-none">
+				className="text-base 2xl:text-lg 2k:text-xl font-semibold text-center pointer-events-none select-none">
 				Team {index + 1}
 			</motion.p>
 			{/* Players */}
 			<motion.ul
 				className={cn(
-					"w-full flex flex-col gap-2",
+					"w-full flex flex-col gap-1 2xl:gap-2",
 					draggedPlayerTeamIndex !== null && "pointer-events-none"
 				)}>
 				{data.map((e, i) => (

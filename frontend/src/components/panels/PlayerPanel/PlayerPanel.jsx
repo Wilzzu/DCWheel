@@ -19,7 +19,7 @@ const PlayerPanel = () => {
 	}, [players]);
 
 	return (
-		<div className="relative w-full h-full flex flex-col gap-2 p-5 pb-2 rounded-2xl overflow-hidden card-dark bg-gradient-to-br border-4 text-sm 2xl:text-base">
+		<div className="relative w-full h-full flex flex-col gap-2 p-5 pb-2 rounded-2xl overflow-hidden card-dark bg-gradient-to-br border-2 2xl:border-4 text-sm 2xl:text-base">
 			<PlayerSelect />
 			<PlayerAndTeamAmount />
 			{/* List players */}

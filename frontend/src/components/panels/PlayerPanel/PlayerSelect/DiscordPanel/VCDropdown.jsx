@@ -43,7 +43,7 @@ const VCDropdown = () => {
 	}, [isStale, open, disabled]);
 
 	return (
-		<div className="w-1/2 h-10 2xl:h-12 flex items-center justify-start">
+		<div className="w-1/2 h-10 2xl:h-12 text-xs 2xl:text-base flex items-center justify-start">
 			{/* Voice channel dropdown button */}
 			<button
 				ref={dropdownButton}
@@ -53,7 +53,7 @@ const VCDropdown = () => {
 					open && "justify-between"
 				)}>
 				<span className="flex items-center gap-2">
-					<img src={voiceIcon} alt="Add from VC icon" className="w-5 h-auto mt-[0.1rem]" />
+					<img src={voiceIcon} alt="Add from VC icon" className="w-4 2xl:w-5 h-auto mt-[0.1rem]" />
 					Add from VC
 				</span>
 				{/* Refresh button */}
@@ -63,7 +63,7 @@ const VCDropdown = () => {
 						disabled={disabled}
 						onClick={(e) => forceRefetch(e)}
 						className="flex items-center h-full duration-300 hover:text-green-400 disabled:hover:text-white disabled:opacity-30">
-						<IoMdRefresh className="h-[1.35rem] w-auto" />
+						<IoMdRefresh className="h-4 2xl:h-[1.35rem] w-auto" />
 					</a>
 				)}
 			</button>

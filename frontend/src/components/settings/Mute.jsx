@@ -20,10 +20,10 @@ const Mute = () => {
 			<button
 				onClick={setAndSaveValue}
 				className={cn(
-					"flex items-center justify-center bg-darkBlack rounded-lg h-10 w-10 duration-200 hover:bg-neutral-700 drop-shadow-icon",
+					"flex items-center justify-center bg-darkBlack rounded-md 2xl:rounded-lg h-8 2xl:h-10 w-8 2xl:w-10 duration-200 hover:bg-neutral-700 drop-shadow-icon",
 					mute && "bg-red-500 hover:bg-red-600"
 				)}>
-				<LuVolumeX className="h-6 w-auto drop-shadow-icon" />
+				<LuVolumeX className="h-5 2xl:h-6 w-auto drop-shadow-icon" />
 			</button>
 		</div>
 	);

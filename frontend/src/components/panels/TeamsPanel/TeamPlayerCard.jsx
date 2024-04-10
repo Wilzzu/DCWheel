@@ -45,16 +45,16 @@ const TeamPlayerCard = ({ player, index, teamIndex, containerRef, setDraggedPlay
 			onDragStart={dragStart}
 			onDragEnd={dragEnd}
 			className={cn(
-				"w-full flex items-center h-12 py-1 pl-2 pr-1 gap-2 rounded-lg touch-none z-0 bg-transparent border-2 border-transparent",
+				"w-full flex items-center h-9 2xl:h-12 py-1 pl-2 pr-1 gap-2 rounded-lg touch-none z-0 bg-transparent border-2 border-transparent",
 				allPlayersDrawn && "hover:bg-highlightBlack hover:cursor-grab",
 				dragging &&
 					"!z-10 bg-highlightBlack pointer-events-none border-green-500 bg-opacity-45 backdrop-blur-sm"
 			)}>
 			{/* Image container to take space while the avatar is loading */}
-			<div className="h-8 w-8 aspect-square">
+			<div className="h-6 2xl:h-8 w-6 2xl:w-8 aspect-square">
 				<img
 					draggable="false"
-					className="h-8 w-8 aspect-square rounded-full drop-shadow-md"
+					className="h-6 2xl:h-8 w-6 2xl:w-8 aspect-square rounded-full drop-shadow-md"
 					src={player.avatar}
 					alt={`${player.name} avatar`}
 				/>

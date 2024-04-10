@@ -60,12 +60,12 @@ const ScreenshotButton = ({ mainRef, containerRef, selectedServer }) => {
 						ref={buttonRef}
 						disabled={isLoading || isSuccess || error}
 						className={cn(
-							"flex items-center justify-center min-w-48 gap-2 p-4 ml-4 text-white bg-darkBlack border-2 border-highlightBlack rounded-md hover:bg-highlightBlack duration-150 disabled:hover:bg-normalBlack disabled:cursor-default disabled:opacity-70",
+							"flex items-center justify-center min-w-[10.5rem] 2xl:min-w-48 gap-2 p-3 2xl:p-4 ml-2 2xl:ml-4 text-white text-sm 2xl:text-base bg-darkBlack border-2 border-highlightBlack rounded-md hover:bg-highlightBlack duration-150 disabled:hover:bg-normalBlack disabled:cursor-default disabled:opacity-70",
 							isSuccess &&
 								"disabled:opacity-100 disabled:hover:bg-green-900 bg-green-900 border-green-500 duration-300"
 						)}
 						onClick={() => setOpen((prev) => !prev)}>
-						<PiImagesSquare className="w-6 h-6" />
+						<PiImagesSquare className="w-5 2xl:w-6 h-5 2xl:h-6" />
 						{isLoading
 							? "Sending..."
 							: error

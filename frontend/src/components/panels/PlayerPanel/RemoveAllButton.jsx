@@ -7,7 +7,7 @@ const RemoveAllButton = ({ players, setPlayers }) => {
 				onClick={() => setPlayers([])}
 				disabled={players.length === 0}
 				className="flex peer justify-center items-center w-8 2xl:w-10 h-8 2xl:h-10 border-2 rounded-md 2xl:rounded-lg bg-darkBlack border-darkBlack hover:bg-highlightBlack hover:border-red-600 disabled:hover:bg-darkBlack disabled:hover:border-darkBlack disabled:opacity-50 duration-300 drop-shadow-button">
-				<DeleteIcon className="stroke-red-500 w-5 h-5" />
+				<DeleteIcon className="stroke-red-500 w-[1.1rem] 2xl:w-5 h-[1.1rem] 2xl:h-5" />
 			</button>
 			{/* Tooltip | Due to z-index fighting, there's an additional div to always show tooltip on top of other elements */}
 			{players.length > 0 && (

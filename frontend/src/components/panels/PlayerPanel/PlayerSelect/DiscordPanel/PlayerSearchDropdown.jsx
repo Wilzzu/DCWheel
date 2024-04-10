@@ -42,8 +42,8 @@ const PlayerSearchDropdown = () => {
 					"h-full w-full flex items-center justify-center px-3 bg-darkBlack hover:bg-highlightBlack duration-150 border-2 border-highlightBlack rounded-md 2xl:rounded-lg",
 					open && "justify-between"
 				)}>
-				<span className="flex items-center gap-2">
-					<IoSearch className="w-5 h-auto" />
+				<span className="flex items-center text-xs 2xl:text-base gap-2">
+					<IoSearch className="w-4 2xl:w-5 h-auto" />
 					Search players
 				</span>
 
@@ -54,7 +54,7 @@ const PlayerSearchDropdown = () => {
 						disabled={disabled}
 						onClick={(e) => forceRefetch(e)}
 						className="flex items-center h-full duration-300 hover:text-green-400 disabled:hover:text-white disabled:opacity-30">
-						<IoMdRefresh className="h-5 2xl:h-[1.35rem] w-auto" />
+						<IoMdRefresh className="h-4 2xl:h-[1.35rem] w-auto" />
 					</a>
 				)}
 			</button>

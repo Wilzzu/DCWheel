@@ -26,7 +26,11 @@ const ScreenshotChannelList = ({ mainRef, containerRef, selectedServer, sendScre
 
 	// Component for the list
 	const List = ({ children }) => (
-		<div className={cn("absolute right-0 w-full z-10 pl-4", openBelow ? "top-16" : "bottom-16")}>
+		<div
+			className={cn(
+				"absolute right-0 w-full z-10 pl-2 2xl:pl-4",
+				openBelow ? "top-[3.2rem] 2xl:top-16" : "bottom-[3.2rem] 2xl:bottom-16"
+			)}>
 			<div className="p-1 bg-darkBlack border-2 border-highlightBlack rounded-md">
 				<ul
 					ref={listRef}
@@ -84,12 +88,12 @@ const ScreenshotChannelList = ({ mainRef, containerRef, selectedServer, sendScre
 			{allowedChannels?.map((channel) => (
 				<li key={channel.id}>
 					<button
-						className="group w-full flex items-center font-light gap-2 px-2 py-4 text-white bg-darkBlack rounded-md hover:bg-highlightBlack duration-150"
+						className="group w-full flex items-center font-light gap-1 2xl:gap-2 px-2 py-3 2xl:py-4 text-white bg-darkBlack rounded-md hover:bg-highlightBlack duration-150"
 						onClick={() => sendScreenshot(containerRef, channel.id)}>
 						{/* Icon */}
-						<span className="w-5 h-5 overflow-hidden flex items-center mt-[1px]">
-							<FaHashtag className="w-4 h-4 block group-hover:hidden" />
-							<RiMailSendLine className="w-4 h-4 hidden group-hover:block" />
+						<span className="w-5 h-5 overflow-hidden flex items-center mt-[2px] 2xl:mt-[1px]">
+							<FaHashtag className="w-[0.85rem] 2xl:w-4 h-[0.85rem] 2xl:h-4 block group-hover:hidden" />
+							<RiMailSendLine className="w-[0.85rem] 2xl:w-4 h-[0.85rem] 2xl:h-4 hidden group-hover:block" />
 						</span>
 						{/* Channel name */}
 						<p title={channel.name} className="w-full truncate text-left">

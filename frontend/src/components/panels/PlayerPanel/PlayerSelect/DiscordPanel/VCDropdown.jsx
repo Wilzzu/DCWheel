@@ -49,7 +49,7 @@ const VCDropdown = () => {
 				ref={dropdownButton}
 				onClick={() => setOpen((prev) => !prev)}
 				className={cn(
-					"h-full w-full flex items-center justify-center px-4 bg-darkBlack hover:bg-highlightBlack duration-150 border-2 border-highlightBlack rounded-md 2xl:rounded-lg",
+					"h-full w-full flex items-center justify-center px-2 2xl:px-4 bg-darkBlack hover:bg-highlightBlack duration-150 border-2 border-highlightBlack rounded-md 2xl:rounded-lg",
 					open && "justify-between"
 				)}>
 				<span className="flex items-center gap-2">
@@ -71,7 +71,7 @@ const VCDropdown = () => {
 			{/* Show list of voice channels */}
 			{/* TODO: Make the scrollbar look better */}
 			{open && (
-				<ul className="absolute top-11 2xl:top-[3.25rem] max-h-[30rem] w-3/4 p-2 overflow-y-auto bg-darkBlack rounded-md border-2 border-highlightBlack z-10 scrollbar scrollbar-thumb-green-500 scrollbar-thumb-rounded-full scrollbar-w-2">
+				<ul className="absolute top-11 2xl:top-[3.25rem] max-h-[30rem] w-3/4 p-1 2xl:p-2 overflow-y-auto bg-darkBlack rounded-md border-2 border-highlightBlack z-10 scrollbar scrollbar-w-1 2xl:scrollbar-w-2 scrollbar-thumb-green-500 scrollbar-thumb-rounded-full">
 					<VCList
 						isLoading={isLoading}
 						isRefetching={isRefetching}

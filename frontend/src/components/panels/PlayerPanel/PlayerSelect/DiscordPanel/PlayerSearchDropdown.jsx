@@ -39,10 +39,10 @@ const PlayerSearchDropdown = () => {
 				ref={dropdownButton}
 				onClick={() => setOpen((prev) => !prev)}
 				className={cn(
-					"h-full w-full flex items-center justify-center px-3 bg-darkBlack hover:bg-highlightBlack duration-150 border-2 border-highlightBlack rounded-md 2xl:rounded-lg",
+					"h-full w-full flex items-center justify-center px-2 2xl:px-3 bg-darkBlack hover:bg-highlightBlack duration-150 border-2 border-highlightBlack rounded-md 2xl:rounded-lg",
 					open && "justify-between"
 				)}>
-				<span className="flex items-center text-xs 2xl:text-base gap-2">
+				<span className="flex items-center text-xs 2xl:text-base gap-1 2xl:gap-2">
 					<IoSearch className="w-4 2xl:w-5 h-auto" />
 					Search players
 				</span>

@@ -283,6 +283,7 @@ const Wheel = () => {
 		if (canSpin) return;
 		let animationFrameId;
 		let lastAudioPlayed = 0;
+		let prevSlicePosition = 999;
 
 		const soundTiming = () => {
 			// Get current rotation for animation frame
@@ -290,15 +291,17 @@ const Wheel = () => {
 			const rotationProperty = computedStyle.getPropertyValue("rotate");
 			const curRotation = rotationProperty.substring(0, rotationProperty.length - 3) - 90;
 
-			// If tick has entered new slice, play audio if enough time has passed from last audio clip
-			// Tweak the 0.00001, 10 and 5 values to determine how easily the sound is played
-			if ((curRotation - 0.00001) % (360 / currentPlayers.length) < 10) {
-				if (lastAudioPlayed > 3) {
-					lastAudioPlayed = 0;
+			// Play sound if tick has entered new slice, aka if the current slice position is smaller than the previous slice position
+			// Allow sound to play once every 32ms
+			const slicePosition = (curRotation - 0.00001) % (360 / currentPlayers.length);
+			if (slicePosition < prevSlicePosition && slicePosition > 0) {
+				if (Date.now() - lastAudioPlayed > 32) {
 					soundPromise.then(playSound);
+					lastAudioPlayed = Date.now();
 				}
-			} else lastAudioPlayed++;
+			}
 
+			prevSlicePosition = slicePosition;
 			animationFrameId = requestAnimationFrame(soundTiming);
 		};
 

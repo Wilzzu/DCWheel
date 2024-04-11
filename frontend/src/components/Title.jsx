@@ -9,7 +9,7 @@ const Title = () => {
 					<div className="flex items-center gap-3 opacity-50 hover:opacity-100 duration-500">
 						<img src={logo} alt="DCWheel logo" className="h-10 w-auto" />
 						<span>
-							<h1>DCWheel v0.23.0 (Beta)</h1>
+							<h1>DCWheel v0.24.1 (Beta)</h1>
 							<p className="text-xs">
 								Made with 💚 by{" "}
 								<a

@@ -4,6 +4,7 @@ import TeamCard from "./TeamCard";
 import WheelContext from "../../../contexts/WheelContext";
 import EndOptions from "./EndOptions";
 import { cn } from "../../../../lib/utils";
+import FakeOdds from "./FakeOdds";
 
 const TeamsPanel = ({ mainRef }) => {
 	const { teams, selectedPlayer, allPlayersDrawn } = useContext(WheelContext);
@@ -29,6 +30,8 @@ const TeamsPanel = ({ mainRef }) => {
 						setDraggedPlayerTeamIndex={setDraggedPlayerTeamIndex}
 					/>
 				))}
+				{/* Fake odds */}
+				{allPlayersDrawn && <FakeOdds teams={teams} />}
 			</div>
 			{allPlayersDrawn && <EndOptions mainRef={mainRef} containerRef={teamsRef} />}
 		</div>

@@ -5,7 +5,7 @@ import LoadingPlaceholder from "./LoadingPlaceholder";
 import ServerCard from "./ServerCard";
 
 const List = ({ children }) => (
-	<ul className="max-h-[30rem] relative overflow-y-auto scrollbar scrollbar-thumb-green-500 scrollbar-thumb-rounded-full scrollbar-w-2">
+	<ul className="max-h-[10rem] lg:max-h-[30rem] relative overflow-y-auto scrollbar scrollbar-w-1 lg:scrollbar-w-2 scrollbar-thumb-green-500 scrollbar-thumb-rounded-full">
 		{children}
 	</ul>
 );

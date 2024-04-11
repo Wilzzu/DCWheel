@@ -38,7 +38,7 @@ const PlayerSearchContent = ({ isLoading, isRefetching, isError, data, error }) 
 				/>
 			</div>
 			{/* Filtered list of players */}
-			<div className="max-h-[30rem] overflow-y-auto scrollbar scrollbar-thumb-green-500 scrollbar-thumb-rounded-full scrollbar-w-2 pr-1">
+			<div className="max-h-[10rem] lg:max-h-[30rem] overflow-y-auto scrollbar scrollbar-w-1 lg:scrollbar-w-2 scrollbar-thumb-green-500 scrollbar-thumb-rounded-full pr-1">
 				<PlayerSearchList
 					data={filteredData}
 					searchInput={searchInput}

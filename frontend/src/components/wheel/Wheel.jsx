@@ -288,10 +288,10 @@ const Wheel = () => {
 			const curRotation = rotationProperty.substring(0, rotationProperty.length - 3) - 90;
 
 			// Play sound if tick has entered new slice, aka if the current slice position is smaller than the previous slice position
-			// Allow sound to play once every 32ms
+			// Allow sound to play once every 40ms
 			const slicePosition = (curRotation - 0.00001) % (360 / currentPlayers.length);
 			if (slicePosition < prevSlicePosition && slicePosition > 0) {
-				if (Date.now() - lastAudioPlayed > 32) {
+				if (Date.now() - lastAudioPlayed > 40) {
 					soundPromise.then(playSound);
 					lastAudioPlayed = Date.now();
 				}

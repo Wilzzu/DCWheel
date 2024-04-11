@@ -27,7 +27,7 @@ const FakeOdds = ({ teams }) => {
 	}, [teams]);
 
 	return (
-		<div className="w-full col-span-2 flex flex-col items-center justify-center">
+		<div className="w-full col-span-2 gap-[0.1rem] flex flex-col items-center justify-center">
 			<h1>Win Probabilities</h1>
 			<div className="flex gap-1 w-full items-center justify-center flex-wrap">
 				{fakeOdds &&

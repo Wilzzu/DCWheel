@@ -31,7 +31,7 @@ const TeamsPanel = ({ mainRef }) => {
 					/>
 				))}
 				{/* Fake odds */}
-				{allPlayersDrawn && <FakeOdds teams={teams} />}
+				{allPlayersDrawn && import.meta.env.VITE_FAKE_ODDS === "true" && <FakeOdds teams={teams} />}
 			</div>
 			{allPlayersDrawn && <EndOptions mainRef={mainRef} containerRef={teamsRef} />}
 		</div>

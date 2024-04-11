@@ -9,6 +9,7 @@ import WheelContext from "../../contexts/WheelContext";
 import useClickAnywhere from "../../hooks/useClickAnywhere";
 import HelpButton from "./HelpButton";
 import EndWarning from "./EndWarning";
+import useWindowSize from "../../hooks/useWindowSize";
 ChartJS.register(ArcElement, Tooltip, Legend);
 ChartJS.register(ChartDataLabels);
 ChartJS.defaults.font.family =
@@ -133,6 +134,7 @@ const Wheel = () => {
 		mute,
 	} = useContext(WheelContext);
 	const clicked = useClickAnywhere(); // Used for audio context creation on first click
+	const { width } = useWindowSize();
 
 	// These allow us to change settings during the spin
 	const muteRef = useRef(mute);
@@ -155,8 +157,9 @@ const Wheel = () => {
 		if (currentPlayers.length > 0) addData = currentPlayers;
 		if (ongoing) addData = currentPlayers;
 
-		// Change border width based on player count
-		template.datasets[0].borderWidth = 26 - currentPlayers.length;
+		// Change border width based on player count and screen width
+		let defaultWidth = width <= 1024 ? 16 : 26;
+		template.datasets[0].borderWidth = defaultWidth - currentPlayers.length;
 
 		// Go through each player and add bg and font color, or if ongoing use the colors they were assigned
 		addData.forEach((e, i) => {

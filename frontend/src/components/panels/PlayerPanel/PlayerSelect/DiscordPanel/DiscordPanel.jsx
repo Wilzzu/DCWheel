@@ -27,8 +27,6 @@ const DiscordPanel = () => {
 
 	useEffect(() => {
 		const { data } = supabase.auth.onAuthStateChange((event, session) => {
-			// console.log(event, session);
-
 			// User is signed in
 			if (session) {
 				if (session.provider_token) setItem("DCWAuth", "provider_token", session.provider_token); // Save token to local storage
@@ -40,6 +38,7 @@ const DiscordPanel = () => {
 			else {
 				console.log("No session");
 				setSessionStatus(2);
+				removeItem("DCWAuth", "provider_token");
 			}
 			// When user signs out, clear all data
 			if (event === "SIGNED_OUT") {

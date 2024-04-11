@@ -11,13 +11,27 @@ const TeamPlayerCard = ({ player, index, teamIndex, containerRef, setDraggedPlay
 		setDragging(true);
 		setDraggedPlayerTeamIndex(teamIndex);
 	};
+
+	const getDroppedTeamIndex = (event) => {
+		if (event?.target?.dataset?.teamIndex) return event.target.dataset.teamIndex;
+
+		// Mainly for touch events
+		const dropX = event?.clientX || (event?.changedTouches && event.changedTouches[0].clientX);
+		const dropY = event?.clientY || (event?.changedTouches && event.changedTouches[0].clientY);
+		if (!dropX || !dropY) return null;
+
+		const target = document.elementFromPoint(dropX, dropY);
+		if (!target) return null;
+		return target?.dataset?.teamIndex;
+	};
+
 	const dragEnd = (event) => {
 		setDragging(false);
 		setDraggedPlayerTeamIndex(null);
 
 		// Reset the player card position if it's not dropped on a new team. We use animationControls since dragSnapToOrigin was unreliable
-		const droppedTeamIndex = event.target.dataset.teamIndex;
-		if (!droppedTeamIndex || teamIndex === parseInt(droppedTeamIndex)) {
+		const droppedTeamIndex = parseInt(getDroppedTeamIndex(event));
+		if (isNaN(droppedTeamIndex) || teamIndex === droppedTeamIndex) {
 			return animationControls.start({
 				x: 0,
 				y: 0,
@@ -25,7 +39,7 @@ const TeamPlayerCard = ({ player, index, teamIndex, containerRef, setDraggedPlay
 		}
 
 		// If the player is dropped on a new team, reorder the teams
-		reorderTeams(teamIndex, parseInt(droppedTeamIndex), player);
+		reorderTeams(teamIndex, droppedTeamIndex, player);
 	};
 
 	useEffect(() => {

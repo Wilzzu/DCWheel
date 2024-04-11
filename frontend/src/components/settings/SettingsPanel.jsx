@@ -20,7 +20,6 @@ const SettingsPanel = ({ ongoing }) => {
 	// This will also show the newest team by default, so we don't need another function for it
 	const scrollToElement = () => {
 		if (allPlayersDrawn || width <= 1024) return;
-		console.log(width);
 		ref.current.scrollIntoView({ behavior: "smooth", block: "end" });
 	};
 

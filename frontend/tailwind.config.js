@@ -7,6 +7,7 @@ export default {
 			animation: {
 				"infinite-rotate": "infiniteRotate 60s linear infinite",
 				"point-right": "pointRight 5s ease-in-out infinite 3s",
+				"point-down": "pointDown 5s ease-in-out infinite 3s",
 			},
 			keyframes: {
 				infiniteRotate: {
@@ -16,6 +17,10 @@ export default {
 				pointRight: {
 					"0%, 30%": { transform: "translateX(0px)" },
 					"15%": { transform: "translateX(10px)" },
+				},
+				pointDown: {
+					"0%, 30%, 100%": { transform: "translateY(0px) rotate(90deg)" },
+					"15%": { transform: "translateY(10px) rotate(90deg)" },
 				},
 			},
 			fontFamily: {

@@ -3,20 +3,20 @@ import logo from "../assets/logo.webp";
 const Title = () => {
 	return (
 		<>
-			<div className="absolute h-full left-4 top-4 text-white">
+			<div className="lg:absolute lg:h-full mb-4 lg:mb-0 left-3 top-3 text-white text-sm lg:text-base">
 				{/* Stick with the wheel */}
-				<div className="sticky top-4 h-dvh">
+				<div className="lg:sticky lg:top-3 lg:h-dvh">
 					<div className="flex items-center gap-3 opacity-50 hover:opacity-100 duration-500">
-						<img src={logo} alt="DCWheel logo" className="h-10 w-auto" />
+						<img src={logo} alt="DCWheel logo" className="h-9 lg:h-10 w-auto" />
 						<span>
-							<h1>DCWheel v0.24.1 (Beta)</h1>
+							<h1>DCWheel v0.24.2 (Beta)</h1>
 							<p className="text-xs">
 								Made with 💚 by{" "}
 								<a
 									href="https://github.com/Wilzzu"
 									target="_blank"
 									rel="noreferrer"
-									className="text-sm font-bold underline decoration-1 hover:decoration-2 text-green-500 hover:text-green-400 hover:tracking-wider duration-500">
+									className="lg:text-sm font-bold underline decoration-1 hover:decoration-2 text-green-500 hover:text-green-400 hover:tracking-wider duration-500">
 									Wilzzu
 								</a>
 							</p>

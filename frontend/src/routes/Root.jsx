@@ -10,8 +10,8 @@ function Root() {
 	return (
 		<div
 			ref={rootRef}
-			className="scrollbar-thin scrollbar-track-darkBlack scrollbar-thumb-green-500 overflow-y-auto overflow-x-hidden max-h-dvh">
-			<main className="relative min-h-dvh flex gap-28 justify-center font-outfit">
+			className="scrollbar scrollbar-w-1 2xl:scrollbar-w-2 scrollbar-track-darkBlack scrollbar-thumb-green-500 overflow-y-auto overflow-x-hidden max-h-dvh">
+			<main className="px-1 relative min-h-dvh flex flex-col lg:flex-row gap-0 xl:gap-16 2xl:gap-28 justify-center items-center lg:items-start font-outfit">
 				<Title />
 				<Wheel />
 				<Panels rootRef={rootRef} />

@@ -68,7 +68,7 @@ const CustomPlayerSelect = () => {
 			<button
 				onClick={handleSubmit}
 				disabled={disabled}
-				className="h-full border-2 rounded-md 2xl:rounded-lg px-[0.6rem] disabled:opacity-70 disabled:bg-darkBlack disabled:hover:bg-darkBlack disabled:border-highlightBlack disabled:hover:shadow-none bg-green-600 hover:bg-green-500 hover:shadow-green-500 hover:shadow-middle border-green-500 duration-150">
+				className="border-2 rounded-md 2xl:rounded-lg px-[0.6rem] disabled:opacity-70 disabled:bg-darkBlack disabled:hover:bg-darkBlack disabled:border-highlightBlack disabled:hover:shadow-none bg-green-600 hover:bg-green-500 hover:shadow-green-500 hover:shadow-middle border-green-500 duration-150">
 				<FiPlus className="h-4 2xl:h-6 w-auto drop-shadow" />
 			</button>
 		</div>

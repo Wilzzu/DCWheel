@@ -19,8 +19,8 @@ const Panels = ({ rootRef }) => {
 		<section
 			ref={mainRef}
 			className={cn(
-				"max-w-[440px] 2k:max-w-[540px] w-full h-dvh py-5 flex flex-col justify-between text-sm 2xl:text-base",
-				ongoing && "min-h-dvh h-auto"
+				"max-w-[440px] 2k:max-w-[540px] w-full lg:h-dvh py-5 flex flex-col justify-start lg:justify-between text-sm 2xl:text-base",
+				ongoing && "lg:min-h-dvh lg:h-auto"
 			)}>
 			{ongoing ? <TeamsPanel mainRef={mainRef} /> : <PlayerPanel />}
 			<SettingsPanel ongoing={ongoing} />

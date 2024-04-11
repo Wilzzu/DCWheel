@@ -8,16 +8,19 @@ import Mute from "./Mute";
 import { motion } from "framer-motion";
 import { useContext, useRef } from "react";
 import WheelContext from "../../contexts/WheelContext";
+import useWindowSize from "../../hooks/useWindowSize";
 
 const SettingsPanel = ({ ongoing }) => {
 	const { allPlayersDrawn } = useContext(WheelContext);
+	const { width } = useWindowSize();
 	const ref = useRef(null);
 
 	// When new teams are added, the settings panel will change position
 	// Keep the settings panel in view by scrolling to the bottom of it
 	// This will also show the newest team by default, so we don't need another function for it
 	const scrollToElement = () => {
-		if (allPlayersDrawn) return;
+		if (allPlayersDrawn || width <= 1024) return;
+		console.log(width);
 		ref.current.scrollIntoView({ behavior: "smooth", block: "end" });
 	};
 

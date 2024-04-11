@@ -2,12 +2,13 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { cn } from "../../../lib/utils";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
-import { motion } from "framer-motion";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import config from "../../../config.json";
 import spinSound from "../../assets/spinSound.mp3";
 import WheelContext from "../../contexts/WheelContext";
 import useClickAnywhere from "../../hooks/useClickAnywhere";
+import HelpButton from "./HelpButton";
+import EndWarning from "./EndWarning";
 ChartJS.register(ArcElement, Tooltip, Legend);
 ChartJS.register(ChartDataLabels);
 ChartJS.defaults.font.family =
@@ -128,7 +129,6 @@ const Wheel = () => {
 		allPlayersDrawn,
 		setAllPlayersDrawn,
 		setSpinning,
-		returnToStart,
 		autospin,
 		mute,
 	} = useContext(WheelContext);
@@ -255,13 +255,6 @@ const Wheel = () => {
 		setSpinning(false);
 	};
 
-	const handleEndWarning = (accepted) => {
-		setEndWarning(false);
-		setCanSpin(true);
-
-		if (accepted) returnToStart();
-	};
-
 	// Spin the wheel when rotation gets resetted and game is ongoing
 	useEffect(() => {
 		if (ongoing && !rotation) spin();
@@ -333,9 +326,8 @@ const Wheel = () => {
 	useEffect(() => {
 		if (clicked) createAudioContext();
 	}, [clicked]);
-
 	return (
-		<section className="sticky top-0 max-w-full h-dvh p-5 aspect-square flex items-center justify-center select-none pointer-events-none">
+		<section className="lg:sticky w-fit lg:w-auto top-0 max-w-full max-h-fit lg:max-h-dvh lg:h-dvh p-2 lg:p-5 aspect-square flex items-center justify-center select-none pointer-events-none">
 			{/* Wheel container to hide overflow */}
 			<div className="w-full h-full overflow-hidden drop-shadow-wheel">
 				{/* Clickable spinning wheel */}
@@ -361,63 +353,9 @@ const Wheel = () => {
 				</button>
 			</div>
 			{/* Selector pin */}
-			<div className="absolute right-1 w-0 h-0 border-t-transparent border-t-[32px] border-b-transparent border-b-[32px] border-r-neutral-50 border-r-[42px] drop-shadow-lg" />
-			{/* Help button */}
-			<motion.div
-				initial={{ scale: 1.1, opacity: 0, rotate: 0.001 }}
-				animate={{ scale: 1, opacity: 1 }}
-				transition={{
-					scale: { type: "spring", stiffness: 30, damping: 4 },
-					opacity: { duration: 0.8, ease: "easeInOut" },
-				}}
-				className={cn(
-					"absolute py-4 px-6 2k:py-6 2k:px-8 rounded-2xl bg-green-600 border-2 border-green-400 bg-opacity-90 backdrop-blur-sm shadow-3xl shadow-green-500 text-white pointer-events-none",
-					!ongoing && players.length <= 0 && "bg-red-600 border-2 border-red-400 shadow-red-600",
-					ongoing && "hidden"
-				)}>
-				<p
-					className={cn(
-						"font-outfit text-3xl 2k:text-5xl group-hover:text-4xl",
-						players.length <= 0 && "pr-11 2k:pr-[4.2rem]"
-					)}>
-					{players.length > 0 ? (
-						"Click the wheel to spin!"
-					) : (
-						<>
-							Add players{" "}
-							<span className="ml-[0.3rem] 2k:ml-2 absolute animate-point-right">{"👉"}</span>
-						</>
-					)}
-				</p>
-			</motion.div>
-			{/* End warning */}
-			{endWarning && (
-				<motion.div
-					initial={{ y: 20, opacity: 0 }}
-					animate={{ y: 0, opacity: 1 }}
-					transition={{
-						y: { type: "spring", stiffness: 140, damping: 14 },
-						opacity: { duration: 0.2 },
-					}}
-					className="absolute w-1/2 h-1/5 bg-normalBlack rounded-2xl shadow-xl flex flex-col items-center justify-center bg-opacity-90 backdrop-blur-lg text-white gap-2 p-5 pointer-events-auto">
-					<p className="text-lg 2k:text-xl">Return to player select?</p>
-					{/* Selection buttons */}
-					<div className="w-full flex gap-2 text-lg 2k:text-xl drop-shadow-md">
-						<button
-							onClick={() => handleEndWarning(true)}
-							className="relative group w-full py-4 shadow-3xl hover:shadow-green-800 duration-150">
-							<div className="absolute group rounded-xl w-full h-full top-0 bg-gradient-to-br from-green-700 to-green-500 border-2 border-green-500 duration-150 opacity-90 group-hover:opacity-100"></div>
-							<p className="drop-shadow-md">Yes</p>
-						</button>
-						<button
-							onClick={() => handleEndWarning(false)}
-							className="relative group w-full rounded-xl py-4 shadow-3xl bg-opacity-90 hover:shadow-red-800 duration-150">
-							<div className="absolute group rounded-xl w-full h-full top-0 bg-gradient-to-br from-red-700 to-red-500 border-2 border-red-500 duration-150 opacity-90 group-hover:opacity-100"></div>
-							<p className="drop-shadow-md">Cancel</p>
-						</button>
-					</div>
-				</motion.div>
-			)}
+			<div className="absolute right-1 w-0 h-0 border-t-transparent border-t-[24px] lg:border-t-[32px] border-b-transparent border-b-[24px] lg:border-b-[32px] border-r-neutral-50 border-r-[24px] lg:border-r-[42px] drop-shadow-lg" />
+			<HelpButton ongoing={ongoing} players={players} />
+			{endWarning && <EndWarning setEndWarning={setEndWarning} setCanSpin={setCanSpin} />}
 		</section>
 	);
 };

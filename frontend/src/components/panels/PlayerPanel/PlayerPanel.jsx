@@ -19,19 +19,25 @@ const PlayerPanel = () => {
 	}, [players]);
 
 	return (
-		<div className="relative w-full h-full min-h-[64dvh] lg:min-h-0 flex flex-col gap-2 p-5 lg:pb-2 rounded-2xl overflow-hidden card-dark bg-gradient-to-br border-2 2xl:border-4 text-sm 2xl:text-base">
-			<PlayerSelect />
-			<PlayerAndTeamAmount />
-			{/* List players */}
-			<ul
-				ref={ref}
-				className="flex flex-col gap-1 h-full overflow-auto scrollbar scrollbar-w-1 2xl:scrollbar-w-2 scrollbar-thumb-green-500 scrollbar-thumb-rounded-full pr-2">
-				<AnimatePresence>
-					{players?.map((e) => (
-						<PlayerCard key={e.id} player={e} />
-					))}
-				</AnimatePresence>
-			</ul>
+		<div className="w-full h-full min-h-[64dvh] lg:min-h-0 flex flex-col gap-2 rounded-2xl overflow-hidden card-dark bg-gradient-to-br border-2 2xl:border-4 text-sm 2xl:text-base">
+			{/* Top part container */}
+			<div className="relative flex flex-col gap-2 p-5 pb-0">
+				<PlayerSelect />
+				<PlayerAndTeamAmount />
+			</div>
+
+			{/* Player list container */}
+			<div className="h-full p-3 pt-0 pb-2 overflow-hidden">
+				<ul
+					ref={ref}
+					className="flex flex-col gap-1 h-full px-2 overflow-auto scrollbar scrollbar-w-1 2xl:scrollbar-w-2 scrollbar-thumb-green-500 scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
+					<AnimatePresence>
+						{players?.map((e) => (
+							<PlayerCard key={e.id} player={e} />
+						))}
+					</AnimatePresence>
+				</ul>
+			</div>
 		</div>
 	);
 };

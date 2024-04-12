@@ -7,7 +7,7 @@ import { cn } from "../../../../lib/utils";
 import FakeOdds from "./FakeOdds";
 
 const TeamsPanel = ({ mainRef }) => {
-	const { teams, selectedPlayer, allPlayersDrawn } = useContext(WheelContext);
+	const { teams, selectedServer, selectedPlayer, allPlayersDrawn } = useContext(WheelContext);
 	const teamsRef = useRef(null);
 	const [draggedPlayerTeamIndex, setDraggedPlayerTeamIndex] = useState(null);
 
@@ -31,7 +31,10 @@ const TeamsPanel = ({ mainRef }) => {
 					/>
 				))}
 				{/* Fake odds */}
-				{allPlayersDrawn && import.meta.env.VITE_FAKE_ODDS === "true" && <FakeOdds teams={teams} />}
+				{/* TODO: This should be configurable in the server settings in future */}
+				{allPlayersDrawn &&
+					import.meta.env.VITE_FAKE_ODDS === "true" &&
+					selectedServer.id === import.meta.env.VITE_MAIN_GUILD_ID && <FakeOdds teams={teams} />}
 			</div>
 			{allPlayersDrawn && <EndOptions mainRef={mainRef} containerRef={teamsRef} />}
 		</div>

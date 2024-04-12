@@ -73,8 +73,6 @@ const ServerDropdown = ({ selectedServer }) => {
 			</button>
 
 			{/* Show list of servers */}
-			{/* TODO: Make the scrollbar look better */}
-
 			{open && (
 				<>
 					<div className="absolute top-11 2xl:top-[3.25rem] w-full p-2 bg-darkBlack rounded-md border-2 border-highlightBlack z-10 drop-shadow 2xl:drop-shadow-button">

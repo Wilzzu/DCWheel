@@ -69,7 +69,6 @@ const VCDropdown = () => {
 			</button>
 
 			{/* Show list of voice channels */}
-			{/* TODO: Make the scrollbar look better */}
 			{open && (
 				<ul className="absolute top-11 2xl:top-[3.25rem] max-h-[10rem] lg:max-h-[30rem] w-3/4 p-1 2xl:p-2 overflow-y-auto bg-darkBlack rounded-md border-2 border-highlightBlack z-10 scrollbar scrollbar-w-1 2xl:scrollbar-w-2 scrollbar-thumb-green-500 scrollbar-thumb-rounded-full">
 					<VCList

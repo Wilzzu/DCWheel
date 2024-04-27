@@ -5,9 +5,11 @@ import WheelContext from "../../../contexts/WheelContext";
 import EndOptions from "./EndOptions";
 import { cn } from "../../../../lib/utils";
 import FakeOdds from "./FakeOdds";
+import DiscordContext from "../../../contexts/DiscordContext";
 
 const TeamsPanel = ({ mainRef }) => {
-	const { teams, selectedServer, selectedPlayer, allPlayersDrawn } = useContext(WheelContext);
+	const { teams, selectedPlayer, allPlayersDrawn } = useContext(WheelContext);
+	const { selectedServer } = useContext(DiscordContext);
 	const teamsRef = useRef(null);
 	const [draggedPlayerTeamIndex, setDraggedPlayerTeamIndex] = useState(null);
 
@@ -34,7 +36,7 @@ const TeamsPanel = ({ mainRef }) => {
 				{/* TODO: This should be configurable in the server settings in future */}
 				{allPlayersDrawn &&
 					import.meta.env.VITE_FAKE_ODDS === "true" &&
-					selectedServer.id === import.meta.env.VITE_MAIN_GUILD_ID && <FakeOdds teams={teams} />}
+					selectedServer?.id === import.meta.env.VITE_MAIN_GUILD_ID && <FakeOdds teams={teams} />}
 			</div>
 			{allPlayersDrawn && <EndOptions mainRef={mainRef} containerRef={teamsRef} />}
 		</div>

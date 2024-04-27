@@ -1,46 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
-// import { useEffect, useState } from "react";
-// import { createClient } from "@supabase/supabase-js";
-// import useLocalStorage from "../hooks/useLocalStorage";
-// import useSessionStorage from "../hooks/useSessionStorage";
-
-// const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_KEY);
 
 const PrivacyPolicy = () => {
-	// const [confirmation, setConfirmation] = useState(false);
-	// const [session, setSession] = useState(null);
-	// const { removeItem } = useLocalStorage();
-	// const { clearSessionStorage } = useSessionStorage();
-
-	// const handleConfirmation = () => {
-	// 	setConfirmation(true);
-	// };
-
-	// const handleLogout = async () => {
-	// 	const { error } = await supabase.auth.signOut();
-	// 	if (error) console.error("Error: ", error?.message);
-	// };
-
-	// const handleAccountDelete = () => {
-	// 	console.log("Account deleted");
-	// 	handleLogout();
-	// 	removeItem("DCWAuth", "provider_token");
-	// 	clearSessionStorage();
-	// 	setConfirmation(false);
-	// };
-
-	// // Check if user is signed in
-	// useEffect(() => {
-	// 	const { data } = supabase.auth.onAuthStateChange((event, session) => {
-	// 		if (session) setSession(session);
-	// 	});
-
-	// 	return () => {
-	// 		data.subscription.unsubscribe();
-	// 	};
-	// }, []);
-
 	return (
 		<main className="text-white flex items-center justify-center p-10 gdpr">
 			<section className="rounded-lg bg-darkBlack p-4 max-w-[720px] leading-snug font-outfit">
@@ -78,9 +39,12 @@ const PrivacyPolicy = () => {
 					</li>
 				</ul>
 				<p>
-					If you are logged in, your Discord token will be saved to local storage to make future
-					requests, such as checking what guilds you are part of. This token is never sent to our
-					servers and will only exist on your machine until you log off.
+					If you are logged in, your Discord access and refresh tokens will be saved to local
+					storage to make future requests, such as checking what guilds you are part of. Whenever
+					your tokens are created or refreshed, they are sent to our servers where we encrypt them.
+					The encrypted token is then saved to your local storage and used for future requests. We
+					do not save your tokens in our database, they will only exist on your machine until you
+					log off.
 				</p>
 				<h3>How to manage local storage</h3>
 				<p>
@@ -189,21 +153,7 @@ const PrivacyPolicy = () => {
 					<li>
 						<b>Contact us at:</b> <a href="mailto:wilzzudev@gmail.com">wilzzudev@gmail.com</a>
 					</li>
-					{/* {session && (
-						<li>
-							<b>Delete your account:</b> To delete your account and associated data, click the{" "}
-							{'"Delete my account"'} button below.
-						</li>
-					)} */}
 				</ul>
-				{/* {session && (
-					<button
-						onClick={handleConfirmation}
-						className="border-2 border-red-500 rounded-lg p-2 hover:bg-red-500 group duration-150">
-						<p className="group-hover:drop-shadow-text !font-normal text-sm">Delete my account</p>
-					</button>
-				)} */}
-				{/* <br /> */}
 				<br />
 				<h2>Changes to this policy</h2>
 				<p>
@@ -223,32 +173,6 @@ const PrivacyPolicy = () => {
 					<FaArrowLeft className="w-3 h-3" /> Back to home
 				</Link>
 			</section>
-			{/* Account deletion confirm */}
-			{/* {confirmation && (
-				<div className="fixed inset-0 flex items-center justify-center bg-black/50 z-10">
-					<div className="flex flex-col gap-2 bg-darkBlack p-4 rounded-lg">
-						<h1>Are you sure?</h1>
-						<p>
-							This action will permanently delete your account and all associated data. This action
-							cannot be undone.
-						</p>
-						<div className="flex gap-2">
-							<button
-								onClick={handleAccountDelete}
-								className="bg-red-600 rounded-md p-3 hover:bg-red-500 group duration-150">
-								<p className="group-hover:drop-shadow-text !font-normal text-sm">
-									Delete my account
-								</p>
-							</button>
-							<button
-								onClick={() => setConfirmation(false)}
-								className="bg-highlightBlack rounded-md py-3 px-5 hover:bg-normalBlack group duration-150">
-								<p className="group-hover:drop-shadow-text !font-normal text-sm">Cancel</p>
-							</button>
-						</div>
-					</div>
-				</div>
-			)} */}
 		</main>
 	);
 };

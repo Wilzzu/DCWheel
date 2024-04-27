@@ -15,7 +15,6 @@ module.exports = async function getVoiceChannels(req, res) {
 		})
 		.then((res) => res.data)
 		.catch((err) => {
-			console.error(err.message, "Token:", accessToken);
 			return null;
 		});
 

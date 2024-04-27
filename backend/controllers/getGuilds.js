@@ -16,7 +16,6 @@ module.exports = async function getGuilds(req, res) {
 		})
 		.then((res) => res.data)
 		.catch((err) => {
-			console.error(err.message, "Token:", accessToken);
 			return null;
 		});
 

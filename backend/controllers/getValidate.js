@@ -2,7 +2,12 @@ const axios = require("axios");
 const CryptoJS = require("crypto-js");
 const qs = require("qs");
 
-const generateNewTokens = async (refreshToken, res) => {
+const generateNewTokens = async (encryptedRefreshToken, res) => {
+	const refreshToken = CryptoJS.AES.decrypt(
+		encryptedRefreshToken,
+		process.env.TOKEN_SECRET
+	).toString(CryptoJS.enc.Utf8);
+
 	await axios
 		.post(
 			"https://discord.com/api/oauth2/token",
@@ -48,10 +53,6 @@ module.exports = async function getValidate(req, res) {
 	const token = CryptoJS.AES.decrypt(req.query.provider_token, process.env.TOKEN_SECRET).toString(
 		CryptoJS.enc.Utf8
 	);
-	const refreshToken = CryptoJS.AES.decrypt(
-		req.query.provider_refresh_token,
-		process.env.TOKEN_SECRET
-	).toString(CryptoJS.enc.Utf8);
 
 	// Validate token
 	await axios
@@ -63,6 +64,6 @@ module.exports = async function getValidate(req, res) {
 		})
 		.catch((err) => {
 			// If token is invalid, generate new tokens
-			generateNewTokens(refreshToken, res);
+			generateNewTokens(req.query.provider_refresh_token, res);
 		});
 };

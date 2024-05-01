@@ -63,7 +63,10 @@ module.exports = async function getValidate(req, res) {
 			return res.status(200).json({ success: true });
 		})
 		.catch((err) => {
-			// If token is invalid, generate new tokens
+			// If token is invalid, try generating new ones
+			if (!req?.query?.provider_refresh_token) {
+				return res.status(400).json({ error: "No refresh token provided" });
+			}
 			generateNewTokens(req.query.provider_refresh_token, res);
 		});
 };

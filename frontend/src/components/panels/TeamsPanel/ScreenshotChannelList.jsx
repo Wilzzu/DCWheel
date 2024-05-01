@@ -45,8 +45,9 @@ const ScreenshotChannelList = ({ mainRef, containerRef, selectedServer, sendScre
 	// TODO: THIS IS TEMPORARY, whenever server settings are implemented, this should be updated
 	const allowedChannels =
 		selectedServer.id === import.meta.env.VITE_MAIN_GUILD_ID
-			? data?.channels?.filter((channel) =>
-					import.meta.env.VITE_ALLOWED_CHANNELS.includes(channel.id)
+			? data?.channels?.filter(
+					(channel) => import.meta.env.VITE_ALLOWED_CHANNELS.includes(channel.id)
+					// eslint-disable-next-line no-mixed-spaces-and-tabs
 			  )
 			: data?.channels;
 

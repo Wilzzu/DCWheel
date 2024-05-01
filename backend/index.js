@@ -2,6 +2,7 @@ const rateLimit = require("express-rate-limit");
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
+const CryptoJS = require("crypto-js");
 
 const { botPromise } = require("./bot");
 const getGuilds = require("./controllers/getGuilds");
@@ -9,6 +10,9 @@ const getAllMembers = require("./controllers/getAllMembers");
 const postScreenshotToGuild = require("./controllers/postScreenshotToGuild");
 const getVoiceChannels = require("./controllers/getVoiceChannels");
 const getTextChannels = require("./controllers/getTextChannels");
+const getEncrypt = require("./controllers/getEncrypt");
+const getValidate = require("./controllers/getValidate");
+const authMiddleware = require("./middleware/authMiddleware");
 
 const port = process.env.PORT || 3001;
 const app = express();
@@ -27,14 +31,11 @@ const limiter = (limit) => {
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(function (req, res, next) {
-	if (!req.headers.authorization) return res.status(403).json({ error: "No credentials" });
-	const accessToken = req.headers.authorization?.split(" ")[1];
-	if (!accessToken || accessToken === "undefined" || accessToken === "null") {
-		return res.status(403).json({ error: "No credentials" });
-	}
-	next();
-});
+app.get("/api/encrypt", limiter(100), getEncrypt);
+app.get("/api/validate", limiter(200), getValidate);
+
+// Check credentials and decrypt tokens
+app.use(authMiddleware);
 
 app.get("/api/guilds", limiter(100), getGuilds);
 app.get("/api/voicechannels", limiter(200), getVoiceChannels);

@@ -80,9 +80,7 @@ const DiscordPanel = () => {
 			// User is signed in
 			if (session) {
 				console.log("Signed in");
-				if (event === "INITIAL_SESSION")
-					handleTokens(session); // Validate tokens on initial session
-				else if (getItem("DCWAuth", "provider_token")) setSessionStatus(1);
+				if (event === "INITIAL_SESSION") handleTokens(session); // Validate tokens on initial session
 				setSessionItem("DCWSession", "user", session.user?.user_metadata || {});
 			}
 			// No user is signed in

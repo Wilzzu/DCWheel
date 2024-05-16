@@ -7,12 +7,15 @@ const DiscordContextProvider = ({ children }) => {
 	const [selectedServer, setSelectedServer] = useState(
 		getSessionItem("DCWSession", "selected_server") || null
 	);
+	const [tokensValidated, setTokensValidated] = useState(false);
 
 	return (
 		<DiscordContext.Provider
 			value={{
 				selectedServer,
 				setSelectedServer,
+				tokensValidated,
+				setTokensValidated,
 			}}>
 			{children}
 		</DiscordContext.Provider>

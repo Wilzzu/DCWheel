@@ -1,6 +1,13 @@
+![Logo](https://i.imgur.com/7nrQEiR.png)
+
 <h1 align="center">DCWheel</h1>
 
-Fast and fun way to create teams for games and events by spinning a wheel. With a Discord integration, users can easily add players and share the results in their Discord server.
+<p align="center">Fast and fun way to create teams for games and events by spinning a wheel.</br>With a Discord integration, users can easily add players and share the results in their Discord server.</p>
+
+## Live Demo
+
+Check out the live version of the website:
+[DCWheel.wilzzu.dev](https://dcwheel.wilzzu.dev/)
 
 ## Features
 
@@ -23,7 +30,7 @@ Fast and fun way to create teams for games and events by spinning a wheel. With 
 1. **Clone the repository:**
 
    ```
-   git clone https://github.com/Wilzzu/DCWheel
+   git clone https://github.com/Wilzzu/DCWheel.git
    cd DCWheel
    ```
 

@@ -1,4 +1,4 @@
-![Logo](https://i.imgur.com/7nrQEiR.png)
+![Logo](https://i.imgur.com/Y4OcAaJ.png)
 
 <h1 align="center">DCWheel</h1>
 
@@ -15,7 +15,7 @@ Check out the live version of the website:
 - Add players manually or fetch from a Discord server/voice channel
 - Move players between teams
 - Post results to a Discord server
-- Change wheel settings such as the number of teams and spin speed
+- Change wheel settings such as the number of players per team and spin speed
 - User authentication
 
 ## Technologies Used
@@ -47,13 +47,13 @@ Check out the live version of the website:
    ```
 
 3. **Configure environment variables:**
-   Rename the `.env.example` file in both `backend` and `frontend` directories to `.env` and fill in the required values:
+   Rename the `.env.example` files in both `backend` and `frontend` directories to `.env` and fill in the values:
 
    **Frontend `.env` file:**
 
    | Variable                       | Required | Description                                                                                            |
    | ------------------------------ | -------- | ------------------------------------------------------------------------------------------------------ |
-   | `VITE_SERVER_URL`              | ✅       | The URL where your backend server is hosted, e.g., `http://localhost:5000`.                            |
+   | `VITE_SERVER_URL`              | ✅       | The URL where your backend server is hosted, e.g., `http://localhost:3000`.                            |
    | `VITE_SUPABASE_URL`            | ✅       | URL found in `Project Settings` > `API` > `Project URL` in your Supabase project.                      |
    | `VITE_SUPABASE_KEY`            | ✅       | Anon key found in `Project Settings` > `API` > `Project API keys` in your Supabase project.            |
    | `VITE_SUPABASE_PASS`           | ✅       | The password for your Supabase database.                                                               |
@@ -66,7 +66,7 @@ Check out the live version of the website:
 
    | Variable                | Required | Description                                                                                            |
    | ----------------------- | -------- | ------------------------------------------------------------------------------------------------------ |
-   | `PORT`                  | ✅       | The port where the backend server will run, e.g., `5000`.                                              |
+   | `PORT`                  | ✅       | The port where the backend server will run, e.g., `3000`.                                              |
    | `DISCORD_TOKEN`         | ✅       | Bot token found in `Bot` > `Token` in your Discord Developer Portal application.                       |
    | `DISCORD_CLIENT_ID`     | ✅       | Client ID found in `OAuth2` > `Client information` in your Discord Developer Portal application.       |
    | `DISCORD_CLIENT_SECRET` | ✅       | Client secret found in `OAuth2` > `Client information` in your Discord Developer Portal application.   |
@@ -89,18 +89,18 @@ Check out the live version of the website:
 
 ### Public Endpoints
 
-- `GET /api/encrypt` - Encrypt tokens when they are first created on login.
-- `GET /api/validate` - Validate the encrypted tokens when a new session is created.
+- `GET /api/encrypt` - Encrypt tokens.
+- `GET /api/validate` - Validate encrypted tokens.
 
 ### Protected Endpoints
 
-These endpoints require authentication through the `authMiddleware`.
+These endpoints require authentication.
 
 - `GET /api/guilds` - Retrieve a list of Discord guilds.
 - `GET /api/voicechannels` - Retrieve a list of voice channels and connected users from a guild.
 - `GET /api/textchannels` - Retrieve a list of text channels from a guild.
 - `GET /api/members` - Retrieve a list of all members from a guild.
-- `POST /api/screenshot` - Post a screenshot to a text channel in guild.
+- `POST /api/screenshot` - Post a screenshot to text channel in a guild.
 
 ## License
 

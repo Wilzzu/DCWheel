@@ -70,7 +70,6 @@ const DiscordPanel = () => {
 			if (validation?.success) return setSessionStatus(1);
 			// If tokens have expired, generate new encrypted ones and save them to local storage
 			else if (validation?.newTokens) {
-				console.log("New tokens received", validation.newTokens);
 				setItem("DCWAuth", "provider_token", validation.newTokens.provider_token);
 				setItem("DCWAuth", "provider_refresh_token", validation.newTokens.provider_refresh_token);
 				setTokensValidated(true);
@@ -88,20 +87,12 @@ const DiscordPanel = () => {
 		const { data } = supabase.auth.onAuthStateChange((event, session) => {
 			// User is signed in
 			if (session) {
-				console.log("Signed in");
 				if (event === "INITIAL_SESSION") handleTokens(session); // Validate tokens on initial session
 				setSessionItem("DCWSession", "user", session.user?.user_metadata || {});
-			}
-			// No user is signed in
-			else {
-				console.log("No session");
-				logoutAndCleanup(false);
-			}
+			} else logoutAndCleanup(false); // No user is signed in
+
 			// When user signs out, clear all data
-			if (event === "SIGNED_OUT") {
-				console.log("Signed out");
-				logoutAndCleanup();
-			}
+			if (event === "SIGNED_OUT") logoutAndCleanup();
 		});
 
 		return () => {
@@ -112,6 +103,7 @@ const DiscordPanel = () => {
 	const handleLogout = async () => {
 		const { error } = await supabase.auth.signOut();
 		if (error) console.error("Error: ", error?.message);
+		logoutAndCleanup();
 	};
 
 	return (

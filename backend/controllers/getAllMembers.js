@@ -3,7 +3,6 @@ const axios = require("axios");
 
 // GET /api/members
 module.exports = async function getGuilds(req, res) {
-	console.log("GET /api/members", new Date().toLocaleString());
 	const accessToken = req.headers.authorization?.split(" ")[1];
 
 	// Confirm user is part of the guild

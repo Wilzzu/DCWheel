@@ -3,7 +3,6 @@ const { client } = require("../bot");
 
 // GET /api/textchannels
 module.exports = async function getTextChannels(req, res) {
-	console.log("GET /api/textchannels", new Date().toLocaleString());
 	const accessToken = req.headers.authorization?.split(" ")[1];
 
 	// Confirm user is part of the guild

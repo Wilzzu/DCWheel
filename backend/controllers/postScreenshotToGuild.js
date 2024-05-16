@@ -13,8 +13,6 @@ const createEmbed = (imageBuffer, userId) => {
 
 // POST /api/screenshot
 module.exports = async function postScreenshotToGuild(req, res) {
-	console.log("POST /api/screenshot", new Date().toLocaleString());
-
 	// Confirm request has the required parameters
 	if (!req.body?.guildId || !req.body?.channelId || !req.body?.data)
 		return res.status(400).json({ error: "Missing parameters" });

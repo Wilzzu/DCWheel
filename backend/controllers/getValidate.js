@@ -45,7 +45,6 @@ const generateNewTokens = async (encryptedRefreshToken, res) => {
 
 // GET /api/validate
 module.exports = async function getValidate(req, res) {
-	console.log("GET /api/validate", new Date().toLocaleString());
 	if (!req.query?.provider_token || !req.query?.provider_refresh_token)
 		return res.status(400).json({ error: "Missing parameters" });
 

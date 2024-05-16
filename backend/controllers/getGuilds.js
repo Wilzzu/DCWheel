@@ -3,7 +3,6 @@ const axios = require("axios");
 
 // GET /api/guilds
 module.exports = async function getGuilds(req, res) {
-	console.log("GET /api/guilds", new Date().toLocaleString());
 	const accessToken = req.headers.authorization?.split(" ")[1];
 
 	// Get both bot and user guilds

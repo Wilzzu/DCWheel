@@ -3,7 +3,6 @@ const { client } = require("../bot");
 
 // GET /api/voicechannels
 module.exports = async function getVoiceChannels(req, res) {
-	console.log("GET /api/voicechannels", new Date().toLocaleString());
 	const accessToken = req.headers.authorization?.split(" ")[1];
 
 	// Confirm user is part of the guild

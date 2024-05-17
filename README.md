@@ -1,4 +1,4 @@
-![Logo](https://i.imgur.com/Y4OcAaJ.png)
+![Logo](https://i.imgur.com/kqtAZIl.png)
 
 <h1 align="center">DCWheel</h1>
 

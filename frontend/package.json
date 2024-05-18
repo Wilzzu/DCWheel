@@ -2,7 +2,7 @@
 	"homepage": "https://wilzzu.github.io/discord-wheel/",
 	"name": "discord-wheel",
 	"private": true,
-	"version": "0.25.0",
+	"version": "0.25.1",
 	"type": "module",
 	"scripts": {
 		"predeploy": "npm run build",

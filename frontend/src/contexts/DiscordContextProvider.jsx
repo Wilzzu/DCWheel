@@ -8,6 +8,7 @@ const DiscordContextProvider = ({ children }) => {
 		getSessionItem("DCWSession", "selected_server") || null
 	);
 	const [tokensValidated, setTokensValidated] = useState(false);
+	const [sessionStatus, setSessionStatus] = useState(0); // 0 = loading, 1 = logged in, 2 = logged out
 
 	return (
 		<DiscordContext.Provider
@@ -16,6 +17,8 @@ const DiscordContextProvider = ({ children }) => {
 				setSelectedServer,
 				tokensValidated,
 				setTokensValidated,
+				sessionStatus,
+				setSessionStatus,
 			}}>
 			{children}
 		</DiscordContext.Provider>

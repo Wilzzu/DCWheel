@@ -1,5 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import useLocalStorage from "../../../../../hooks/useLocalStorage";
 import { FaDiscord } from "react-icons/fa";
 import DiscordPlayerSelect from "./DiscordPlayerSelect";
@@ -20,8 +20,8 @@ const DiscordPanel = () => {
 	const { getEncryptedTokens } = useGetEncryptedTokens();
 	const { validateToken } = useValidateToken();
 	const { setPlayers } = useContext(WheelContext);
-	const { selectedServer, tokensValidated, setTokensValidated } = useContext(DiscordContext);
-	const [sessionStatus, setSessionStatus] = useState(0); // 0 = loading, 1 = logged in, 2 = logged out
+	const { selectedServer, sessionStatus, setSessionStatus, tokensValidated, setTokensValidated } =
+		useContext(DiscordContext);
 	const queryClient = useQueryClient();
 
 	const handleLogin = async () => {
@@ -123,7 +123,7 @@ const DiscordPanel = () => {
 				<div
 					className={cn(
 						"w-full h-11 lg:h-[3.75rem] bg-highlightBlack animate-pulse duration-200 rounded-xl",
-						tokensValidated && "h-10 lg:h-12",
+						getItem("DCWAuth", "provider_token") !== undefined && "h-10 lg:h-12",
 						selectedServer && "h-[5.25rem] lg:h-[6.25rem]"
 					)}
 				/>

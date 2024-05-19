@@ -4,7 +4,7 @@
 
 <p align="center">Fast and fun way to create teams for games and events by spinning a wheel.</br>With a Discord integration, users can easily add players and share the results in their Discord server.</p>
 
-## Live Demo
+## Live Site
 
 Check out the live version of the website:
 [DCWheel.wilzzu.dev](https://dcwheel.wilzzu.dev/)

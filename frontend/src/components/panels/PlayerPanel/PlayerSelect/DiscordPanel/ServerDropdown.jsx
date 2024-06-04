@@ -49,10 +49,11 @@ const ServerDropdown = ({ selectedServer }) => {
 								<img
 									src={selectedServer.icon}
 									alt={selectedServer.name + " icon"}
-									className="h-6 2xl:h-7 w-auto aspect-square rounded-full"
-								/> // Server icon placeholder
+									className="h-6 2xl:h-7 w-auto aspect-square rounded-full flex-shrink-0"
+								/>
 							) : (
-								<div className="flex items-center justify-center h-7 w-7 aspect-square bg-[#5865F2] rounded-full">
+								// Server icon placeholder
+								<div className="flex items-center justify-center h-7 w-7 aspect-square bg-[#5865F2] rounded-full flex-shrink-0">
 									<p className="text-neutral-100 text-center text-sm">
 										{selectedServer.name[0].toUpperCase()}
 									</p>

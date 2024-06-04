@@ -31,17 +31,17 @@ const ServerCard = ({ server, favorites }) => {
 					<img
 						src={server.icon}
 						alt={server.name + " icon"}
-						className="rounded-full h-5 2xl:h-6 w-auto aspect-square"
+						className="rounded-full h-5 2xl:h-6 w-auto aspect-square flex-shrink-0"
 						loading="lazy"
 						onLoad={() => setIsLoaded(true)}
 					/>
 					{!isLoaded && (
-						<div className="absolute h-5 2xl:h-6 w-5 2xl:w-6 aspect-square bg-neutral-700 rounded-full animate-pulse" />
+						<div className="absolute h-5 2xl:h-6 w-5 2xl:w-6 aspect-square bg-neutral-700 rounded-full animate-pulse flex-shrink-0" />
 					)}
 				</>
 			) : (
 				// Server icon placeholder
-				<div className="flex items-center justify-center h-5 2xl:h-6 w-5 2xl:w-6 aspect-square bg-[#5865F2] rounded-full">
+				<div className="flex items-center justify-center h-5 2xl:h-6 w-5 2xl:w-6 aspect-square bg-[#5865F2] rounded-full flex-shrink-0">
 					<p className="text-neutral-100 text-center text-xs 2xl:text-sm">
 						{server.name[0].toUpperCase()}
 					</p>

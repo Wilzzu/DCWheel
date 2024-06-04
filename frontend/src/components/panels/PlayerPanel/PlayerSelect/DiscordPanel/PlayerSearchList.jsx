@@ -40,12 +40,12 @@ const PlayerSearchList = ({
 						<img
 							src={member.avatar}
 							alt={member.name + " avatar"}
-							className="w-6 2xl:w-8 h-6 2xl:h-8 rounded-full"
+							className="w-6 2xl:w-8 h-6 2xl:h-8 rounded-full flex-shrink-0"
 							loading="lazy"
 							onLoad={() => setIsLoaded(true)}
 						/>
 						{!isLoaded && (
-							<div className="absolute h-6 2xl:h-8 w-6 2xl:w-8 aspect-square bg-neutral-700 rounded-full animate-pulse" />
+							<div className="absolute h-6 2xl:h-8 w-6 2xl:w-8 aspect-square bg-neutral-700 rounded-full animate-pulse flex-shrink-0" />
 						)}
 						<p className="w-full truncate text-left" title={member.name}>
 							{member.name}

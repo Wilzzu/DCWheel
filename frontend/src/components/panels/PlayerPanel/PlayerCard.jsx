@@ -17,7 +17,7 @@ const PlayerCard = ({ player }) => {
 				onClick={() => removePlayer(player.id)}
 				className="group w-full h-9 2xl:h-11 2k:h-12 bg-darkBlack border-2 border-darkBlack drop-shadow-button rounded-lg 2xl:rounded-xl flex gap-2 2xl:gap-3 py-1 px-2 items-center hover:cursor-pointer hover:bg-red-900 hover:border-red-600 focus:bg-red-900 focus:outline-red-600">
 				{/* Avatar */}
-				<div className="h-6 2xl:h-8 w-6 2xl:w-8 aspect-square">
+				<div className="h-6 2xl:h-8 w-6 2xl:w-8 aspect-square flex-shrink-0">
 					<img
 						className="h-6 2xl:h-8 w-6 2xl:w-8 aspect-square drop-shadow-md rounded-full"
 						src={player.avatar}

@@ -32,16 +32,16 @@ const SelectedPlayerCard = ({ selectedPlayer, mainRef }) => {
 			{/* Player name container */}
 			<div
 				className={cn(
-					"bg-darkBlack drop-shadow-button w-full rounded-xl 2xl:rounded-2xl h-14 2xl:h-[4.25rem] p-2 flex items-center justify-center text-xl 2xl:text-[1.7rem] font-bold gap-4 border-2 border-transparent duration-300",
+					"bg-darkBlack drop-shadow-button w-full rounded-xl 2xl:rounded-2xl h-14 2xl:h-[4.25rem] p-2 flex items-center justify-center text-xl 2xl:text-[1.7rem] font-bold gap-2 2xl:gap-4 border-2 border-transparent duration-300",
 					selectedPlayer &&
 						"border-green-400 bg-gradient-to-br from-green-700 to-green-500 shadow-green-600 shadow-[0_1px_20px_-4px]"
 				)}>
 				{selectedPlayer && (
 					<>
 						{/* Image container to take space while the avatar is loading */}
-						<div className="h-full w-10 2xl:w-12 aspect-square">
+						<div className="h-full w-9 2xl:w-12 aspect-square flex-shrink-0">
 							<img
-								className="h-full w-10 2xl:w-12 aspect-square rounded-full drop-shadow-lg duration-1000"
+								className="h-full w-9 2xl:w-12 aspect-square rounded-full drop-shadow-lg duration-1000 flex-shrink-0"
 								src={selectedPlayer.avatar}
 								alt={`${selectedPlayer.name} avatar`}
 							/>

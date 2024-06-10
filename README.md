@@ -1,4 +1,4 @@
-![Logo](https://i.imgur.com/kqtAZIl.png)
+![Banner](https://i.imgur.com/4BemzGb.png)
 
 <h1 align="center">DCWheel</h1>
 
@@ -8,6 +8,8 @@
 
 Check out the live version of the website:
 [DCWheel.wilzzu.dev](https://dcwheel.wilzzu.dev/)
+
+![Screenshots](https://i.imgur.com/HTVB5s2.png)
 
 ## Features
 

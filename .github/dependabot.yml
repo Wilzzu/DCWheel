@@ -5,7 +5,11 @@
 
 version: 2
 updates:
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: "npm" # Update npm packages
+    directory: "/frontend" # Location of the first package manifest
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm" # Update npm packages
+    directory: "/backend" # Location of the second package manifest
     schedule:
       interval: "weekly"

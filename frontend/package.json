@@ -14,7 +14,7 @@
 	},
 	"dependencies": {
 		"@supabase/supabase-js": "^2.45.3",
-		"axios": "^1.7.5",
+		"axios": "^1.7.7",
 		"chart.js": "^4.4.0",
 		"chartjs-plugin-datalabels": "^2.2.0",
 		"clsx": "^2.1.1",

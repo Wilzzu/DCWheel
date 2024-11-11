@@ -29,7 +29,7 @@
 		"react-router-dom": "^6.28.0",
 		"tailwind-merge": "^2.5.4",
 		"tailwind-scrollbar": "^3.0.5",
-		"uuid": "^11.0.2"
+		"uuid": "^11.0.3"
 	},
 	"devDependencies": {
 		"@types/react": "^18.3.12",

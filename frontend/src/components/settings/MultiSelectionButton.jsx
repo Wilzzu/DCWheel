@@ -23,7 +23,7 @@ const MultiSelectionButton = ({ layout, name, type, icons, val, setVal, localKey
 				/>
 			)}
 			{/* Tooltip */}
-			<span className="absolute text-nowrap whitespace-nowrap -top-1 opacity-0 p-[0.4rem] 2xl:p-2 bg-highlightBlack rounded-md 2xl:rounded-lg group-hover:-top-8 2xl:group-hover:-top-9 group-hover:opacity-100 duration-300 group-hover:text-xs text-[6px] 2xl:text-[10px]">
+			<span className="absolute pointer-events-none text-nowrap whitespace-nowrap -top-1 opacity-0 p-[0.4rem] 2xl:p-2 bg-highlightBlack rounded-md 2xl:rounded-lg group-hover:-top-8 2xl:group-hover:-top-9 group-hover:opacity-100 duration-300 group-hover:text-xs text-[6px] 2xl:text-[10px]">
 				<p>{name}</p>
 			</span>
 		</button>

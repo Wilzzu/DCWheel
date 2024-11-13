@@ -25,13 +25,11 @@ const PlayerAndTeamAmount = () => {
 					/>
 					<p className={teamsNotEven ? "text-[#FF5858]" : ""}>{teamAmount}</p>
 				</span>
-				{/* Tooltip | Due to z-index fighting, there's an additional div to always show tooltip on top of other elements */}
+				{/* Tooltip */}
 				{teamsNotEven && (
-					<div className="absolute z-0 group-hover:z-10 flex justify-center">
-						<span className="absolute text-nowrap -bottom-2 opacity-0 p-1 px-2 2xl:p-2 bg-highlightBlack rounded-md 2xl:rounded-lg group-hover:bottom-5 group-hover:opacity-100 duration-300 text-xs drop-shadow-md border border-red-500">
-							{"Teams won't be even!"}
-						</span>
-					</div>
+					<span className="absolute z-10 pointer-events-none text-nowrap bottom-4 opacity-0 p-1 px-2 2xl:p-2 bg-highlightBlack rounded-md 2xl:rounded-lg group-hover:bottom-11 group-hover:opacity-100 duration-300 text-xs drop-shadow-md border border-red-500">
+						{"Teams won't be even!"}
+					</span>
 				)}
 			</div>
 			<RemoveAllButton players={players} setPlayers={setPlayers} />

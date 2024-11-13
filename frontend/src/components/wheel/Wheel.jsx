@@ -330,9 +330,9 @@ const Wheel = () => {
 		if (clicked) createAudioContext();
 	}, [clicked]);
 	return (
-		<section className="lg:sticky w-fit lg:w-auto top-0 max-w-full max-h-fit lg:max-h-dvh lg:h-dvh p-2 lg:p-5 aspect-square flex items-center justify-center select-none pointer-events-none">
+		<section className="lg:sticky w-fit lg:w-auto top-0 max-w-full max-h-fit lg:max-h-dvh lg:h-dvh p-2 lg:p-5 aspect-square flex items-center justify-center select-none pointer-events-none overflow-hidden">
 			{/* Wheel container to hide overflow */}
-			<div className="w-full h-full overflow-hidden drop-shadow-wheel">
+			<div className="w-full h-full overflow-hidden drop-shadow-wheel flex items-center justify-center">
 				{/* Clickable spinning wheel */}
 				<button
 					onClick={handleWheelClick}

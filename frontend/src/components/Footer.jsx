@@ -19,7 +19,7 @@ const Footer = () => {
 					target="_blank"
 					rel="noreferrer"
 					className="pl-1 decoration-1 hover:underline">
-					© 2024 Wilzzu
+					© 2024-2025 Wilzzu
 				</a>
 				<p className="underline">
 					<Link to="/privacy" reloadDocument={true}>

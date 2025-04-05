@@ -56,7 +56,8 @@ const ScreenshotChannelList = ({ mainRef, containerRef, selectedServer, sendScre
 	useEffect(() => {
 		if (!open) return;
 		if (openBelow) setOpenBelow(calculateOpeningDirection(mainRef, listRef));
-		refetchTextChannels(); // Use this to refetch, since making the data stale would reset scroll position
+		// TODO: This probably isn't needed, since users will set the allowed screenshot channels via the settings in the future
+		//refetchTextChannels(); // Use this to refetch, since making the data stale would reset scroll position
 	}, [open]);
 
 	if (!open) return;

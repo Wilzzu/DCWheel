@@ -18,7 +18,7 @@ const useGetVoiceChannels = (providerToken, params) => {
 					throw err;
 				});
 		},
-		{ staleTime: 5000, enabled: false }
+		{ staleTime: 5000 }
 	);
 
 	return {

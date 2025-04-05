@@ -18,6 +18,9 @@ module.exports = async function postScreenshotToGuild(req, res) {
 		return res.status(400).json({ error: "Missing parameters" });
 	const accessToken = req.headers.authorization?.split(" ")[1];
 
+	// Check if guild has enabled screenshot sending
+	// TODO: Add this when settings are implemented
+
 	// Confirm user is part of the guild
 	const userGuilds = await axios
 		.get("https://discord.com/api/users/@me/guilds", {

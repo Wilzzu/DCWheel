@@ -21,6 +21,7 @@ const useSendScreenshot = () => {
 			style.sheet?.insertRule("body > div:last-child img { display: inline-block; }"); // Fix paragraphs being offset: https://github.com/niklasvh/html2canvas/issues/2775#issuecomment-1316356991
 			style.sheet?.insertRule(".team-card { border-color: #22C55E; }");
 			style.sheet?.insertRule(".team-card { transition-duration: 999s; }");
+			// TODO: Remove "Move Team <number> to VC" dropdown when taking screenshot
 
 			// Generate the canvas
 			const data = await html2canvas(container, { useCORS: true, backgroundColor: null }).then(

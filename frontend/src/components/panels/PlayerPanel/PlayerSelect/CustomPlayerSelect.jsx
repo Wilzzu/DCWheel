@@ -18,7 +18,7 @@ const CustomPlayerSelect = () => {
 		const player = {
 			name,
 			avatar,
-			id: uuidv4(),
+			id: "custom-" + uuidv4(),
 		};
 
 		addPlayer(player);

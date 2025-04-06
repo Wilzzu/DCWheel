@@ -13,6 +13,7 @@ const getTextChannels = require("./controllers/getTextChannels");
 const getEncrypt = require("./controllers/getEncrypt");
 const getValidate = require("./controllers/getValidate");
 const authMiddleware = require("./middleware/authMiddleware");
+const postMoveTeamToVC = require("./controllers/postMoveTeamToVC");
 
 const port = process.env.PORT || 3001;
 const app = express();
@@ -42,6 +43,7 @@ app.get("/api/voicechannels", limiter(200), getVoiceChannels);
 app.get("/api/textchannels", limiter(200), getTextChannels);
 app.get("/api/members", limiter(200), getAllMembers);
 app.post("/api/screenshot", limiter(20), postScreenshotToGuild);
+app.post("/api/moveteamtovc", limiter(20), postMoveTeamToVC);
 
 // Wait for the bot to be ready before starting the server
 botPromise

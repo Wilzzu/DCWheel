@@ -31,6 +31,9 @@ module.exports = async function getVoiceChannels(req, res) {
 			members: channel.members,
 		}));
 
+	// Return all channels if no filtering is needed
+	if (req.query.allChannels) return res.status(200).json({ success: true, channels: channels });
+
 	// Remove bots from the list and format members
 	const filteredChannels = channels?.reduce((acc, channel) => {
 		const members = Array.from(channel?.members?.values())

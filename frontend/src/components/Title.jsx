@@ -1,4 +1,5 @@
 import logo from "../assets/logo.webp";
+import { Link } from "react-router-dom";
 
 const Title = () => {
 	return (
@@ -7,9 +8,13 @@ const Title = () => {
 				{/* Stick with the wheel */}
 				<div className="lg:sticky lg:top-3 lg:h-dvh">
 					<div className="flex items-center gap-3 opacity-50 hover:opacity-100 duration-500">
-						<img src={logo} alt="DCWheel logo" className="h-9 lg:h-10 w-auto" />
+						<Link to="/" reloadDocument>
+							<img src={logo} alt="DCWheel logo" className="h-9 lg:h-10 w-auto" />
+						</Link>
 						<span>
-							<h1>DCWheel</h1>
+							<Link to="/" reloadDocument>
+								DCWheel
+							</Link>
 							<p className="text-xs">
 								Made with 💚 by{" "}
 								<a

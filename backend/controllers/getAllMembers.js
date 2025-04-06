@@ -6,6 +6,10 @@ module.exports = async function getGuilds(req, res) {
 	const accessToken = req.headers.authorization?.split(" ")[1];
 
 	// Confirm user is part of the guild
+	// TODO: This could be handled better to avoid rate limits:
+	//		- First only fetch https://discord.com/api/users/@me to get the user ID
+	//		- Check if the guild with the ID of req.query?.guildId has a member
+	//		  with the user's ID in it
 	const userGuilds = await axios
 		.get("https://discord.com/api/users/@me/guilds", {
 			headers: {

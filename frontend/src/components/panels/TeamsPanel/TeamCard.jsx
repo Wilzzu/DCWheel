@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { cn } from "../../../../lib/utils";
 import TeamPlayerCard from "./TeamPlayerCard";
 import MoveTeamToVCDropdown from "./MoveTeamToVCDropdown";
+import DiscordContext from "../../../contexts/DiscordContext";
 
 const TeamCard = ({
 	data,
@@ -13,9 +14,10 @@ const TeamCard = ({
 	setDraggedPlayerTeamIndex,
 }) => {
 	const { allPlayersDrawn } = useContext(WheelContext);
+	const { selectedServer } = useContext(DiscordContext);
 
 	return (
-		<>
+		<motion.div className="flex flex-col gap-2 items-center">
 			<motion.div
 				layout
 				data-team-index={index}
@@ -55,8 +57,12 @@ const TeamCard = ({
 			</motion.div>
 			{/* Move Team to VC */}
 			{/* TODO: This should be configurable in the server settings in future */}
-			{allPlayersDrawn && <MoveTeamToVCDropdown data={data} teamNumber={index} />}
-		</>
+			{allPlayersDrawn &&
+				import.meta.env.VITE_MOVE_TEAM_TO_VC === "true" &&
+				selectedServer?.id === import.meta.env.VITE_MAIN_GUILD_ID && (
+					<MoveTeamToVCDropdown team={data} teamNumber={index + 1} />
+				)}
+		</motion.div>
 	);
 };
 

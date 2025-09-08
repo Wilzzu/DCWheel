@@ -18,7 +18,7 @@
 		"discord.js": "^14.22.1",
 		"dotenv": "^17.2.2",
 		"express": "^5.1.0",
-		"express-rate-limit": "^8.0.1",
+		"express-rate-limit": "^8.1.0",
 		"qs": "^6.14.0"
 	}
 }

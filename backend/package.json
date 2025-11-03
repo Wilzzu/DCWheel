@@ -12,7 +12,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"axios": "^1.12.2",
+		"axios": "^1.13.1",
 		"cors": "^2.8.5",
 		"crypto-js": "^4.2.0",
 		"discord.js": "^14.24.0",

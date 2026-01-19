@@ -19,7 +19,7 @@
 		"chartjs-plugin-datalabels": "^2.2.0",
 		"clsx": "^2.1.1",
 		"crypto-js": "^4.2.0",
-		"framer-motion": "^12.26.1",
+		"framer-motion": "^12.27.1",
 		"html2canvas": "^1.4.1",
 		"react": "^19.2.3",
 		"react-chartjs-2": "^5.3.1",

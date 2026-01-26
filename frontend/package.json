@@ -26,7 +26,7 @@
 		"react-dom": "^19.2.3",
 		"react-icons": "^5.5.0",
 		"react-query": "^3.39.3",
-		"react-router-dom": "^7.12.0",
+		"react-router-dom": "^7.13.0",
 		"tailwind-merge": "^3.4.0",
 		"tailwind-scrollbar": "^4.0.2",
 		"uuid": "^13.0.0"

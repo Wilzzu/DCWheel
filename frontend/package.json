@@ -27,7 +27,7 @@
 		"react-icons": "^5.7.0",
 		"react-query": "^3.39.3",
 		"react-router-dom": "^7.18.4",
-		"tailwind-merge": "^3.6.0",
+		"tailwind-merge": "^3.7.0",
 		"tailwind-scrollbar": "^4.0.2",
 		"uuid": "^14.0.2"
 	},
